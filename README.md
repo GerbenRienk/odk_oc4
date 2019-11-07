@@ -1,0 +1,2 @@
+# odk_oc4
+a python script to go through data collected in odk and prepare them to be imported oc4
