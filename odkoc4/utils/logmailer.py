@@ -10,8 +10,8 @@ import smtplib
 
 # Import the email modules we'll need
 from email.mime.text import MIMEText
-from utils.dictfile import readDictFile
-config=readDictFile('odkoc.config')
+from dictfile import readDictFile
+config=readDictFile('odkoc4.config')
 
 
 def MailThisLogFile(LogFileName):

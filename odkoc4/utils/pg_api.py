@@ -7,7 +7,7 @@ Created on 14 apr. 2017
 '''
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from utils.dictfile import readDictFile
+from dictfile import readDictFile
 
 class ConnToOdkUtilDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
