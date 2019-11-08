@@ -21,11 +21,16 @@ def cycle_through_syncs():
     # start a report
     my_report = Reporter()
     
-    # start with requesting an access token, which we can use for about an hour
-    api = OC4Api(config['ApiUrl'])
-    aut_token = api.sessions.get_authentication_token(config['oc4_username'], config['oc4_password'])
+    # start with requesting an authentication token, which we can use for some time
+    api = OC4Api(config['apiUrl'])
+    aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
     
-    print('access token before loops %s' % aut_token)            
+    # with this token, request the participants of the study
+    all_participants = api.participants.list_participants(config['studyOid'], aut_token)
+    for participant in all_participants:
+        print(participant['subjectKey'] + " " + participant['subjectOid'])
+    
+    #print('access token before loops %s' % aut_token)            
     if(aut_token is None):
         # something is wrong with either the url, the client id or the client secret 
         my_report.append_to_report('could not get a access token with given client id and secret')

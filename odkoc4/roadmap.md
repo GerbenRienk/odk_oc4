@@ -1,5 +1,7 @@
-do this
-=======
+# do this
+- create subjects / participants by submitting a file, see
+https://docs.openclinica.com/oc4/participantsbulk-add-bulk-list-participant-ids
+- schedule an event for one subject, see https://finddx.openclinica.io/OpenClinica/pages/swagger-ui.html#/Study%20Event/scheduleEventAtSiteLevelUsingPOST
 - add logging
 - rollback if update was not successful or otherwise prevent pg-sessions 
 
@@ -7,8 +9,9 @@ do this
 
 
 
-done that
-=========
+# done that  
+- find out how to get an authorization token
+- request a get with the aut_token in the header
 
-look at this 
-============
+# look at this 
+

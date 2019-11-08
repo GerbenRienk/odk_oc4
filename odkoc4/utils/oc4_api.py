@@ -7,14 +7,11 @@ class OC4Api(object):
     def __init__(self, url):
         self.url = url
         self.headers = {"content-type": "application/json"}
-        # next line sets the default headers which for limesurvey were as above, but 
-        # in the MsAccess tool we used:
-        # self.headers = {"content-type": "application/x-www-form-urlencoded"}
-        
+                
         self.utils = _Utils(self)
         self.sessions = _Sessions(self)
         self.users = _Users(self)
-        self.surveys = _Surveys(self)
+        self.participants = _Participants(self)
 
 
 class _Utils(object):
@@ -22,7 +19,7 @@ class _Utils(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
     
-    def request(self, data=None, request_type=None, url=None, headers=None):
+    def request(self, data=None, request_type=None, url=None, headers=None, verbose=False):
         """
         Return the result of an API call, or None.
 
@@ -45,9 +42,11 @@ class _Utils(object):
             headers = self.api.headers
         return_value = None
         try:
-            #print("req url='%s'" % url)
-            #print("req headers='%s'" % headers)
-            #print("req data='%s'" % data)
+            if verbose == True:
+                print("req url='%s'" % url)
+                print("req headers='%s'" % headers)
+                print("req data='%s'" % data)
+            
             if request_type == 'post':
                 #print("req type=post")
                 response = requests.post(url, headers=headers, data=data)
@@ -56,7 +55,9 @@ class _Utils(object):
                 #print("req type=get")
                 response = requests.get(url, headers=headers, data=data)
             
-            print(response.text)
+            if verbose == True:
+                print(response.text)
+                
             if response.status_code == 200:
                 return_value = response.json()
             else:
@@ -67,11 +68,11 @@ class _Utils(object):
             return_value = None
         return return_value
 
-    def aut_request(self, data=None):
+    def aut_request(self, data=None, url=None):
         """
         Return the a huge token as text
         """
-        url = self.api.url + "/user-service/api/oauth/token"
+        url = url + "/user-service/api/oauth/token"
         headers = self.api.headers
         return_value = None
         try:
@@ -117,7 +118,7 @@ class _Sessions(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
 
-    def get_authentication_token(self, username, password):
+    def get_authentication_token(self, url, username, password):
         """
         Get an access token for all subsequent API calls.
 
@@ -129,7 +130,7 @@ class _Sessions(object):
         
         """
         token_data = '{"username":"%s" , "password":"%s"}' % (username, password)
-        response = self.api.utils.aut_request(data=token_data)
+        response = self.api.utils.aut_request(data=token_data, url=url)
         return response
 
 class _Users(object):
@@ -155,27 +156,26 @@ class _Users(object):
         response = self.api.utils.request(request_type='get', headers=my_headers, url=my_url, data=None)
         return response
 
-
-class _Surveys(object):
+class _Participants(object):
 
     def __init__(self, oc4_api):
         self.api = oc4_api
 
-    def list_surveys(self, session_key, username):
+    def list_participants(self, study_oid, aut_token):
         """
-        List surveys accessible to the specified username.
-
+        List participants per study and/or per site
+        /pages/auth/api/clinicaldata/studies/{studyOID}/participants
         Parameters
         :param session_key: Active LSRC2 session key
         :type session_key: String
         :param username: LimeSurvey username to list accessible surveys for.
         :type username: String
         """
-        params = OrderedDict([
-            ('sSessionKey', session_key),
-            ('iSurveyID', username)
-        ])
-        data = self.api.utils.prepare_params('list_surveys', params)
-        response = self.api.utils.request(data)
+        url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/participants"
+        bearer = "bearer " + aut_token
+        headers = {"Authorization": bearer}
+        complete_response = self.api.utils.request(url=url, headers=headers, request_type='get')
+        # pass only the main part:
+        response=complete_response['studyParticipants']
         return response
 
