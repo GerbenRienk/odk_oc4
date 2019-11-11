@@ -25,6 +25,15 @@ def cycle_through_syncs():
     api = OC4Api(config['apiUrl'])
     aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
     
+    #try to post a file with participants
+    #bulk_file = files = {'file': ('participants.csv', open('participants.csv', 'rb'))}
+    add_result = api.participants.add_participant(config['studyOid'], config['siteOid'], "IMP008", aut_token)
+    
+    event_info = {"subjectKey":"IMP002", "studyEventOID":"SE_IMPEV", "startDate":"2019-11-01", "endDate":"2019-11-01"}
+    schedule_result = api.events.schedule_event(config['studyOid'], config['siteOid'], event_info, aut_token)
+
+    import_result = api.clinical_data.import_odm(aut_token)
+    
     # with this token, request the participants of the study
     all_participants = api.participants.list_participants(config['studyOid'], aut_token)
     for participant in all_participants:

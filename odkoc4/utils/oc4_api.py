@@ -6,20 +6,20 @@ class OC4Api(object):
 
     def __init__(self, url):
         self.url = url
-        self.headers = {"content-type": "application/json"}
-                
+        self.headers = {"content-type": "application/json"}        
         self.utils = _Utils(self)
         self.sessions = _Sessions(self)
         self.users = _Users(self)
         self.participants = _Participants(self)
-
+        self.events = _Events(self)
+        self.clinical_data = _ClinicalData(self)
 
 class _Utils(object):
 
     def __init__(self, oc4_api):
         self.api = oc4_api
     
-    def request(self, data=None, request_type=None, url=None, headers=None, verbose=False):
+    def request(self, data=None, request_type=None, url=None, headers=None, params=None, files=None, verbose=False):
         """
         Return the result of an API call, or None.
 
@@ -43,29 +43,36 @@ class _Utils(object):
         return_value = None
         try:
             if verbose == True:
-                print("req url='%s'" % url)
-                print("req headers='%s'" % headers)
-                print("req data='%s'" % data)
+                print("req url=     %s" % url)
+                print("req params=  %s" % params)
+                print("req headers= %s" % headers)
+                print("req data=    %s" % data)
+                print("req type=    %s" % request_type)
             
             if request_type == 'post':
                 #print("req type=post")
-                response = requests.post(url, headers=headers, data=data)
+                response = requests.post(url, params=params, headers=headers, data=data, files=files)
                 
             if request_type == 'get':
                 #print("req type=get")
-                response = requests.get(url, headers=headers, data=data)
+                response = requests.get(url, params=params, headers=headers, data=data)
             
             if verbose == True:
+                print("req url=     %s" % response.request.url)
+                print("req headers= %s" % response.request.headers)
+                print("req body=    %s" % response.request.body)
                 print(response.text)
                 
             if response.status_code == 200:
                 return_value = response.json()
             else:
                 print('request to %s returned status code %i' % (url, response.status_code))
+        
         except requests.ConnectionError as pe:
             # TODO: some handling here, for now just print pe
             print('when a request to the oc4 api was made, the following error was raised %s' % (pe))
             return_value = None
+        
         return return_value
 
     def aut_request(self, data=None, url=None):
@@ -179,3 +186,97 @@ class _Participants(object):
         response=complete_response['studyParticipants']
         return response
 
+    def add_participant(self, study_oid, site_oid, study_subject_id, aut_token):
+        """
+        Add participants to a study using a csv-file
+        POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
+        Parameters
+        :param study_oid: study_oid
+        :type study_oid: String
+        :param files: the csv-file-location 
+        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
+        Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+        """
+        url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/participants"
+        params = {"register":"n"}
+        bearer = "bearer " + aut_token
+        headers = {"accept":"*/*","Content-Type": "application/json", "Authorization": bearer}
+        
+        data = json.dumps({"subjectKey" : study_subject_id})
+        #submit request
+        response = self.api.utils.request(url=url, params=params, headers=headers, request_type='post', data=data, verbose=False)
+           
+        return response
+
+    def bulk_add_participants(self, study_oid, site_oid, files, aut_token):
+        """
+        Add participants to a study using a csv-file
+        POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants/bulk
+        Parameters
+        :param study_oid: study_oid
+        :type study_oid: String
+        :param files: the csv-file-location 
+        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
+        Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+        """
+        url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/participants/bulk?register=n"
+        bearer = "bearer " + aut_token
+        headers = {"content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
+        response = self.api.utils.request(url=url, headers=headers, request_type='post', verbose=True, files=files)
+                
+        return response
+
+class _Events(object):
+
+    def __init__(self, oc4_api):
+        self.api = oc4_api
+
+
+    def schedule_event(self, study_oid, site_oid, event_info, aut_token):
+        """
+        Add participants to a study using a csv-file
+        POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
+        Parameters
+        :param study_oid: study_oid
+        :type study_oid: String
+        :param files: the csv-file-location 
+        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
+        Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+        """
+        url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/events"
+        
+        bearer = "bearer " + aut_token
+        headers = {"accept":"*/*","Content-Type": "application/json", "Authorization": bearer}
+        
+        data = json.dumps(event_info)
+        #submit request
+        response = self.api.utils.request(url=url, headers=headers, request_type='post', data=data, verbose=False)
+           
+        return response
+
+class _ClinicalData(object):
+
+    def __init__(self, oc4_api):
+        self.api = oc4_api
+
+    def import_odm(self, aut_token):
+        """
+        Add participants to a study using a csv-file
+        POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
+        Parameters
+        :param study_oid: study_oid
+        :type study_oid: String
+        :param files: the csv-file-location 
+        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
+        Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+        """
+        url = self.api.url + "/pages/auth/api/clinicaldata/import"
+        
+        bearer = "bearer " + aut_token
+        headers = {"Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
+        
+        files = {'file': open('odm_example.xml', 'rb')}
+        #submit request
+        response = self.api.utils.request(url=url, headers=headers, request_type='post', files=files, verbose=True)
+           
+        return response
