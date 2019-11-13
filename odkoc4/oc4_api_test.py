@@ -26,7 +26,6 @@ def cycle_through_syncs():
     aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
     
     #try to post a file with participants
-    #bulk_file = files = {'file': ('participants.csv', open('participants.csv', 'rb'))}
     add_result = api.participants.add_participant(config['studyOid'], config['siteOid'], "IMP008", aut_token)
     
     event_info = {"subjectKey":"IMP002", "studyEventOID":"SE_IMPEV", "startDate":"2019-11-01", "endDate":"2019-11-01"}

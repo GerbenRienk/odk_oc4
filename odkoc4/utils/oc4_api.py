@@ -273,7 +273,8 @@ class _ClinicalData(object):
         url = self.api.url + "/pages/auth/api/clinicaldata/import"
         
         bearer = "bearer " + aut_token
-        headers = {"Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
+        #headers = {"Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
+        headers = {"accept": "*/*", "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
         
         files = {'file': open('odm_example.xml', 'rb')}
         #submit request
