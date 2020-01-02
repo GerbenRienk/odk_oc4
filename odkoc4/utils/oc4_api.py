@@ -9,7 +9,6 @@ class OC4Api(object):
         self.headers = {"content-type": "application/json"}        
         self.utils = _Utils(self)
         self.sessions = _Sessions(self)
-        self.users = _Users(self)
         self.participants = _Participants(self)
         self.events = _Events(self)
         self.clinical_data = _ClinicalData(self)
@@ -140,28 +139,6 @@ class _Sessions(object):
         response = self.api.utils.aut_request(data=token_data, url=url)
         return response
 
-class _Users(object):
-
-    def __init__(self, oc4_api):
-        self.api = oc4_api
-
-    def user(self, access_token, user_id=None):
-        """
-        Retrieve a list of users the currently authenticated user is authorized to see. 
-        Default to own User.
-        if a user_id is given, then only data about this user are returned
-        
-        :type user_id: String
-        """
-        my_url = self.api.url + "/api/user"
-        # if a specific user id is given as parameter:
-        if user_id is not None:
-            my_url = my_url + "/" + user_id
-            
-        my_authorization = "Bearer %s" % (access_token)
-        my_headers = {'Authorization': my_authorization}
-        response = self.api.utils.request(request_type='get', headers=my_headers, url=my_url, data=None)
-        return response
 
 class _Participants(object):
 
@@ -231,7 +208,6 @@ class _Events(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
 
-
     def schedule_event(self, study_oid, site_oid, event_info, aut_token):
         """
         Add participants to a study using a csv-file
@@ -274,10 +250,12 @@ class _ClinicalData(object):
         
         bearer = "bearer " + aut_token
         #headers = {"Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
-        headers = {"accept": "*/*", "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
-        
-        files = {'file': open('odm_example.xml', 'rb')}
+        #headers = {"accept": "*/*", "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
+        headers = {"accept": "*/*", "Authorization": bearer}
+        files = {'file': ('odm_example.xml', open('odm_example.xml', 'rb'), 'text/xml')}
+
         #submit request
+        #response = self.api.utils.request(url=url, headers=headers, request_type='post', files=files, verbose=True)
         response = self.api.utils.request(url=url, headers=headers, request_type='post', files=files, verbose=True)
            
         return response
