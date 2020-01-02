@@ -11,7 +11,7 @@ from utils.oc4_api import OC4Api
 #from utils.pg_api import ConnToOliDB, PGSubject
 from utils.reporter import Reporter
 
-aut_token = "xx"
+aut_token = "x"
 
 def cycle_through_syncs():
     # indicate that we are going to use aut_token globally
