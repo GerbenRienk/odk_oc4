@@ -12,19 +12,19 @@ class ConnToOdkUtilDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
     Methods implemented now are read subjects and add subjects '''
     def __init__(self, config, verbose=False):
-        'let us create the connection to use multiple times '
+        'try to create the connection to use multiple times '
         conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
-        
         
         self.init_result = ''
 
         # get a connection, if a connect cannot be made an exception will be raised here
         try:
             self._conn = psycopg2.connect(conn_string)
+            self.init_result = 'class connected '
         except:
             print('unable to class connect with %s' %  (conn_string))
+            self.init_result = 'attempt to connect not successful '
         
-        self.init_result = 'class connected '
         if (verbose):
             print(conn_string)
             print(self.init_result)
@@ -130,10 +130,11 @@ class ConnToOdkDB(object):
         # get a connection, if a connect cannot be made an exception will be raised here
         try:
             self._conn = psycopg2.connect(conn_string)
+            self.init_result = 'class connected '
         except:
             print('unable to class connect with %s' %  (conn_string))
+            self.init_result = 'attempt to connect not successful '
         
-        self.init_result = 'class connected '
         if (verbose):
             print(conn_string)
             print(self.init_result)

@@ -14,7 +14,7 @@ if __name__ == '__main__':
     # create connections to the postgresql databases
     print('testing connection(s) to the database(s)')
     conn_util = ConnToOdkUtilDB(config, verbose=True)
-    print('try to connect to util database, result: %s ' % conn_util.init_result)
+    print()
     conn_odk= ConnToOdkDB(config, verbose=True)
-    print('try to connect to odk database, result: %s ' % conn_odk.init_result)
+    print()
 
