@@ -7,15 +7,15 @@ Created on 14 apr. 2017
 '''
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from dictfile import readDictFile
 
 class ConnToOdkUtilDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
     Methods implemented now are read subjects and add subjects '''
-    def __init__(self):
-        'let us create the connection to use multiple times'
-        config=readDictFile('odkoc.config')
+    def __init__(self, config, verbose=False):
+        'let us create the connection to use multiple times '
         conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
+        
+        
         self.init_result = ''
 
         # get a connection, if a connect cannot be made an exception will be raised here
@@ -25,6 +25,9 @@ class ConnToOdkUtilDB(object):
             print('unable to class connect with %s' %  (conn_string))
         
         self.init_result = 'class connected '
+        if (verbose):
+            print(conn_string)
+            print(self.init_result)
 
     def ReadSubjectsFromDB(self):
         'method to read table subjects into a list'
@@ -118,9 +121,9 @@ class ConnToOdkUtilDB(object):
 class ConnToOdkDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
     Methods implemented now are read subjects and add subjects '''
-    def __init__(self):
+    def __init__(self, config, verbose=False):
         'let us create the connection to use multiple times'
-        config=readDictFile('odkoc.config')
+        #config=readDictFile('odkoc4.config')
         conn_string = "host='" + config['db_host'] + "' dbname='" + config['db_name'] + "' user='" + config['db_user'] + "' password='" + config['db_pass'] + "' port='" + config['db_port'] + "'"
         self.init_result = ''
         
@@ -131,6 +134,10 @@ class ConnToOdkDB(object):
             print('unable to class connect with %s' %  (conn_string))
         
         self.init_result = 'class connected '
+        if (verbose):
+            print(conn_string)
+            print(self.init_result)
+
         
     def ReadDataFromOdkTable(self, table_name, where_clause = 'True'):
         'method to read table subjects into a list'
@@ -155,11 +162,11 @@ class PGSubject(object):
         self._studysubjectid = PGStudySubjectID
         return
     
-    def GetSSOID(self):
+    def GetSSOID(self, config):
         'method to get the StudySubjectOID using rest'
         import requests
         import xml.etree.ElementTree as ET
-        config=readDictFile('odkoc.config')
+        #config=readDictFile('odkoc.config')
         
         login_url = config['baseUrlRest'] + '/j_spring_security_check'
         login_action = {'action':'submit'}

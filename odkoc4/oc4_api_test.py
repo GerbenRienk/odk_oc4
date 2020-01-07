@@ -5,7 +5,7 @@ from rotzak
 '''
 import time
 import datetime
-#from utils.logmailer import MailThisLogFile
+from utils.logmailer import MailThisLogFile
 from utils.dictfile import readDictFile
 from utils.oc4_api import OC4Api
 #from utils.pg_api import ConnToOliDB, PGSubject
