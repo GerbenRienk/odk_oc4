@@ -91,6 +91,7 @@ class _Utils(object):
             # TODO: some handling here, for now just print pe
             print('when an authentication request to the oc4 api was made, the following error was raised %s' % (pe))
             return_value = None
+        
         return return_value
 
     @staticmethod
