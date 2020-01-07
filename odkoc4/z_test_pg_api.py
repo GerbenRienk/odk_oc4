@@ -12,8 +12,9 @@ if __name__ == '__main__':
     config=readDictFile('odkoc4.config')
     
     # create connections to the postgresql databases
-    print('testing connection(s) to the database(s)')
+    print('testing connection(s) to the database(s)\n')
     conn_util = ConnToOdkUtilDB(config, verbose=True)
+    
     print()
     conn_odk= ConnToOdkDB(config, verbose=True)
     print()

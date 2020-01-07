@@ -21,10 +21,11 @@ class ConnToOdkUtilDB(object):
         try:
             self._conn = psycopg2.connect(conn_string)
             self.init_result = 'class connected '
-        except:
-            print('unable to class connect with %s' %  (conn_string))
+        #except:
+        except (Exception, psycopg2.Error) as error :
+            print ("error while connecting to postgres", error)
             self.init_result = 'attempt to connect not successful '
-        
+         
         if (verbose):
             print(conn_string)
             print(self.init_result)
@@ -131,8 +132,8 @@ class ConnToOdkDB(object):
         try:
             self._conn = psycopg2.connect(conn_string)
             self.init_result = 'class connected '
-        except:
-            print('unable to class connect with %s' %  (conn_string))
+        except (Exception, psycopg2.Error) as error :
+            print ("error while connecting to postgres", error)
             self.init_result = 'attempt to connect not successful '
         
         if (verbose):
