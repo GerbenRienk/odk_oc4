@@ -6,15 +6,15 @@ extra support and a better name
 
 from utils.dictfile import readDictFile
 from utils.pg_api import ConnToOdkUtilDB, ConnToOdkDB, PGSubject
-from utils.reporter import Reporter
     
 if __name__ == '__main__':
     # read configuration file for usernames and passwords and other parameters
     config=readDictFile('odkoc4.config')
-    my_report = Reporter()
+    
     # create connections to the postgresql databases
+    print('testing connection(s) to the database(s)')
     conn_util = ConnToOdkUtilDB(config, verbose=True)
-    my_report.append_to_report('try to connect to util database, result: %s ' % conn_util.init_result)
+    print('try to connect to util database, result: %s ' % conn_util.init_result)
     conn_odk= ConnToOdkDB(config, verbose=True)
-    my_report.append_to_report('try to connect to odk database, result: %s ' % conn_odk.init_result)
+    print('try to connect to odk database, result: %s ' % conn_odk.init_result)
 
