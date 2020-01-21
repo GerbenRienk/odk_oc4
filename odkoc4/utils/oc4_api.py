@@ -49,11 +49,9 @@ class _Utils(object):
                 print("req type=    %s" % request_type)
             
             if request_type == 'post':
-                #print("req type=post")
                 response = requests.post(url, params=params, headers=headers, data=data, files=files)
                 
             if request_type == 'get':
-                #print("req type=get")
                 response = requests.get(url, params=params, headers=headers, data=data)
             
             if verbose == True:
@@ -209,8 +207,9 @@ class _Events(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
 
-    def schedule_event(self, study_oid, site_oid, event_info, aut_token):
+    def schedule_event(self, study_oid, site_oid, event_info, aut_token, verbose=False):
         """
+        Schedule one or more events(?)
         Add participants to a study using a csv-file
         POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
         Parameters
@@ -227,7 +226,7 @@ class _Events(object):
         
         data = json.dumps(event_info)
         #submit request
-        response = self.api.utils.request(url=url, headers=headers, request_type='post', data=data, verbose=False)
+        response = self.api.utils.request(url=url, headers=headers, request_type='post', data=data, verbose=verbose)
            
         return response
 
