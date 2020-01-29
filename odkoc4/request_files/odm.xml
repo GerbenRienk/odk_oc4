@@ -1,0 +1,14 @@
+<ODM>
+	<ClinicalData StudyOID="S_OC4_IMPO(TEST)">
+		<SubjectData SubjectKey="SS_T564">
+			<StudyEventData StudyEventOID="SE_EV_1">
+				<FormData FormOID="F_IMPTEST_2">
+					<ItemGroupData ItemGroupOID="IG_IMPTE_IG1">
+						<ItemData ItemOID="I_IMPTE_ITEM_TEXT" Value="Text3" />
+						<ItemData ItemOID="I_IMPTE_ITEM_DECIMAL" Value="4.6000000000" />
+					</ItemGroupData>
+				</FormData>
+			</StudyEventData>
+		</SubjectData>
+	</ClinicalData>
+</ODM>

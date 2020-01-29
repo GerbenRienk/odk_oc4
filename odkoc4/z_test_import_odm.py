@@ -13,4 +13,5 @@ config=readDictFile('odkoc4.config')
 api = OC4Api(config['apiUrl'])
 aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
 
-import_result = api.clinical_data.import_odm(aut_token)
+import_result = api.clinical_data.import_odm(aut_token, 'odm_SS_T564.xml', verbose=True)
+print(import_result)

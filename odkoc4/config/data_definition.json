@@ -1,0 +1,32 @@
+{
+	"studyOid": "S_OC4_IMPO(TEST)",
+	"siteOid": "S_OC_IMP_T(TEST)",
+	"studyIdentifier": "xx",
+	"siteIdentifier": "xx",
+	"studyEventOid": "SE_IMPEV",
+	"odk_tables": [{
+		"table_name": "odk_am001.\"1_CORE\"",
+		"id_field": "STUDY_SUBJECT_ID",
+		"eventOid": "SE_IMPEV",
+		"form_data": {
+			"FormOID": "F_IMPTEST",
+			"FormName": "ImpTest",
+			"FormLayoutOID": "2",
+			"Status": "data entry started"
+		},
+		"itemgroupOid": "IG_IMPTE_IG1",
+		"odk_fields": [{
+
+				"odk_column": "ITEM_TEXT",
+				"itemOid": "I_IMPTE_ITEM_TEXT",
+				"item_type": "string"
+			},
+			{
+				"odk_column": "ITEM_DECIMAL",
+				"itemOid": "I_IMPTE_ITEM_DECIMAL",
+				"item_type": "float"
+			}
+		]
+	}]
+
+}

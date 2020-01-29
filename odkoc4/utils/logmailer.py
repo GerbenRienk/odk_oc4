@@ -32,7 +32,7 @@ def MailThisLogFile(LogFileName):
         mail_server.send_message(msg)
         mail_server.quit()
     else:
-        print("mail not enabled")
+        print("mail not enabled: we will print the message in stead")
         print(msg)
         
 if __name__ == '__main__':

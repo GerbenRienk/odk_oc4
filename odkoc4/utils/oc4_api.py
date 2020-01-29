@@ -12,6 +12,7 @@ class OC4Api(object):
         self.participants = _Participants(self)
         self.events = _Events(self)
         self.clinical_data = _ClinicalData(self)
+        self.odm_parser = _ODMParser
 
 class _Utils(object):
 
@@ -55,13 +56,22 @@ class _Utils(object):
                 response = requests.get(url, params=params, headers=headers, data=data)
             
             if verbose == True:
-                print("req url=     %s" % response.request.url)
-                print("req headers= %s" % response.request.headers)
-                print("req body=    %s" % response.request.body)
-                print(response.text)
+                print("req url         = %s" % response.request.url)
+                print("req headers     = %s" % response.request.headers)
+                print("req body        = %s" % response.request.body)
+                print("resp status code= %s" % response.status_code)
+                print("resp text       = %s" % response.text)
                 
             if response.status_code == 200:
-                return_value = response.json()
+                # check if the response is json, if not return the response
+                if(self.is_jsonable(response)):
+                    if verbose == True:
+                        print("response is jsonable")
+                    return_value = response.json()
+                else:
+                    if verbose == True:
+                        print("response is not jsonable, returning %s: " % response.text)
+                    return_value = response.text
             else:
                 print('request to %s returned status code %i' % (url, response.status_code))
         
@@ -92,6 +102,13 @@ class _Utils(object):
         
         return return_value
 
+    def is_jsonable(self, x):
+        try:
+            json.dumps(x)
+            return True
+        except:
+            return False
+        
     @staticmethod
     def prepare_params(method, params):
         """
@@ -144,34 +161,31 @@ class _Participants(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
 
-    def list_participants(self, study_oid, aut_token):
+    def list_participants(self, study_oid, aut_token, verbose=False):
         """
         List participants per study and/or per site
         /pages/auth/api/clinicaldata/studies/{studyOID}/participants
         Parameters
-        :param session_key: Active LSRC2 session key
+        :param study_oid: study_oid
         :type session_key: String
-        :param username: LimeSurvey username to list accessible surveys for.
+        :param aut_token: aut_token
         :type username: String
         """
         url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/participants"
         bearer = "bearer " + aut_token
         headers = {"Authorization": bearer}
-        complete_response = self.api.utils.request(url=url, headers=headers, request_type='get')
-        # pass only the main part:
-        response=complete_response['studyParticipants']
-        return response
+        complete_response = self.api.utils.request(url=url, headers=headers, request_type='get', verbose=verbose)
+        # pass only the main part: 
+        response=json.loads(complete_response)
+        return response['studyParticipants']
 
-    def add_participant(self, study_oid, site_oid, study_subject_id, aut_token):
+    def add_participant(self, study_oid, site_oid, study_subject_id, aut_token, verbose=False):
         """
-        Add participants to a study using a csv-file
+        Add a participants to a study / site
         POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
         Parameters
         :param study_oid: study_oid
         :type study_oid: String
-        :param files: the csv-file-location 
-        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
-        Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
         """
         url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/participants"
         params = {"register":"n"}
@@ -180,7 +194,7 @@ class _Participants(object):
         
         data = json.dumps({"subjectKey" : study_subject_id})
         #submit request
-        response = self.api.utils.request(url=url, params=params, headers=headers, request_type='post', data=data, verbose=False)
+        response = self.api.utils.request(url=url, params=params, headers=headers, request_type='post', data=data, verbose=verbose)
            
         return response
 
@@ -235,27 +249,63 @@ class _ClinicalData(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
 
-    def import_odm(self, aut_token):
+    def import_odm(self, aut_token, file_name, verbose=False):
         """
-        Add participants to a study using a csv-file
-        POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
-        Parameters
-        :param study_oid: study_oid
-        :type study_oid: String
-        :param files: the csv-file-location 
-        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
+        
         Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
         """
-        url = self.api.url + "/pages/auth/api/clinicaldata/import"
+        _url = self.api.url + "/pages/auth/api/clinicaldata/import"
         
-        bearer = "bearer " + aut_token
+        _bearer = "bearer " + aut_token
         #headers = {"Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
         #headers = {"accept": "*/*", "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
-        headers = {"accept": "*/*", "Authorization": bearer}
-        files = {'file': ('odm_example.xml', open('odm_example.xml', 'rb'), 'text/xml')}
+        _headers = {"accept": "*/*", "Authorization": _bearer}
+        _files = {'file': (file_name, open('request_files/%s' % file_name, 'rb'), 'text/xml')}
 
         #submit request
         #response = self.api.utils.request(url=url, headers=headers, request_type='post', files=files, verbose=True)
-        response = self.api.utils.request(url=url, headers=headers, request_type='post', files=files, verbose=True)
+        response = self.api.utils.request(url=_url, headers=_headers, request_type='post', files=_files, verbose=verbose)
            
         return response
+
+class _ODMParser(object):
+    
+    '''
+    class to creates the odm file
+    to which lines can be added reporting the activities of oli,
+    so it can be sent at the end of the day
+    '''
+
+    def __init__(self, file_name, study_oid, subject_oid, event_oid, form_data, item_group_oid):
+        '''
+        Constructor
+        '''
+        self._file = open('request_files/%s' % file_name,'w') 
+        self._file.write('<ODM>\n')
+        self._file.write('\t<ClinicalData StudyOID="%s">\n' % study_oid)
+        self._file.write('\t\t<SubjectData SubjectKey="%s">\n' % subject_oid)
+        self._file.write('\t\t\t<StudyEventData StudyEventOID="%s">\n' % event_oid)
+        self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormName="ImpTest" OpenClinica:FormLayoutOID="2" OpenClinica:Status="data entry started">\n' % form_data['FormOID'])
+        self._file.write('\t\t\t\t\t<ItemGroupData ItemGroupOID="%s">\n' % item_group_oid)
+        
+    def add_item(self, item_oid, item_value, item_type=""):
+        _final_value = item_value
+        if(item_type == 'date'):
+            # transform the postgres date into java date type
+            _final_value = item_value
+            
+        odm_line = '\t\t\t\t\t\t'
+        odm_line = odm_line + '<ItemData ItemOID="%s" Value="%s" />' % (item_oid, _final_value)
+        odm_line = odm_line + '\n'
+        self._file.write(odm_line)
+        return None
+    
+    def close_file(self):
+        self._file.write('\t\t\t\t\t</ItemGroupData>\n')
+        self._file.write('\t\t\t\t</FormData>\n')
+        self._file.write('\t\t\t</StudyEventData>\n')
+        self._file.write('\t\t</SubjectData>\n')
+        self._file.write('\t</ClinicalData>\n')
+        self._file.write('</ODM>\n')
+        self._file.close()
+        return None
