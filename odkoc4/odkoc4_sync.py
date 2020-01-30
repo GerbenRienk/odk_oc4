@@ -12,7 +12,7 @@ import logmailer
 from utils.dictfile import readDictFile
 from utils.general_functions import is_jsonable
 from utils.oc4_api import OC4Api
-from utils.pg_api import ConnToOdkUtilDB, ConnToOdkDB
+from utils.pg_api import UtilDB, ConnToOdkDB
 from utils.reporter import Reporter
 
 from _operator import itemgetter
@@ -34,8 +34,8 @@ def cycle_through_syncs():
     
     # create connections to the postgresql databases
     my_report.append_to_report("preparing connections")
-    conn_util = ConnToOdkUtilDB(config, verbose=False)
-    my_report.append_to_report('try to connect to util database, result: %s ' % conn_util.init_result)
+    util = UtilDB(config, verbose=False)
+    my_report.append_to_report('try to connect to util database, result: %s ' % util.init_result)
     conn_odk= ConnToOdkDB(config, verbose=False)
     my_report.append_to_report('try to connect to odk database, result: %s \n' % conn_odk.init_result)
     
@@ -43,11 +43,11 @@ def cycle_through_syncs():
     my_report.append_to_report('cycle started at %s\n' % str(start_time))
     while True:
         # retrieve all study-subjects / participants from oc, using the api
-        all_participants = api.participants.list_participants(data_def['studyOid'], aut_token, verbose=True)
+        all_participants = api.participants.list_participants(data_def['studyOid'], aut_token, verbose=False)
         # now loop through the subjects / participants to check if the id - oid is still correct,
         # because this may have been changed in oc4 between cycles
         for one_participant in all_participants:
-            conn_util.CheckAndUpdate(one_participant['subjectKey'], one_participant['subjectOid'])
+            util.subjects.check_and_update(one_participant['subjectKey'], one_participant['subjectOid'])
         
         # now loop through all the odk-tables in the data-definition
         for odk_table in data_def['odk_tables']:
@@ -64,7 +64,7 @@ def cycle_through_syncs():
                 # compare with all oc subjects / participants
                 for one_participant in all_participants:
                     if(one_participant['subjectKey'] == study_subject_id):
-                        # for testing we do all actions, so set add_subject_to_db to True
+                        # if we find a match, then set add_subject_to_db to False
                         add_subject_to_oc = False
                         
                 if (add_subject_to_oc):
@@ -72,7 +72,7 @@ def cycle_through_syncs():
                     add_result = api.participants.add_participant(data_def['studyOid'], data_def['siteOid'], study_subject_id, aut_token, verbose=False)
                     if (is_jsonable(add_result)):
                         # if we were successful we now have a json response, which we can use to add this subject to the util-db 
-                        conn_util.AddSubjectToDB(add_result['subjectOid'], add_result['subjectKey'])
+                        util.subjects.add_subject(add_result['subjectOid'], add_result['subjectKey'])
                     else:
                         # write unsuccessful ones in the report
                         my_report.append_to_report('trying to add study subject resulted in: %s\n' % add_result)
@@ -83,7 +83,11 @@ def cycle_through_syncs():
 
                 # now we have the subject in oc4 plus the event scheduled
                 # we assume that we have the correct study subject oid in our util-db
-                study_subject_oid = conn_util.get_subject_oid(study_subject_id)
+                study_subject_oid = util.subjects.get_oid(study_subject_id)
+                
+                # for the administration of the following steps we need the uri
+                uri = odk_result['_URI']
+                util.uri.add(uri)
                 
                 # next step is to compose the odm-xml-file
                 # start with creating it and writing the first, common tags
@@ -96,9 +100,10 @@ def cycle_through_syncs():
                     odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], "")
                 # write the closing tags
                 odm_xml.close_file()
+                
                 # now submit the composed odm-xml file to the rest api
-                import_result = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
-                print(import_result)
+                #import_result = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
+                #print(import_result)
                 
             '''                    
                 # only import the data if this hasn't been done before
@@ -117,6 +122,9 @@ def cycle_through_syncs():
                     my_report.append_to_report('reader ' + study_subject_id + ': ' + import_results)
 
             '''
+        all_subjects=util.subjects.list() 
+        for subject in all_subjects:
+            print(subject[0], subject[1])
         # some book keeping to check if we must continue looping, or break the loop
         # first sleep a bit, so we do not eat up all CPU
         time.sleep(int(config['sleep_this_long']))
