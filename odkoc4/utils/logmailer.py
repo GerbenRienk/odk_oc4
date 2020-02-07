@@ -7,33 +7,39 @@ Created on 11 apr. 2017
 
 # Import smtplib for the actual sending function
 import smtplib
-
 # Import the email modules we'll need
 from email.mime.text import MIMEText
-from dictfile import readDictFile
-config=readDictFile('odkoc4.config')
 
+class Mailer(object):
+    '''Class for connecting to the postgresql database as defined in odkoc.config
+    Methods implemented now are read subjects and add subjects '''
+    def __init__(self, config):
+        self.config = config
+        if(config['mail_enabled'].lower() == "true"):
+            self._mailit = True
+        else:
+            self._mailit = False        
 
-def MailThisLogFile(LogFileName):
-    # Open a plain text file for reading.  For this example, assume that
-    # the text file contains only ASCII characters.
-    with open(LogFileName) as fp:
-        # Create a text/plain message
-        msg = MIMEText(fp.read())
-    
-    msg['Subject'] = config['mail_subject']
-    msg['From'] = config['mail_from']
-    msg['To'] = config['mail_to']
-    
-    # Send the message via our own SMTP server,
-    # but only if we can send mails
-    if config['mail_enabled'].lower() == "true":
-        mail_server = smtplib.SMTP(config['mail_server'])
-        mail_server.send_message(msg)
-        mail_server.quit()
-    else:
-        print("mail not enabled: we will print the message in stead")
-        print(msg)
+    def send_file(self, LogFileName):
+        # Open a plain text file for reading.  For this example, assume that
+        # the text file contains only ASCII characters.
+        with open(LogFileName) as fp:
+            # Create a text/plain message
+            msg = MIMEText(fp.read())
+        
+        msg['Subject'] = self.config['mail_subject']
+        msg['From'] = self.config['mail_from']
+        msg['To'] = self.config['mail_to']
+        
+        # Send the message via our own SMTP server,
+        # but only if we can send mails
+        if(self._mailit):
+            mail_server = smtplib.SMTP(self.config['mail_server'])
+            mail_server.send_message(msg)
+            mail_server.quit()
+        else:
+            print("mail not enabled: we will print the message in stead")
+            print(msg)
         
 if __name__ == '__main__':
-    MailThisLogFile('logs/report.txt')
+    pass
