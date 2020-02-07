@@ -8,7 +8,7 @@ import json
 import time
 import os
 
-import logmailer
+from utils.logmailer import MailThisLogFile
 
 from utils.dictfile import readDictFile
 from utils.general_functions import is_jsonable
@@ -148,7 +148,7 @@ def cycle_through_syncs():
     my_report.append_to_report('finished looping from %s till %s.' % (start_time, current_time))
     # close the file so we can send it
     my_report.close_file()
-    logmailer.MailThisLogFile('logs/report.txt')
+    MailThisLogFile('logs/report.txt')
     
     
 if __name__ == '__main__':

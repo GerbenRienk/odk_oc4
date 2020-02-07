@@ -12,3 +12,23 @@ now we modify the odkoc.config file to match the credentials for the database ac
 and add another set of parameters for the housekeeping database: odk_prod_util
 
 in odk_prod_util we want to have a table for each odk_table that holds the _uri, the study subject id and a flag for successful import 
+
+psql script for the util-db:
+CREATE DATABASE odk_am001_util
+  WITH OWNER = odk_admin
+       ENCODING = 'UTF8';
+       
+in this database run the scripts to create the tables:
+CREATE TABLE study_subject_oc
+(
+  study_subject_id character varying(32) NOT NULL,
+  study_subject_oid character varying(32) NOT NULL,
+  CONSTRAINT pk_study_subject_oc PRIMARY KEY (study_subject_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE study_subject_oc
+  OWNER TO odk_admin;
+
+
