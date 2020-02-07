@@ -185,7 +185,6 @@ class UtilDB(object):
         self.subjects = _Subjects(self)
         self.uri = _URI(self)
         
-        
         'try to create the connection to use multiple times '
         conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
         self.init_result = ''
@@ -202,8 +201,6 @@ class UtilDB(object):
         if (verbose):
             print(conn_string)
             print(self.init_result)
-        
-        self._tst = self.init_result
 
 class _Subjects(object):
     def __init__(self, util):
@@ -233,18 +230,6 @@ class _Subjects(object):
             results = ['']
             
         return results[0]
-    
-    def _AddSubjectsToDB(self, dict_of_subjects):
-        """ Method to add a dictionary of subjects to the table subjects
-        It is made to handle multiple inserts
-        """
-        cursor = self.util._conn.cursor()  
-        try:
-            cursor.executemany("""INSERT INTO odkoc.study_subject_oc (study_subject_oid,study_subject_id) VALUES (%s, %s)""", dict_of_subjects)
-        except:
-            print ("AddSubjectsToDB: not able to execute the insert")
-        self.util._conn.commit()
-        return None
 
     def add_subject(self, study_subject_oid, study_subject_id):
         """ Method to add a dictionary of subjects to the table subjects
@@ -275,8 +260,7 @@ class _Subjects(object):
             except:
                 print ("not able to execute the update %s" % update_statement)
             self.util._conn.commit()
-        
-            
+           
         if(self.DCount('*', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)==0):
             cau_result = True
         else:
