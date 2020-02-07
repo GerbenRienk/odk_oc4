@@ -8,10 +8,9 @@ import json
 import time
 import os
 
-from utils.logmailer import MailThisLogFile
-
 from utils.dictfile import readDictFile
 from utils.general_functions import is_jsonable
+from utils.logmailer import Mailer
 from utils.oc4_api import OC4Api
 from utils.pg_api import UtilDB, ConnToOdkDB
 from utils.reporter import Reporter
@@ -148,8 +147,10 @@ def cycle_through_syncs():
     my_report.append_to_report('finished looping from %s till %s.' % (start_time, current_time))
     # close the file so we can send it
     my_report.close_file()
-    MailThisLogFile('logs/report.txt')
-    
+    # set up the mailer
+    my_mailer = Mailer(config)
+    # send the report
+    my_mailer.send_file('logs/report.txt')
     
 if __name__ == '__main__':
     cycle_through_syncs()
