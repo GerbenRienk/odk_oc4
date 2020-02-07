@@ -264,7 +264,7 @@ class _Subjects(object):
     def check_and_update(self, study_subject_id, study_subject_oid):
         # first check if the id is in the util db
         if(self.DCount('*', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)==0):
-            self.AddSubjectToDB(study_subject_oid, study_subject_id)
+            self.add_subject(study_subject_oid, study_subject_id)
         
         if (self.DLookup('study_subject_oid', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)!=study_subject_oid):
             # id is ok, but oid not, so update the table
