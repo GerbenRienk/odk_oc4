@@ -3,7 +3,6 @@
 	"siteOid": "S_OC_IMP_T(TEST)",
 	"studyIdentifier": "xx",
 	"siteIdentifier": "xx",
-	"studyEventOid": "SE_IMPEV",
 	"odk_tables": [{
 		"table_name": "odk_am001.\"1_CORE\"",
 		"id_field": "STUDY_SUBJECT_ID",

@@ -26,5 +26,6 @@ def readDictFile(dictFileName, rel_path=''):
                     if len(line.split()) == 2:
                         (key, val) = line.split()
                         myDict[key] = val
-                    
+            # we're done, so close the file
+            f.close()       
         return myDict 

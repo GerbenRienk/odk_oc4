@@ -185,6 +185,7 @@ class UtilDB(object):
         self.subjects = _Subjects(self)
         self.uri = _URI(self)
         
+        
         'try to create the connection to use multiple times '
         conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
         self.init_result = ''
@@ -207,23 +208,31 @@ class UtilDB(object):
 class _Subjects(object):
     def __init__(self, util):
         self.util = util
-           
+          
     def list(self):
         'method to read table subjects into a list'
         cursor = self.util._conn.cursor()  
         try:
-            cursor.execute("""SELECT * from study_subject_oc""")
+            sql_query = 'SELECT * FROM study_subject_oc'
+            cursor.execute(sql_query)
         except (Exception, psycopg2.Error) as error :
-            print ("not able to execute the select: %s " % error)
+            print ("not able to execute %s : %s " % (sql_query, error))
         
         results = cursor.fetchall()
         return results
         
     def get_oid(self, study_subject_id):
+        cursor = self.util._conn.cursor()  
+        sql_statement = "select study_subject_oid from study_subject_oc where study_subject_id=%s"
         
-        _oid=self.DLookup("study_subject_oid", "study_subject_oc", "study_subject_id='%s'" % study_subject_id)  
-        return _oid
-
+        try:
+            cursor.execute(sql_statement, (study_subject_id,))
+            results = cursor.fetchone()
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute %s\n error: %s " % (sql_statement, error))
+            results = ['']
+            
+        return results[0]
     
     def _AddSubjectsToDB(self, dict_of_subjects):
         """ Method to add a dictionary of subjects to the table subjects
@@ -275,7 +284,7 @@ class _Subjects(object):
             
         return cau_result
     
-
+        
     def DCount(self, field_name, table_name, where_clause):
         '''Method to read one field of a table with certain criteria
         If no result, then a list containing an empty string is returned
@@ -297,15 +306,16 @@ class _Subjects(object):
         If no result, then a list containing an empty string is returned
         '''
         cursor = self.util._conn.cursor()  
-        sql_statement = "SELECT " + field_name + " from " + table_name + " where " + where_clause
-        
+        sql_statement = "select %s from %s where %s "
+        #TODO: rewrite this to be safe        
         try:
-            cursor.execute(sql_statement)
-        except:
-            print ("not able to execute the select")
-        results = cursor.fetchone()
-        if not results:
+            cursor.execute(sql_statement % (field_name, table_name, where_clause))
+            results = cursor.fetchone()
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_Subjects.DLookup not able to execute: %s" % sql_statement)
             results = ['']
+            
         return results[0]
 
 class _URI(object):
@@ -313,22 +323,33 @@ class _URI(object):
         self.util = util
         
     def add(self, uri):
-        """ Method to add a dictionary of subjects to the table subjects
-        It is made to handle multiple inserts
+        """ method to add a new uri to the utility database
+        after checking there's no record yet
         """
-        cursor = self.util._conn.cursor()  
-        sql_statement = """INSERT INTO uri_status (uri, last_update_status) select '%s', Now()""" % (uri)
-        
+        cursor = self.util._conn.cursor()
+        sql_statement = 'select count(*) from uri_status where uri=%s'
         try:
-            cursor.execute(sql_statement)
-        except (Exception, psycopg2.Error) as error :
-            print ("error ", error)
-            print ("AddUriToDB: not able to execute the insert %s " % (uri))
-            print ("using '%s' " % (sql_statement))
+            cursor.execute(sql_statement, (uri,))
+            results = cursor.fetchone()
+        except:
+            print ("not able to execute: %s" % sql_statement)
+            results = ['']
         self.util._conn.commit()
         
+        # if we have no record yet, we can create it
+        if (results[0] == 0):
+            sql_statement = 'insert into uri_status (uri, last_update_status) select %s, Now()'            
+            try:
+                cursor.execute(sql_statement, (uri,))
+            except (Exception, psycopg2.Error) as error :
+                print ("error: %s" % error)
+                print ("_URI.add: %s" % uri)
+                print ("using: '%s'" % (sql_statement))
+                
+            self.util._conn.commit()
+            
         return None
-    
+
     def list(self):
         'method to read table subjects into a list'
         cursor = self.util._conn.cursor()  
@@ -339,6 +360,149 @@ class _URI(object):
         
         results = cursor.fetchall()
         return results
+
+    def list_incomplete(self):
+        'method to read table subjects into a list'
+        cursor = self.util._conn.cursor()  
+        try:
+            cursor.execute("""SELECT * from uri_status where not is_complete""")
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute the select: %s " % error)
+        
+        results = cursor.fetchall()
+        return results
+
+    def has_import_errors(self, uri):
+        ' checks if certain words/messages are in the import log'
+        cursor = self.util._conn.cursor()  
+        sql_statement = 'select job_uuid_content from uri_status where uri=%s'
+        try:
+            cursor.execute(sql_statement, (uri,))   
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute the select: %s " % error)
+        
+        results = cursor.fetchone()
+        content = results[0]
+        # now we look for certain content, but by default we assume no errors
+        errors = False
+        messages = {'errorCode','Failed','(...)'}
+        for message in messages:
+            # print('check for %s: ' % message)
+            if(message in content):
+                errors = True
+        return errors
+
+    def reset_complete(self, uri):
+        """ 
+        method to set the field is_complete to false
+        of a certain uri to the utility database
+        """    
+        cursor = self.util._conn.cursor()
+        sql_statement = 'update uri_status set is_complete=False where uri=%s'
+        try:
+            cursor.execute(sql_statement, (uri,))   
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_URI.reset_complete: %s" % uri)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
+
+    def set_complete(self, uri):
+        """ 
+        method to set the field is_complete to true
+        of a certain uri to the utility database
+        """    
+        cursor = self.util._conn.cursor()
+        sql_statement = 'update uri_status set is_complete=True where uri=%s'
+        try:
+            cursor.execute(sql_statement, (uri,))   
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_URI.reset_complete: %s" % uri)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
+
+    def write_import_result(self, uri, import_job_content):
+        """ 
+        method to write the name plus content of an odm file
+        of a certain uri to the utility database
+        """    
+        cursor = self.util._conn.cursor()
+        sql_statement = 'update uri_status set last_update_status=Now(), job_uuid_content=%s where uri=%s'
+        try:
+            cursor.execute(sql_statement, (import_job_content, uri))   
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_URI.write_odm: %s" % uri)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
+
+    def write_job_id(self, uri, import_job_uuid):
+        """ 
+        method to write the name plus content of an odm file
+        of a certain uri to the utility database
+        """    
+        cursor = self.util._conn.cursor()
+        sql_statement = 'update uri_status set last_update_status=Now(), import_job_uuid=%s where uri=%s'
+        try:
+            cursor.execute(sql_statement, (import_job_uuid, uri))   
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_URI.write_odm: %s" % uri)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
+    
+    def write_odm(self, uri, odm_file_name):
+        """ 
+        method to write the name plus content of an odm file
+        of a certain uri to the utility database
+        """
+        odm_file = open('request_files/' + odm_file_name, 'r')
+        content = odm_file.read()
+        odm_file.close()
+        
+        cursor = self.util._conn.cursor()
+        sql_statement = 'update uri_status set last_update_status=Now(), odm_content=%s, odm_file_name=%s where uri=%s'
+        try:
+            cursor.execute(sql_statement, (content, odm_file_name, uri))   
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_URI.write_odm: %s" % uri)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
+    
+    def write_table_name(self, uri, table_name):
+        """ 
+        method to write the name plus content of an odm file
+        of a certain uri to the utility database
+        """       
+        cursor = self.util._conn.cursor()
+        sql_statement = 'update uri_status set last_update_status=Now(), table_name=%s where uri=%s'
+        try:
+            cursor.execute(sql_statement, (table_name, uri))   
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("_URI.write_table_name: %s" % uri)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
 
 if __name__ == "__main__":
     pass    

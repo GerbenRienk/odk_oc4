@@ -23,4 +23,4 @@
 - we now import all subjects, also the ones that will not be entered off-line
 - think of scenario where subjects in oc4 are deleted
 - store the odm-xml in the util-db
-- rewrite pg_api so that we can refer to classes wihout knowing the actual names of the classes
+- rewrite pg_api so that we can refer to classes without knowing the actual names of the classes

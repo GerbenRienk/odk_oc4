@@ -6,6 +6,7 @@ based on the oc3 version
 import datetime
 import json
 import time
+import os
 
 import logmailer
 
@@ -51,7 +52,7 @@ def cycle_through_syncs():
         
         # now loop through all the odk-tables in the data-definition
         for odk_table in data_def['odk_tables']:
-            my_report.append_to_report('table: %s ' % odk_table['table_name'])
+            my_report.append_to_report('table: %s \n' % odk_table['table_name'])
 
             # 1: start with retrieving the rows of this table
             odk_results = conn_odk.ReadDataFromOdkTable(odk_table['table_name'])
@@ -91,7 +92,9 @@ def cycle_through_syncs():
                 
                 # next step is to compose the odm-xml-file
                 # start with creating it and writing the first, common tags
-                file_name = 'odm_%s.xml' % study_subject_oid
+                now = datetime.datetime.now()
+                time_stamp = now.strftime("%Y%m%d%H%M%S")
+                file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
                 odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], odk_table['itemgroupOid'])
                 
                 # now loop through the odk-fields of the table and add them to the odm-xml
@@ -102,29 +105,35 @@ def cycle_through_syncs():
                 odm_xml.close_file()
                 
                 # now submit the composed odm-xml file to the rest api
-                #import_result = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
-                #print(import_result)
+                import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
                 
-            '''                    
-                # only import the data if this hasn't been done before
-                if (not conn_util.UriComplete(odk_result['_URI'])):   
-                    # now we should have the study subject id plus oid, so we can compose the odm for import                
-                    study_subject_id = odk_result['GENERAL_INFORMATION_STUDY_SUBJECT_ID']
-                    study_subject_oid = conn_util.DLookup('study_subject_oid', 'odkoc.study_subject_oc', 'study_subject_id=\'%s\'' % (study_subject_id))
-                    complete_odm = compose_reader(study_subject_oid, odk_result)
-    
-                    import_results = myDataWS.importData(complete_odm)
-                    # if our import was successful, then the result should start with Success
-                    # and if so, we can mark this uri as complete
-                    if (import_results.find('Success') == 0):
-                        conn_util.MarkUriComplete(odk_result['_URI'], 'reader')
-                    
-                    my_report.append_to_report('reader ' + study_subject_id + ': ' + import_results)
-
-            '''
-        all_subjects=util.subjects.list() 
-        for subject in all_subjects:
-            print(subject[0], subject[1])
+                # do the administration
+                util.uri.write_table_name(uri, odk_table['table_name'])
+                util.uri.write_odm(uri, file_name)
+                util.uri.write_job_id(uri, import_job_id)
+                util.uri.reset_complete(uri)
+            # next odk table
+        
+        # finished with odk tables, so retrieve the job-logs from oc4, using the job uuid
+        all_uris = util.uri.list_incomplete()
+        for one_uri in all_uris:
+            # job uuid is in uri[6]
+            uri = one_uri[0]
+            job_result = api.jobs.download_file(aut_token, one_uri[6], verbose=False)
+            util.uri.write_import_result(uri, job_result)
+            if(util.uri.has_import_errors(uri)):
+                # something went wrong with our import, so report that
+                my_report.append_to_report('errors in %s - %s' % (uri, one_uri[6]))
+                my_report.append_to_report('log says: %s' % one_uri[7])
+            else:
+                # we didn't find errors, so mark the uri complete
+                util.uri.set_complete(uri)
+                # and delete the job from the server
+                api.jobs.delete_file(aut_token, one_uri[6], verbose=False)
+                # and delete the import file 
+                file_name = 'request_files/' + one_uri[4]
+                os.remove(file_name)
+     
         # some book keeping to check if we must continue looping, or break the loop
         # first sleep a bit, so we do not eat up all CPU
         time.sleep(int(config['sleep_this_long']))

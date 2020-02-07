@@ -6,31 +6,24 @@ from rotzak
 
 from utils.dictfile import readDictFile
 from utils.oc4_api import OC4Api
+from utils.pg_api import UtilDB
 
 if __name__ == '__main__':
 
     # read configuration file for client id and client secret and other parameters
     config=readDictFile('odkoc4.config')
-    
+    util = UtilDB(config, verbose=False)
     # start with requesting an authentication token, which we can use for some time
     api = OC4Api(config['apiUrl'])
     aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
     print('access token: %s\n' % aut_token)
     
-    #try to add a participants
-    add_result = api.participants.add_participant(config['studyOid'], config['siteOid'], "IMP004", aut_token)
-    print('try to add study subject: %s\n' % add_result)
-    
-    event_info = {"subjectKey":"IMP004", "studyEventOID":"SE_IMPEV", "startDate":"2019-11-01", "endDate":"2019-11-01"}
-    schedule_result = api.events.schedule_event(config['studyOid'], config['siteOid'], event_info, aut_token, verbose=True)
-    print('try to schedule event: %s\n' % schedule_result)
-    
     # with this token, request the participants of the study
-    print('try to retrieve all subjects from oc4 \n')
-    all_participants = api.participants.list_participants(config['studyOid'], aut_token)
-    for participant in all_participants:
-        print(participant['subjectKey'] + " " + participant['subjectOid'])
-    
+    print('try to retrieve all uri \n')
+    all_uris = util.uri.list()
+    for uri in all_uris:
+        print(uri[6])
+        job_result = api.jobs.download_file(aut_token, uri[6], verbose=True)
     
 
 

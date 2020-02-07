@@ -7,6 +7,7 @@ class OC4Api(object):
     def __init__(self, url):
         self.url = url
         self.headers = {"content-type": "application/json"}        
+        self.jobs = _Jobs(self)
         self.utils = _Utils(self)
         self.sessions = _Sessions(self)
         self.participants = _Participants(self)
@@ -43,11 +44,11 @@ class _Utils(object):
         return_value = None
         try:
             if verbose == True:
-                print("req url=     %s" % url)
-                print("req params=  %s" % params)
-                print("req headers= %s" % headers)
-                print("req data=    %s" % data)
-                print("req type=    %s" % request_type)
+                print("req url=     %s   " % url)
+                print("req params=  %s   " % params)
+                print("req headers= %s   " % headers)
+                print("req data=    %s   " % data)
+                print("req type=    %s \n" % request_type)
             
             if request_type == 'post':
                 response = requests.post(url, params=params, headers=headers, data=data, files=files)
@@ -55,12 +56,15 @@ class _Utils(object):
             if request_type == 'get':
                 response = requests.get(url, params=params, headers=headers, data=data)
             
+            if request_type == 'delete':
+                response = requests.delete(url, params=params, headers=headers, data=data)
+            
             if verbose == True:
-                print("req url         = %s" % response.request.url)
-                print("req headers     = %s" % response.request.headers)
-                print("req body        = %s" % response.request.body)
-                print("resp status code= %s" % response.status_code)
-                print("resp text       = %s" % response.text)
+                print("req url         = %s   " % response.request.url)
+                print("req headers     = %s   " % response.request.headers)
+                print("req body        = %s   " % response.request.body)
+                print("resp status code= %s   " % response.status_code)
+                print("resp text       = %s \n" % response.text)
                 
             if response.status_code == 200:
                 # check if the response is json, if not return the response
@@ -73,7 +77,7 @@ class _Utils(object):
                         print("response is not jsonable, returning %s: " % response.text)
                     return_value = response.text
             else:
-                print('request to %s returned status code %i' % (url, response.status_code))
+                print('request to %s returned status code %i\n' % (url, response.status_code))
         
         except requests.ConnectionError as pe:
             # TODO: some handling here, for now just print pe
@@ -257,14 +261,41 @@ class _ClinicalData(object):
         _url = self.api.url + "/pages/auth/api/clinicaldata/import"
         
         _bearer = "bearer " + aut_token
-        #headers = {"Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
-        #headers = {"accept": "*/*", "Content-Type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
         _headers = {"accept": "*/*", "Authorization": _bearer}
         _files = {'file': (file_name, open('request_files/%s' % file_name, 'rb'), 'text/xml')}
 
         #submit request
-        #response = self.api.utils.request(url=url, headers=headers, request_type='post', files=files, verbose=True)
         response = self.api.utils.request(url=_url, headers=_headers, request_type='post', files=_files, verbose=verbose)
+           
+        return response
+
+class _Jobs(object):
+
+    def __init__(self, oc4_api):
+        self.api = oc4_api
+
+    def delete_file(self, aut_token, job_uuid, verbose=False):
+        """
+        delete the log file of a job from the server
+        """
+        # remove the prefix:
+        _job_uuid = job_uuid.replace('job uuid: ','')
+        _url = self.api.url + "/pages/auth/api/jobs/%s" % _job_uuid
+        _bearer = "bearer " + aut_token
+        _headers = {"accept": "*/*", "Authorization": _bearer}
+        response = self.api.utils.request(url=_url, headers=_headers, request_type='delete', verbose=verbose)
+           
+        return response
+
+    def download_file(self, aut_token, job_uuid, verbose=False):
+        """
+        """
+        # remove the prefix:
+        _job_uuid = job_uuid.replace('job uuid: ','')
+        _url = self.api.url + "/pages/auth/api/jobs/%s/downloadFile" % _job_uuid
+        _bearer = "bearer " + aut_token
+        _headers = {"accept": "*/*", "Authorization": _bearer}
+        response = self.api.utils.request(url=_url, headers=_headers, request_type='get', verbose=verbose)
            
         return response
 
@@ -291,7 +322,7 @@ class _ODMParser(object):
     def add_item(self, item_oid, item_value, item_type=""):
         _final_value = item_value
         if(item_type == 'date'):
-            # transform the postgres date into java date type
+            # TODO: come on and transform the postgres date into java date type
             _final_value = item_value
             
         odm_line = '\t\t\t\t\t\t'
