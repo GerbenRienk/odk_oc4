@@ -16,10 +16,9 @@ if __name__ == '__main__':
     
     # create connections to the postgresql databases
     print('testing connection(s) to the database(s)\n')
-    util = UtilDB(config, verbose=False)
+    util = UtilDB(config, verbose=True)
     
-    all_uris = util.uri.list()
-    for one_uri in all_uris:
-        uri = one_uri[0]
-        uuid = one_uri[6].replace('job uuid: ','')
-        
+    util.subjects.check_and_update('A', 'B')
+    all_subjects = util.subjects.list()
+    for one_subject in all_subjects:
+        print(one_subject[0], one_subject[1])
