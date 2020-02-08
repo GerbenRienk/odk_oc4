@@ -1,4 +1,4 @@
-first of all we have to have for development a copy of the databse with odk-data
+first of all we have to have for development a copy of the database with odk-data
 we transfer it from the server to D:\OC\FindDX\PNG_HS_RDT\DatabaseDumps
 and then more or less do the following:
 cd C:\Program Files\PostgreSQL\9.4\bin 
@@ -18,7 +18,7 @@ CREATE DATABASE odk_am001_util
   WITH OWNER = odk_admin
        ENCODING = 'UTF8';
        
-in this database run the scripts to create the tables:
+in this database run the scripts to create two tables:
 CREATE TABLE study_subject_oc
 (
   study_subject_id character varying(32) NOT NULL,
@@ -31,4 +31,20 @@ WITH (
 ALTER TABLE study_subject_oc
   OWNER TO odk_admin;
 
-
+CREATE TABLE uri_status
+(
+  uri character varying(80) NOT NULL,
+  last_update_status timestamp without time zone NOT NULL,
+  is_complete boolean,
+  table_name character varying(50),
+  odm_file_name character varying(100),
+  odm_content character varying,
+  import_job_uuid character varying(50),
+  job_uuid_content character varying,
+  CONSTRAINT uri_status_pkey PRIMARY KEY (uri)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE uri_status
+  OWNER TO odk_admin;

@@ -7,8 +7,8 @@
 
 # first we should
 - write a workflow about what to do in case of crf-changes
-- make a script to dump the database on aws and retrieve it and restore it locally
-- hard-code in the config file which odk-table corresponds with which oc4-event
+
+
 - just schedule all events for everyone
 - make a list of tables
 
@@ -17,10 +17,14 @@
 - keep track of who is known in the util database and also which events have been scheduled, so we don't repeat unnecessary actions
 - do something with status 400 for scheduling event
 - write functions for retrieving the event-info per participant, using rest/clinicaldata/json/view/
-- write the job-uid to postgres when submitting an import, so we can later retrieve the results
 - setup jk_mount properly for tomcat8
 - better feedback when using the util-db for inserts etc.
 - we now import all subjects, also the ones that will not be entered off-line
 - think of scenario where subjects in oc4 are deleted
-- store the odm-xml in the util-db
 - rewrite pg_api so that we can refer to classes without knowing the actual names of the classes
+
+# done that  
+- store the odm-xml in the util-db
+- write the job-uid to postgres when submitting an import, so we can later retrieve the results
+- make a script to dump the database on aws and retrieve it and restore it locally
+- hard-code in the config file which odk-table corresponds with which oc4-event

@@ -5,11 +5,11 @@ from rotzak
 '''
 import time
 import datetime
-from utils.logmailer import MailThisLogFile
-from utils.dictfile import readDictFile
-from utils.oc4_api import OC4Api
+from logmailer import MailThisLogFile
+from dictfile import readDictFile
+from .oc4_api import OC4Api
 #from utils.pg_api import ConnToOliDB, PGSubject
-from utils.reporter import Reporter
+from reporter import Reporter
 
 aut_token = "x"
 

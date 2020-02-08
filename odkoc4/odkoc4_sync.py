@@ -71,8 +71,9 @@ def cycle_through_syncs():
                     # try to add a subject / participant to oc4
                     add_result = api.participants.add_participant(data_def['studyOid'], data_def['siteOid'], study_subject_id, aut_token, verbose=False)
                     if (is_jsonable(add_result)):
+                        new_participant = json.loads(add_result)
                         # if we were successful we now have a json response, which we can use to add this subject to the util-db 
-                        util.subjects.add_subject(add_result['subjectOid'], add_result['subjectKey'])
+                        util.subjects.add_subject(new_participant['subjectOid'], new_participant['subjectKey'])
                     else:
                         # write unsuccessful ones in the report
                         my_report.append_to_report('trying to add study subject resulted in: %s\n' % add_result)
