@@ -19,8 +19,63 @@ class _Utils(object):
 
     def __init__(self, oc4_api):
         self.api = oc4_api
-    
+
     def request(self, data=None, request_type=None, url=None, headers=None, params=None, files=None, verbose=False):
+        """
+        Return the result of an API call, or None.
+
+        Exceptions are logged rather than raised.
+
+        Parameters
+        :param data: Method name and parameters to send to the API.
+        :type data: String
+        :param url: Location of the endpoint.
+        :type url: String
+        :param headers: HTTP headers to add to the request.
+        :type headers: Dict
+        :param request_type: either post or get
+        Return
+        :return: Dictionary containing result of API call, or None.
+        """
+        if url is None:
+            url = self.api.url
+        if headers is None:
+            headers = self.api.headers
+        return_value = None
+        try:
+            if verbose == True:
+                print("req url=     %s   " % url)
+                print("req params=  %s   " % params)
+                print("req headers= %s   " % headers)
+                print("req data=    %s   " % data)
+                print("req type=    %s \n" % request_type)
+            
+            if request_type == 'post':
+                response = requests.post(url, params=params, headers=headers, data=data, files=files)
+                
+            if request_type == 'get':
+                response = requests.get(url, params=params, headers=headers, data=data)
+            
+            if request_type == 'delete':
+                response = requests.delete(url, params=params, headers=headers, data=data)
+            
+            if verbose == True:
+                print("req url         = %s   " % response.request.url)
+                print("req headers     = %s   " % response.request.headers)
+                print("req body        = %s   " % response.request.body)
+                print("resp status code= %s   " % response.status_code)
+                print("resp text       = %s \n" % response.text)
+            
+            return_value = response 
+                       
+        except requests.ConnectionError as pe:
+            # TODO: some handling here, for now just print pe
+            print('when a request to the oc4 api was made, the following error was raised %s' % (pe))
+            return_value = None
+        
+        return return_value
+    
+    def request_2(self, data=None, request_type=None, url=None, headers=None, params=None, files=None, verbose=False):
         """
         Return the result of an API call, or None.
 
@@ -178,7 +233,7 @@ class _Participants(object):
         url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/participants"
         bearer = "bearer " + aut_token
         headers = {"Authorization": bearer}
-        complete_response = self.api.utils.request(url=url, headers=headers, request_type='get', verbose=verbose)
+        complete_response = self.api.utils.request_2(url=url, headers=headers, request_type='get', verbose=verbose)
         # pass only the main part: 
         response=json.loads(complete_response)
         return response['studyParticipants']
@@ -198,7 +253,7 @@ class _Participants(object):
         
         data = json.dumps({"subjectKey" : study_subject_id})
         #submit request
-        response = self.api.utils.request(url=url, params=params, headers=headers, request_type='post', data=data, verbose=verbose)
+        response = self.api.utils.request_2(url=url, params=params, headers=headers, request_type='post', data=data, verbose=verbose)
            
         return response
 
@@ -216,7 +271,7 @@ class _Participants(object):
         url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/participants/bulk?register=n"
         bearer = "bearer " + aut_token
         headers = {"content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW", "Authorization": bearer}
-        response = self.api.utils.request(url=url, headers=headers, request_type='post', verbose=True, files=files)
+        response = self.api.utils.request_2(url=url, headers=headers, request_type='post', verbose=True, files=files)
                 
         return response
 
@@ -227,15 +282,7 @@ class _Events(object):
 
     def schedule_event(self, study_oid, site_oid, event_info, aut_token, verbose=False):
         """
-        Schedule one or more events(?)
-        Add participants to a study using a csv-file
-        POST {serverName}/pages/auth/api/clinicaldata/studies/{studyOID}/sites/{siteOID}/participants
-        Parameters
-        :param study_oid: study_oid
-        :type study_oid: String
-        :param files: the csv-file-location 
-        :type username: files = {'file': ('report.xls', open('report.xls', 'rb')}
-        Header should contain: content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+        Schedule one events
         """
         url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/events"
         
@@ -243,10 +290,14 @@ class _Events(object):
         headers = {"accept":"*/*","Content-Type": "application/json", "Authorization": bearer}
         
         data = json.dumps(event_info)
-        #submit request
-        response = self.api.utils.request(url=url, headers=headers, request_type='post', data=data, verbose=verbose)
-           
-        return response
+        #submit the request
+        result = self.api.utils.request(url=url, headers=headers, request_type='post', data=data, verbose=verbose)
+        # hopefully the request resulted in status code 200, which is fine for us, but also 400 is good
+        if(result.status_code == 200 or result.status_code == 200):
+            result = None
+        # if this is not the case something went wrong, so we just return whatever the response was
+         
+        return result
 
 class _ClinicalData(object):
 
@@ -265,7 +316,7 @@ class _ClinicalData(object):
         _files = {'file': (file_name, open('request_files/%s' % file_name, 'rb'), 'text/xml')}
 
         #submit request
-        response = self.api.utils.request(url=_url, headers=_headers, request_type='post', files=_files, verbose=verbose)
+        response = self.api.utils.request_2(url=_url, headers=_headers, request_type='post', files=_files, verbose=verbose)
            
         return response
 
@@ -283,7 +334,7 @@ class _Jobs(object):
         _url = self.api.url + "/pages/auth/api/jobs/%s" % _job_uuid
         _bearer = "bearer " + aut_token
         _headers = {"accept": "*/*", "Authorization": _bearer}
-        response = self.api.utils.request(url=_url, headers=_headers, request_type='delete', verbose=verbose)
+        response = self.api.utils.request_2(url=_url, headers=_headers, request_type='delete', verbose=verbose)
            
         return response
 
@@ -295,7 +346,7 @@ class _Jobs(object):
         _url = self.api.url + "/pages/auth/api/jobs/%s/downloadFile" % _job_uuid
         _bearer = "bearer " + aut_token
         _headers = {"accept": "*/*", "Authorization": _bearer}
-        response = self.api.utils.request(url=_url, headers=_headers, request_type='get', verbose=verbose)
+        response = self.api.utils.request_2(url=_url, headers=_headers, request_type='get', verbose=verbose)
            
         return response
 
@@ -316,14 +367,18 @@ class _ODMParser(object):
         self._file.write('\t<ClinicalData StudyOID="%s">\n' % study_oid)
         self._file.write('\t\t<SubjectData SubjectKey="%s">\n' % subject_oid)
         self._file.write('\t\t\t<StudyEventData StudyEventOID="%s">\n' % event_oid)
+        # TODO: add layout id and form status
         self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormName="ImpTest" OpenClinica:FormLayoutOID="2" OpenClinica:Status="data entry started">\n' % form_data['FormOID'])
         self._file.write('\t\t\t\t\t<ItemGroupData ItemGroupOID="%s">\n' % item_group_oid)
         
     def add_item(self, item_oid, item_value, item_type=""):
         _final_value = item_value
         if(item_type == 'date'):
-            # TODO: come on and transform the postgres date into java date type
-            _final_value = item_value
+            # date can be a datetime or None
+            if(item_value):
+                _final_value = item_value.strftime('%Y-%m-%d')
+            else:
+                _final_value = ''
             
         odm_line = '\t\t\t\t\t\t'
         odm_line = odm_line + '<ItemData ItemOID="%s" Value="%s" />' % (item_oid, _final_value)

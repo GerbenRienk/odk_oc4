@@ -356,6 +356,21 @@ class _URI(object):
         results = cursor.fetchall()
         return results
 
+    def is_complete(self, uri):
+        ' checks if uri has been marked complete'
+        cursor = self.util._conn.cursor()  
+        sql_statement = 'select is_complete from uri_status where uri=%s'
+        # by default set the result to False
+        try:
+            cursor.execute(sql_statement, (uri,))   
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute the select: %s " % error)
+            
+        results = cursor.fetchone()
+        content = results[0]
+        
+        return content
+
     def has_import_errors(self, uri):
         ' checks if certain words/messages are in the import log'
         cursor = self.util._conn.cursor()  

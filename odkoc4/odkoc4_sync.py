@@ -51,8 +51,6 @@ def cycle_through_syncs():
         
         # now loop through all the odk-tables in the data-definition
         for odk_table in data_def['odk_tables']:
-            my_report.append_to_report('table: %s \n' % odk_table['table_name'])
-
             # 1: start with retrieving the rows of this table
             odk_results = conn_odk.ReadDataFromOdkTable(odk_table['table_name'])
                         
@@ -78,9 +76,15 @@ def cycle_through_syncs():
                         # write unsuccessful ones in the report
                         my_report.append_to_report('trying to add study subject resulted in: %s\n' % add_result)
     
-                    event_info = {"subjectKey":study_subject_id, "studyEventOID": data_def['studyEventOid'], "startDate":"2019-11-01", "endDate":"2019-11-01"}
-                    schedule_result = api.events.schedule_event(data_def['studyOid'], data_def['siteOid'], event_info, aut_token, verbose=False)
-                    my_report.append_to_report('try to schedule event: %s\n' % schedule_result)
+                # for now, let's schedule the event anyway
+                event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
+                schedule_result = api.events.schedule_event(data_def['studyOid'], data_def['siteOid'], event_info, aut_token, verbose=False)
+                # the result may be none, when the event has already been scheduled
+                if(schedule_result):
+                    if (is_jsonable(schedule_result)):
+                        result = json.loads(schedule_result)
+                        if(result['eventStatus']!='scheduled'):
+                            my_report.append_to_report('try to schedule event: %s\n' % schedule_result)
 
                 # now we have the subject in oc4 plus the event scheduled
                 # we assume that we have the correct study subject oid in our util-db
@@ -90,31 +94,36 @@ def cycle_through_syncs():
                 uri = odk_result['_URI']
                 util.uri.add(uri)
                 
-                # next step is to compose the odm-xml-file
-                # start with creating it and writing the first, common tags
-                now = datetime.datetime.now()
-                time_stamp = now.strftime("%Y%m%d%H%M%S")
-                file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
-                odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], odk_table['itemgroupOid'])
-                
-                # now loop through the odk-fields of the table and add them to the odm-xml
-                all_odk_fields = odk_table['odk_fields']
-                for odk_field in all_odk_fields:
-                    odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], "")
-                # write the closing tags
-                odm_xml.close_file()
-                
-                # now submit the composed odm-xml file to the rest api
-                import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
-                
-                # do the administration
-                util.uri.write_table_name(uri, odk_table['table_name'])
-                util.uri.write_odm(uri, file_name)
-                util.uri.write_job_id(uri, import_job_id)
-                util.uri.reset_complete(uri)
+                # only compose the odm if the uri is not complete yet
+                if(not util.uri.is_complete(uri)):
+                    # next step is to compose the odm-xml-file
+                    # start with creating it and writing the first, common tags
+                    now = datetime.datetime.now()
+                    time_stamp = now.strftime("%Y%m%d%H%M%S")
+                    file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
+                    odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], odk_table['itemgroupOid'])
+                    
+                    # now loop through the odk-fields of the table and add them to the odm-xml
+                    all_odk_fields = odk_table['odk_fields']
+                    for odk_field in all_odk_fields:
+                        odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], odk_field['item_type'])
+                    # write the closing tags
+                    odm_xml.close_file()
+                    
+                    # now submit the composed odm-xml file to the rest api
+                    my_report.append_to_report('submitting data of %s for %s' % (odk_table['form_data']['FormName'], study_subject_id))
+                    import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
+                    
+                    # do the administration
+                    util.uri.write_table_name(uri, odk_table['table_name'])
+                    util.uri.write_odm(uri, file_name)
+                    util.uri.write_job_id(uri, import_job_id)
+                    util.uri.reset_complete(uri)
             # next odk table
         
         # finished with odk tables, so retrieve the job-logs from oc4, using the job uuid
+        # but first we sleep a bit, to allow the oc-server to process the jobs
+        time.sleep(int(config['sleep_this_long']))
         all_uris = util.uri.list_incomplete()
         for one_uri in all_uris:
             # job uuid is in uri[6]

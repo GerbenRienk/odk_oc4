@@ -1,8 +1,6 @@
-{
+	{
 	"studyOid": "S_OC4_IMPO(TEST)",
 	"siteOid": "S_OC_IMP_T(TEST)",
-	"studyIdentifier": "xx",
-	"siteIdentifier": "xx",
 	"odk_tables": [{
 		"table_name": "odk_am001.\"1_CORE\"",
 		"id_field": "STUDY_SUBJECT_ID",
@@ -15,15 +13,46 @@
 		},
 		"itemgroupOid": "IG_IMPTE_IG1",
 		"odk_fields": [{
-
 				"odk_column": "ITEM_TEXT",
 				"itemOid": "I_IMPTE_ITEM_TEXT",
 				"item_type": "string"
-			},
-			{
+			}, {
 				"odk_column": "ITEM_DECIMAL",
 				"itemOid": "I_IMPTE_ITEM_DECIMAL",
 				"item_type": "float"
+			}
+		]
+	}, {
+		"table_name": "odk_am001.\"7_CORE\"",
+		"id_field": "PAGE_WELCOME_SIGN_IN_GRP_STUDY_SUBJECT_ID",
+		"eventOid": "SE_IMPEV",
+		"form_data": {
+			"FormOID": "F_VS",
+			"FormName": "VS",
+			"FormLayoutOID": "1",
+			"Status": "data entry started"
+		},
+		"itemgroupOid": "IG_VS_VITAL_SIGNS_GRP",
+		"odk_fields": [{
+				"odk_column": "PAGE_WELCOME_VITAL_SIGNS_COL",
+				"itemOid": "I_VS_VITAL_SIGNS_COL",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_VITAL_SIGNS_COL_SPE",
+				"itemOid": "I_VS_VITAL_SIGNS_COL_SPE",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_VITAL_SIGNS_D",
+				"itemOid": "I_VS_VITAL_SIGNS_D",
+				"item_type": "date"
+			}, {
+				"odk_column": "PAGE_WELCOME_SIGN_IN_GRP_VS_T_IN_MIN",
+				"itemOid": "I_VS_VS_T_IN_MIN",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_SIGN_IN_GRP_VS_T_IN_MIN",
+				"itemOid": "I_VS_VS_T_IN_MIN",
+				"item_type": "string"
 			}
 		]
 	}]
