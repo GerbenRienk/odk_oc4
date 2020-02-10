@@ -1,7 +1,8 @@
 	{
 	"studyOid": "S_OC4_IMPO(TEST)",
 	"siteOid": "S_OC_IMP_T(TEST)",
-	"odk_tables": [{
+	"odk_tables": [
+	{
 		"table_name": "odk_am001.\"1_CORE\"",
 		"id_field": "STUDY_SUBJECT_ID",
 		"eventOid": "SE_IMPEV",
@@ -23,6 +24,63 @@
 			}
 		]
 	}, {
+		"table_name": "odk_am001.\"5_CORE\"",
+		"id_field": "PAGE_WELCOME_SIGN_IN_GRP_STUDY_SUBJECT_ID",
+		"eventOid": "SE_IMPEV",
+		"form_data": {
+			"FormOID": "F_DEMOGRAPHICS",
+			"FormName": "Demographics",
+			"FormLayoutOID": "3",
+			"Status": "data entry started"
+		},
+		"itemgroupOid": "IG_DEMOG_DEMOG_GRP",
+		"odk_fields": [{
+				"odk_column": "PAGE_WELCOME_SIGN_IN_GRP_DEMOG_T_IN",
+				"itemOid": "I_DEMOG_DEMOG_T_IN",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_COL_D",
+				"itemOid": "I_DEMOG_COL_D",
+				"item_type": "date"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_DOB",
+				"itemOid": "I_DEMOG_DOB",
+				"item_type": "date"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_GENDER",
+				"itemOid": "I_DEMOG_GENDER",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_DEM_GRP1_OCCUP",
+				"itemOid": "I_DEMOG_OCCUP",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_DEM_GRP1_OCCUP_SPE",
+				"itemOid": "I_DEMOG_OCCUP_SPE",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_DEM_GRP2_EDU_LEVEL",
+				"itemOid": "I_DEMOG_EDU_LEVEL",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_DEM_GRP_DEM_GRP2_EDU_LEVEL_SPE",
+				"itemOid": "I_DEMOG_EDU_LEVEL_SPE",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DEMOG_T_OUT",
+				"itemOid": "I_DEMOG_DEMOG_T_OUT",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DEMOG_INV_INIT",
+				"itemOid": "I_DEMOG_DEMOG_INV_INIT",
+				"item_type": "string"
+			}, {
+				"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DEMOG_COMP_D",
+				"itemOid": "I_DEMOG_DEMOG_COMP_D",
+				"item_type": "date"
+			}
+		]
+	},{
 		"table_name": "odk_am001.\"7_CORE\"",
 		"id_field": "PAGE_WELCOME_SIGN_IN_GRP_STUDY_SUBJECT_ID",
 		"eventOid": "SE_IMPEV",
