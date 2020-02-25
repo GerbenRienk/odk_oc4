@@ -27,7 +27,11 @@ def cycle_through_syncs():
     # read configuration file for tables, fields and oc4 oid's
     with open('config/data_definition.json') as json_file:
         data_def = json.load(json_file)
-
+    
+    # for selecting the correct site, based on the first 7 characters of te study subject id, we need 
+    # the dictionary with site mapping
+    site_mapping = data_def['siteMapping']
+    
     # start with requesting an authentication token, which we can use for some time
     api = OC4Api(config['apiUrl'])
     aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
@@ -42,7 +46,7 @@ def cycle_through_syncs():
     # our cycle starts here and ends at the break
     my_report.append_to_report('cycle started at %s\n' % str(start_time))
     while True:
-        # retrieve all study-subjects / participants from oc, using the api
+        # retrieve all study-subjects / participants from oc4, using the api
         all_participants = api.participants.list_participants(data_def['studyOid'], aut_token, verbose=False)
         # now loop through the subjects / participants to check if the id - oid is still correct,
         # because this may have been changed in oc4 between cycles
@@ -58,6 +62,12 @@ def cycle_through_syncs():
                 # check if StudySubjectID from odk is already in oc
                 add_subject_to_oc = True
                 study_subject_id = odk_result[odk_table['id_field']]
+                # find the site oid, based on the study subject id
+                # set the site oid default to zero length string
+                site_oid = ''
+                for prefix, mapped_site_oid in site_mapping.items():
+                    if (study_subject_id.find(prefix) == 0):
+                        site_oid = mapped_site_oid
                     
                 # compare with all oc subjects / participants
                 for one_participant in all_participants:
@@ -67,7 +77,8 @@ def cycle_through_syncs():
                         
                 if (add_subject_to_oc):
                     # try to add a subject / participant to oc4
-                    add_result = api.participants.add_participant(data_def['studyOid'], data_def['siteOid'], study_subject_id, aut_token, verbose=False)
+
+                    add_result = api.participants.add_participant(data_def['studyOid'], site_oid, study_subject_id, aut_token, verbose=False)
                     if (is_jsonable(add_result)):
                         new_participant = json.loads(add_result)
                         # if we were successful we now have a json response, which we can use to add this subject to the util-db 
@@ -78,12 +89,13 @@ def cycle_through_syncs():
     
                 # for now, let's schedule the event anyway
                 event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
-                schedule_result = api.events.schedule_event(data_def['studyOid'], data_def['siteOid'], event_info, aut_token, verbose=False)
+                schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
                 # the result may be none, when the event has already been scheduled
                 if(schedule_result):
                     if (is_jsonable(schedule_result)):
                         result = json.loads(schedule_result)
                         if(result['eventStatus']!='scheduled'):
+                            # report back errors
                             my_report.append_to_report('try to schedule event: %s\n' % schedule_result)
 
                 # now we have the subject in oc4 plus the event scheduled
@@ -92,36 +104,45 @@ def cycle_through_syncs():
                 
                 # for the administration of the following steps we need the uri
                 uri = odk_result['_URI']
-                util.uri.add(uri)
+                util.uri.add(uri, study_subject_oid)
                 
-                # only compose the odm if the uri is not complete yet
+                # only compose the odm and import, if the uri is not complete yet
                 if(not util.uri.is_complete(uri)):
-                    # next step is to compose the odm-xml-file
-                    # start with creating it and writing the first, common tags
-                    now = datetime.datetime.now()
-                    time_stamp = now.strftime("%Y%m%d%H%M%S")
-                    file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
-                    odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], odk_table['itemgroupOid'])
+                    # get the actual clinical data, so we know we ca import or not
+                    resp_clin_data = api.clinical_data.get_clinical_data(aut_token, data_def['studyOid'], study_subject_oid)
+                    if (resp_clin_data.status_code == 200):
+                        util.uri.set_clinical_data(uri, resp_clin_data.text)
                     
-                    # now loop through the odk-fields of the table and add them to the odm-xml
-                    all_odk_fields = odk_table['odk_fields']
-                    for odk_field in all_odk_fields:
-                        odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], odk_field['item_type'])
-                    # write the closing tags
-                    odm_xml.close_file()
-                    
-                    # now submit the composed odm-xml file to the rest api
-                    my_report.append_to_report('submitting data of %s for %s' % (odk_table['form_data']['FormName'], study_subject_id))
-                    import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
-                    
-                    # do the administration
-                    util.uri.write_table_name(uri, odk_table['table_name'])
-                    util.uri.write_odm(uri, file_name)
-                    util.uri.write_job_id(uri, import_job_id)
-                    util.uri.reset_complete(uri)
+                    if (util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], odk_table['itemgroupOid'])):
+                        my_report.append_to_report('didn\'t submit data of %s for %s, because data exist in oc4 ' % (study_subject_id, odk_table['form_data']['FormName']))
+                    else:
+                        # no data in oc4 yet 
+                        # next step is to compose the odm-xml-file
+                        # start with creating it and writing the first, common tags
+                        now = datetime.datetime.now()
+                        time_stamp = now.strftime("%Y%m%d%H%M%S")
+                        file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
+                        odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], odk_table['itemgroupOid'])
+                        
+                        # now loop through the odk-fields of the table and add them to the odm-xml
+                        all_odk_fields = odk_table['odk_fields']
+                        for odk_field in all_odk_fields:
+                            odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], odk_field['item_type'])
+                        # write the closing tags
+                        odm_xml.close_file()
+                        
+                        # now submit the composed odm-xml file to the rest api
+                        my_report.append_to_report('submitting data of %s for %s' % (odk_table['form_data']['FormName'], study_subject_id))
+                        import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
+                        
+                        # do the administration
+                        util.uri.write_table_name(uri, odk_table['table_name'])
+                        util.uri.write_odm(uri, file_name)
+                        util.uri.write_job_id(uri, import_job_id)
+
             # next odk table
         
-        # finished with odk tables, so retrieve the job-logs from oc4, using the job uuid
+        # we're finished with odk tables, so retrieve the job-logs from oc4, using the job uuid
         # but first we sleep a bit, to allow the oc-server to process the jobs
         time.sleep(int(config['sleep_this_long']))
         all_uris = util.uri.list_incomplete()

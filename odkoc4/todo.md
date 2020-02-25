@@ -8,8 +8,8 @@
 
 # first we should
 - write a workflow about what to do in case of crf-changes
-- just schedule all events for everyone
 - make a list of tables
+- don't import an empty string, for example PAGE_WELCOME_DEM_GRP_DEM_GRP1_OCCUP_SPE
 
 # to make things nicer we could
 - use in the oc4api a parameter for response json or not, so we're more flexible

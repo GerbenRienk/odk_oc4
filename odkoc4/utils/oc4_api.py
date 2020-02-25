@@ -304,6 +304,20 @@ class _ClinicalData(object):
     def __init__(self, oc4_api):
         self.api = oc4_api
 
+    def get_clinical_data(self, aut_token, study_oid, study_subject_oid, verbose=False):
+        """
+        Get the clinical data from the c4 api
+        
+        """
+        _url = self.api.url + "/pages/auth/api/clinicaldata/" + study_oid + "/" + study_subject_oid + "/*/*?includeMetadata=n"
+        _bearer = "bearer " + aut_token
+        _headers = {"accept":"*/*","Content-Type": "application/json", "Authorization": _bearer}
+
+        #submit request
+        response = self.api.utils.request(url=_url, headers=_headers, request_type='get', verbose=verbose)
+           
+        return response
+
     def import_odm(self, aut_token, file_name, verbose=False):
         """
         

@@ -5,6 +5,7 @@ Read subjects and write subjects and keep administration of uri's
 @author: GerbenRienk
 '''
 import psycopg2
+import json
 from psycopg2.extras import RealDictCursor
 
 class _DNU_ConnToOdkUtilDB(object):
@@ -261,13 +262,14 @@ class _Subjects(object):
                 print ("not able to execute the update %s" % update_statement)
             self.util._conn.commit()
            
-        if(self.DCount('*', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)==0):
+        if(self.DCount('*', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id) == 0):
             cau_result = True
         else:
             cau_result = False
             
         return cau_result
-    
+
+
         
     def DCount(self, field_name, table_name, where_clause):
         '''Method to read one field of a table with certain criteria
@@ -306,7 +308,7 @@ class _URI(object):
     def __init__(self, util):
         self.util = util
         
-    def add(self, uri):
+    def add(self, uri, study_subject_oid):
         """ method to add a new uri to the utility database
         after checking there's no record yet
         """
@@ -322,9 +324,9 @@ class _URI(object):
         
         # if we have no record yet, we can create it
         if (results[0] == 0):
-            sql_statement = 'insert into uri_status (uri, last_update_status) select %s, Now()'            
+            sql_statement = 'insert into uri_status (uri, study_subject_oid, last_update_status) select %s, %s, Now()'            
             try:
-                cursor.execute(sql_statement, (uri,))
+                cursor.execute(sql_statement, (uri, study_subject_oid))
             except (Exception, psycopg2.Error) as error :
                 print ("error: %s" % error)
                 print ("_URI.add: %s" % uri)
@@ -502,6 +504,85 @@ class _URI(object):
         self.util._conn.commit()
             
         return None
+    
+    def get_clinical_data(self, uri):
+        'method to read table subjects into a list'
+        cursor = self.util._conn.cursor()  
+        try:
+            sql_query = "SELECT clinical_data_before_import FROM uri_status  where uri='%s'" % uri
+            cursor.execute(sql_query)
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute %s : %s " % (sql_query, error))
+        
+        results = cursor.fetchall()
+        return results
 
+    def set_clinical_data(self, uri, clinical_data):
+        cursor = self.util._conn.cursor()
+                
+        sql_statement = "update uri_status set clinical_data_before_import='%s' where uri='%s'" % (clinical_data, uri)            
+        try:
+            cursor.execute(sql_statement)
+        except (Exception, psycopg2.Error) as error :
+            print ("error: %s" % error)
+            print ("using: '%s'" % (sql_statement))
+            
+        self.util._conn.commit()
+            
+        return None
+
+    def has_data_in_itemgroup(self, uri, study_event_oid, form_oid, item_group_oid):
+        'check for data in a specific item group '
+        cursor = self.util._conn.cursor()  
+        try:
+            sql_query = "SELECT clinical_data_before_import FROM uri_status  where uri='%s'" % uri
+            cursor.execute(sql_query)
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute %s : %s " % (sql_query, error))
+        
+        results = cursor.fetchall()
+        cd_json = json.loads(results[0][0])
+        se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
+        
+        # by default we set item_group_data_exist to False
+        item_group_data_exist = False
+        # a subject can have one event or more
+        if (type(se_data) is dict):
+            if (se_data['@StudyEventOID'] == study_event_oid):
+                form_data = se_data['FormData']
+            
+        if (type(se_data) is list):
+            for one_event in se_data:
+                if (one_event['@StudyEventOID'] == study_event_oid):
+                    form_data = one_event['FormData']
+                
+        # first we must check if we have one form in the event, or more
+        # set a flag to indicate that we have any groups at all to False
+        groups_exist = False
+        if (type(form_data) is dict):
+            if (form_data['@FormOID'] == form_oid):
+                item_group_data = form_data['ItemGroupData']
+                groups_exist = True
+                
+        if (type(form_data) is list):
+            for one_form in form_data:
+                if (one_form['@FormOID'] == form_oid):
+                    item_group_data = one_form['ItemGroupData']
+                    groups_exist = True
+        
+        if (groups_exist):            
+            # now we must check if this form has one item group or more
+            if (type(item_group_data) is dict):
+                if (item_group_data['@ItemGroupOID'] == item_group_oid):
+                    item_group_data_exist = True
+                    
+            if (type(item_group_data) is list):
+                for one_item_group in item_group_data:
+                    if (one_item_group['@ItemGroupOID'] == item_group_oid):
+                        item_group_data_exist = True
+                    
+        return item_group_data_exist
+        
+    
 if __name__ == "__main__":
     pass    
