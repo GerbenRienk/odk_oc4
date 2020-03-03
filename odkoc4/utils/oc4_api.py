@@ -372,7 +372,7 @@ class _ODMParser(object):
     so it can be sent at the end of the day
     '''
 
-    def __init__(self, file_name, study_oid, subject_oid, event_oid, form_data, item_group_oid):
+    def __init__(self, file_name, study_oid, subject_oid, event_oid, form_data):
         '''
         Constructor
         '''
@@ -383,7 +383,14 @@ class _ODMParser(object):
         self._file.write('\t\t\t<StudyEventData StudyEventOID="%s">\n' % event_oid)
         # TODO: add layout id and form status
         self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormName="ImpTest" OpenClinica:FormLayoutOID="2" OpenClinica:Status="data entry started">\n' % form_data['FormOID'])
-        self._file.write('\t\t\t\t\t<ItemGroupData ItemGroupOID="%s">\n' % item_group_oid)
+        
+
+    def group_open(self, item_group_oid, igrk=''):
+        # ItemGroupRepeatKey="2"
+        if igrk=='':
+            self._file.write('\t\t\t\t\t<ItemGroupData ItemGroupOID="%s">\n' % item_group_oid)
+        else:
+            self._file.write('\t\t\t\t\t<ItemGroupData ItemGroupOID="%s" ItemGroupRepeatKey="%s">\n' % (item_group_oid, igrk))
         
     def add_item(self, item_oid, item_value, item_type=""):
         _final_value = item_value
@@ -421,9 +428,11 @@ class _ODMParser(object):
         odm_line = odm_line + '\n'
         self._file.write(odm_line)
         return None
+    
+    def group_close(self):
+        self._file.write('\t\t\t\t\t</ItemGroupData>\n')
 
     def close_file(self):
-        self._file.write('\t\t\t\t\t</ItemGroupData>\n')
         self._file.write('\t\t\t\t</FormData>\n')
         self._file.write('\t\t\t</StudyEventData>\n')
         self._file.write('\t\t</SubjectData>\n')

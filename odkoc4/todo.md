@@ -17,6 +17,7 @@
 - don't import an empty string, for example PAGE_WELCOME_DEM_GRP_DEM_GRP1_OCCUP_SPE
 
 # to make things nicer we could
+- at the end of the daily cycle create a summary of what didn't go right
 - write a script that goes through the data-definition and checks for double item-names and 
 - use in the oc4api a parameter for response json or not, so we're more flexible
 - keep track of who is known in the util database and also which events have been scheduled, so we don't repeat unnecessary actions

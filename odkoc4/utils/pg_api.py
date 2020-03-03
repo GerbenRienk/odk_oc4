@@ -418,11 +418,12 @@ class _URI(object):
         content = results[0]
         # now we look for certain content, but by default we assume no errors
         errors = False
-        messages = {'errorCode','Failed','(...)'}
-        for message in messages:
-            # print('check for %s: ' % message)
-            if(message in content):
-                errors = True
+        messages = {'errorCode','Failed','(...)', 'error.jobInProgress'}
+        if not content is None:
+            for message in messages:
+                # print('check for %s: ' % message)
+                if(message in content):
+                    errors = True
         return errors
 
     def reset_complete(self, uri):

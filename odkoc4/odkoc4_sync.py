@@ -125,8 +125,8 @@ def cycle_through_syncs():
                             now = datetime.datetime.now()
                             time_stamp = now.strftime("%Y%m%d%H%M%S")
                             file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
-                            odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], odk_table['itemgroupOid'])
-                            
+                            odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'])
+                            odm_xml.group_open(odk_table['itemgroupOid'])
                             # now loop through the odk-fields of the table and add them to the odm-xml
                             all_odk_fields = odk_table['odk_fields']
                             for odk_field in all_odk_fields:
@@ -138,8 +138,25 @@ def cycle_through_syncs():
                                     # mind that we use the uri to get all the selected values
                                     selected_values = conn_odk.GetMultiAnswers(multi_field['odk_table_name'], uri)
                                     odm_xml.add_multi_item(multi_field['itemOid'], selected_values)
-
-                            # write the closing tags
+                            # now close the ungrouped group
+                            odm_xml.group_close()
+                            
+                            # check if we have repeating item groups
+                            if 'repeating_item_groups' in odk_table:
+                                all_rigs = odk_table['repeating_item_groups']
+                                for one_rig in all_rigs:
+                                    # get the fields so we can use them further down
+                                    all_rig_odk_fields = one_rig['rig_odk_fields']
+                                    rig_odk_results = conn_odk.ReadDataFromOdkTable(one_rig['rig_odk_table_name'], '"_PARENT_AURI"=\'%s\''  % uri)
+                                    for rig_odk_result in rig_odk_results:
+                                        # for each occurence, write an item group with an item group repeat key
+                                        odm_xml.group_open(one_rig['rig_oid'], rig_odk_result['_ORDINAL_NUMBER'] )
+                                        # loop through the fields
+                                        for rig_odk_field in all_rig_odk_fields:
+                                            odm_xml.add_item(rig_odk_field['itemOid'], rig_odk_result[rig_odk_field['odk_column']], rig_odk_field['item_type'])
+                                           
+                                        odm_xml.group_close()
+                            # write the closing tags of the odm-file
                             odm_xml.close_file()
                             
                             # now submit the composed odm-xml file to the rest api
@@ -176,7 +193,9 @@ def cycle_through_syncs():
                     api.jobs.delete_file(aut_token, one_uri[6], verbose=False)
                     # and delete the import file 
                     file_name = 'request_files/' + one_uri[4]
-                    os.remove(file_name)
+                    # maybe the file was already removed, so check before trying to remove again
+                    if os.path.isfile(file_name):
+                        os.remove(file_name)
      
         # some book keeping to check if we must continue looping, or break the loop
         # first sleep a bit, so we do not eat up all CPU
