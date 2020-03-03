@@ -44,11 +44,11 @@ class _Utils(object):
         return_value = None
         try:
             if verbose == True:
-                print("req url=     %s   " % url)
-                print("req params=  %s   " % params)
-                print("req headers= %s   " % headers)
-                print("req data=    %s   " % data)
-                print("req type=    %s \n" % request_type)
+                print("p url=     %s   " % url)
+                print("p params=  %s   " % params)
+                print("p headers= %s   " % headers)
+                print("p data=    %s   " % data)
+                print("p type=    %s \n" % request_type)
             
             if request_type == 'post':
                 response = requests.post(url, params=params, headers=headers, data=data, files=files)
@@ -393,6 +393,19 @@ class _ODMParser(object):
                 _final_value = item_value.strftime('%Y-%m-%d')
             else:
                 _final_value = ''
+        if(item_type == 'integer'):
+            # integer can be an integer or None
+            if(not item_value is None):
+                _final_value = item_value
+            else:
+                _final_value = ''
+
+        if(item_type == 'string'):
+            # string can be a string or None
+            if(not item_value is None):
+                _final_value = item_value
+            else:
+                _final_value = ''
             
         odm_line = '\t\t\t\t\t\t'
         odm_line = odm_line + '<ItemData ItemOID="%s" Value="%s" />' % (item_oid, _final_value)
@@ -400,6 +413,15 @@ class _ODMParser(object):
         self._file.write(odm_line)
         return None
     
+    def add_multi_item(self, item_oid, selected_values):
+        
+            
+        odm_line = '\t\t\t\t\t\t'
+        odm_line = odm_line + '<ItemData ItemOID="%s" Value="%s" />' % (item_oid, selected_values)
+        odm_line = odm_line + '\n'
+        self._file.write(odm_line)
+        return None
+
     def close_file(self):
         self._file.write('\t\t\t\t\t</ItemGroupData>\n')
         self._file.write('\t\t\t\t</FormData>\n')

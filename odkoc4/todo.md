@@ -4,6 +4,11 @@
 - how to deal with subjects already in oc4
 - can we do some stress testing with 20k subjects?
 - should we set the status of the crf to started or to complete?
+- shall we make odk_admin data-entry for just the first site? it now has the role of data-entry-person for the study as a whole
+- discuss naming conventions
+- it looks like some questions depend on the site, see column relevant ${site_id}
+- backup of odk and odk_util on aws
+- odk-5 demographics and then especially date of birth
 
 
 # first we should
@@ -12,6 +17,7 @@
 - don't import an empty string, for example PAGE_WELCOME_DEM_GRP_DEM_GRP1_OCCUP_SPE
 
 # to make things nicer we could
+- write a script that goes through the data-definition and checks for double item-names and 
 - use in the oc4api a parameter for response json or not, so we're more flexible
 - keep track of who is known in the util database and also which events have been scheduled, so we don't repeat unnecessary actions
 - check if event has already been scheduled before trying to do that

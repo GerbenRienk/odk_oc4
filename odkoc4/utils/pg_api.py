@@ -179,6 +179,24 @@ class ConnToOdkDB(object):
         results = cursor.fetchall()
         return results
 
+    def GetMultiAnswers(self, table_name, parent_auri):
+        'method to read table subjects into a list'
+        cursor = self._conn.cursor(cursor_factory=RealDictCursor)  
+        sql_statement = "SELECT \"VALUE\" from " + table_name + " where \"_PARENT_AURI\"='" + parent_auri + "' order by \"_ORDINAL_NUMBER\""
+        try:
+            cursor.execute(sql_statement)
+        except:
+            print ("GetMultiAnswers: not able to execute: " + sql_statement)
+        selected_values = cursor.fetchall()
+        all_options =''
+        if len(selected_values) > 0:
+            for option in selected_values:
+                all_options = all_options + option['VALUE'] + ','
+            #remove last comma
+            all_options = all_options.rstrip(',')
+        
+        return all_options
+
 class UtilDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
     Methods implemented now are read subjects and add subjects '''
@@ -351,7 +369,7 @@ class _URI(object):
         'method to read table subjects into a list'
         cursor = self.util._conn.cursor()  
         try:
-            cursor.execute("""SELECT * from uri_status where not is_complete""")
+            cursor.execute("""SELECT * from uri_status where is_complete is not true""")
         except (Exception, psycopg2.Error) as error :
             print ("not able to execute the select: %s " % error)
         
@@ -363,6 +381,20 @@ class _URI(object):
         cursor = self.util._conn.cursor()  
         sql_statement = 'select is_complete from uri_status where uri=%s'
         # by default set the result to False
+        try:
+            cursor.execute(sql_statement, (uri,))   
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute the select: %s " % error)
+            
+        results = cursor.fetchone()
+        content = results[0]
+        
+        return content
+
+    def force_import(self, uri):
+        ' retrieves column force_import'
+        cursor = self.util._conn.cursor()  
+        sql_statement = 'select force_import from uri_status where uri=%s'
         try:
             cursor.execute(sql_statement, (uri,))   
         except (Exception, psycopg2.Error) as error :
@@ -531,7 +563,7 @@ class _URI(object):
             
         return None
 
-    def has_data_in_itemgroup(self, uri, study_event_oid, form_oid, item_group_oid):
+    def has_data_in_itemgroup(self, uri, study_event_oid, form_oid, item_group_oid, verbose=False):
         'check for data in a specific item group '
         cursor = self.util._conn.cursor()  
         try:
@@ -542,44 +574,57 @@ class _URI(object):
         
         results = cursor.fetchall()
         cd_json = json.loads(results[0][0])
+        if (verbose):
+            print(cd_json)
         se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
-        
+               
         # by default we set item_group_data_exist to False
         item_group_data_exist = False
         # a subject can have one event or more
+        if (verbose):
+            print(se_data)
+        
+        # FormData may be in se_data, but maybe not
+        forms_exist = False
         if (type(se_data) is dict):
             if (se_data['@StudyEventOID'] == study_event_oid):
-                form_data = se_data['FormData']
+                if 'FormData' in se_data:
+                    forms_exist = True
+                    form_data = se_data['FormData']
             
         if (type(se_data) is list):
             for one_event in se_data:
                 if (one_event['@StudyEventOID'] == study_event_oid):
-                    form_data = one_event['FormData']
+                    if 'FormData' in one_event:
+                        forms_exist = True
+                        form_data = one_event['FormData']
                 
-        # first we must check if we have one form in the event, or more
-        # set a flag to indicate that we have any groups at all to False
-        groups_exist = False
-        if (type(form_data) is dict):
-            if (form_data['@FormOID'] == form_oid):
-                item_group_data = form_data['ItemGroupData']
-                groups_exist = True
-                
-        if (type(form_data) is list):
-            for one_form in form_data:
-                if (one_form['@FormOID'] == form_oid):
-                    item_group_data = one_form['ItemGroupData']
+        # only continue if forms exist
+        if forms_exist: 
+            # first we must check if we have one form in the event, or more
+            # set a flag to indicate that we have any groups at all to False
+            groups_exist = False
+            if (type(form_data) is dict):
+                if (form_data['@FormOID'] == form_oid):
+                    item_group_data = form_data['ItemGroupData']
                     groups_exist = True
-        
-        if (groups_exist):            
-            # now we must check if this form has one item group or more
-            if (type(item_group_data) is dict):
-                if (item_group_data['@ItemGroupOID'] == item_group_oid):
-                    item_group_data_exist = True
                     
-            if (type(item_group_data) is list):
-                for one_item_group in item_group_data:
-                    if (one_item_group['@ItemGroupOID'] == item_group_oid):
+            if (type(form_data) is list):
+                for one_form in form_data:
+                    if (one_form['@FormOID'] == form_oid):
+                        item_group_data = one_form['ItemGroupData']
+                        groups_exist = True
+            
+            if (groups_exist):            
+                # now we must check if this form has one item group or more
+                if (type(item_group_data) is dict):
+                    if (item_group_data['@ItemGroupOID'] == item_group_oid):
                         item_group_data_exist = True
+                        
+                if (type(item_group_data) is list):
+                    for one_item_group in item_group_data:
+                        if (one_item_group['@ItemGroupOID'] == item_group_oid):
+                            item_group_data_exist = True
                     
         return item_group_data_exist
         
