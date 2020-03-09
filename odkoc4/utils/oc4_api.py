@@ -395,13 +395,20 @@ class _ODMParser(object):
     def add_item(self, item_oid, item_value, item_type=""):
         _final_value = item_value
         if(item_type == 'date'):
-            # date can be a datetime or None
+            # date can be a date-time or None
             if(item_value):
                 _final_value = item_value.strftime('%Y-%m-%d')
             else:
                 _final_value = ''
         if(item_type == 'integer'):
             # integer can be an integer or None
+            if(not item_value is None):
+                _final_value = item_value
+            else:
+                _final_value = ''
+
+        if(item_type == 'real'):
+            # real can be a real or None
             if(not item_value is None):
                 _final_value = item_value
             else:
