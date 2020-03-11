@@ -309,5 +309,219 @@
 	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_PRE_INV_INIT",	"itemOid": "I_CRF09_DIAG_PRE_INV_INIT",	"item_type": "string"}
 	]
 }
+,
+{
+"table_name": "odk_am001.\"10110_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF10DIAGNOS",
+	"FormName": "CRF10: Diagnostic Test Request",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry started"
+	},
+"itemgroupOid": "IG_CRF10_DIAG_TEST_REQ_GRP",
+"odk_fields": [
+	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_TEST_REQ_COMP_D",	"itemOid": "I_CRF10_DIAG_TEST_REQ_COMP_D",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_TEST_REQ_INV_INIT",	"itemOid": "I_CRF10_DIAG_TEST_REQ_INV_INIT",	"item_type": "string"}
+	],
+"multi_fields": [
+	{"odk_table_name": "odk_am001.\"10110_PAGE_WELCOME_DIAG_REQ_GRP_REQ_GRP1_RDT_TESTS\"",	"itemOid": "I_CRF10_RDT_TESTS"},
+	{"odk_table_name": "odk_am001.\"10110_PAGE_WELCOME_DIAG_REQ_GRP_REQ_GRP2_RDT_TESTS_CTRL\"",	"itemOid": "I_CRF10_RDT_TESTS_CTRL"},
+	{"odk_table_name": "odk_am001.\"10110_PAGE_WELCOME_DIAG_REQ_GRP_REQ_GRP3_NON_RDT_TEST_CTRL\"",	"itemOid": "I_CRF10_NON_RDT_TEST_CTRL"}
+	],
+"repeating_item_groups": [
+	{"rig_odk_table_name":"odk_am001.\"10110_PAGE_WELCOME_DIAG_REQ_GRP_REQ_GRP3_ADD_TEST_RPT\"",
+	"rig_oid": "IG_CRF10_DIAG_TEST_REQ_GRP_RPT",
+	"rig_odk_fields": [
+		{"odk_column": "NON_RDT_TEST_CTRL_SPE",	"itemOid": "I_CRF10_NON_RDT_TEST_CTRL_SPE",	"item_type": "string"}
+		]}
+	]
+},
+{
+"table_name": "odk_am001.\"10111_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF11DAY0POC",
+	"FormName": "CRF11: Day 0 PoC Test Results",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry started"
+	},
+"itemgroupOid": "IG_CRF11_DIAG_TEST_RES_GRP",
+"odk_fields": [
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP1_CTRL_WIDAL_RDT",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP1_CTRL_WIDAL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP1_CTRL_WIDAL_RDT_ND",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP1_CTRL_WIDAL_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP1_CTRL_WIDAL_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP1_CTRL_WIDAL_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_RESULT_SPE",	"item_type": "string"},
+
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP3_CTRL_BL_CUL_RDT",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP3_CTRL_BL_CUL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP3_CTRL_BL_CUL_RDT_ND",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP3_CTRL_BL_CUL_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP3_CTRL_BL_CUL_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PAG3WELCOMETESTCTRLRESTSTCTRLRESGRP3_CTRL_BL_CUL_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_RESULT_SPE",	"item_type": "string"},
+
+	{"odk_column": "PAG3WLCMETSTCTRLRSTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3WLCMETSTCTRLRSTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_DONE",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3WLCMETSTCTRLRSTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_ND",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3WLCMETSTCTRLRSTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3WLCMETSTCTRLRSTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PAG3WLCMETSTCTRLRSTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_RESULT_S",	"item_type": "string"},
+
+	{"odk_column": "PAG3WLCOMETESTCTRLRSTSTCTRLRESGRP5_CTRL_BL_FILM_RDT",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3WLCOMETESTCTRLRSTSTCTRLRESGRP5_CTRL_BL_FILM_RDT_DONE",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3WLCOMETESTCTRLRSTSTCTRLRESGRP5_CTRL_BL_FILM_RDT_ND",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3WLCOMETESTCTRLRSTSTCTRLRESGRP5_CTRL_BL_FILM_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3WLCOMETESTCTRLRSTSTCTRLRESGRP5_CTRL_BL_FILM_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PAG3WLCOMETESTCTRLRSTSTCTRLRESGRP5_CTRL_BL_FILM_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_RESULT_SPE",	"item_type": "string"},
+
+	{"odk_column": "PAG3_WELCOME_TEST_CTRL_RES_TST_CTRL_RES_GRP_CTRL_MAL_RDT",	"itemOid": "I_CRF11_CTRL_MAL_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3_WELCOME_TEST_CTRL_RES_TST_CTRL_RES_GRP_CTRL_MAL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_MAL_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3_WELCOME_TEST_CTRL_RES_TST_CTRL_RES_GRP_CTRL_MAL_RDT_ND",	"itemOid": "I_CRF11_CTRL_MAL_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3_WELCOME_TEST_CTRL_RES_TST_CTRL_RES_GRP_CTRL_MAL_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_MAL_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3_WELCOME_TEST_CTRL_RES_TST_CTRL_RES_GRP_CTRL_MAL_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_MAL_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAG3_WLCME_TST_CTRL_RS_TST_CTRL_RES_GRP6_CTRL_U_RDT",	"itemOid": "I_CRF11_CTRL_U_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCME_TST_CTRL_RS_TST_CTRL_RES_GRP6_CTRL_U_RDT_DONE",	"itemOid": "I_CRF11_CTRL_U_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCME_TST_CTRL_RS_TST_CTRL_RES_GRP6_CTRL_U_RDT_ND",	"itemOid": "I_CRF11_CTRL_U_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCME_TST_CTRL_RS_TST_CTRL_RES_GRP6_CTRL_U_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_U_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCME_TST_CTRL_RS_TST_CTRL_RES_GRP6_CTRL_U_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_U_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCME_TST_CTRL_RS_TST_CTRL_RES_GRP6_CTRL_U_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_U_RDT_RESULT_SPE",	"item_type": "string"},
+
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP2_CTRL_HIV_RDT",	"itemOid": "I_CRF11_CTRL_HIV_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP2_CTRL_HIV_RDT_DONE",	"itemOid": "I_CRF11_CTRL_HIV_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP2_CTRL_HIV_RDT_ND",	"itemOid": "I_CRF11_CTRL_HIV_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP2_CTRL_HIV_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_HIV_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP2_CTRL_HIV_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_HIV_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP7_CTRL_CXR_RDT",	"itemOid": "I_CRF11_CTRL_CXR_RDT",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP7_CTRL_CXR_RDT_DONE",	"itemOid": "I_CRF11_CTRL_CXR_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP7_CTRL_CXR_RDT_ND",	"itemOid": "I_CRF11_CTRL_CXR_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP7_CTRL_CXR_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_CXR_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAG3_WLCOME_TEST_CTRL_RS_TST_CTRL_RES_GRP7_CTRL_CXR_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_CXR_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_DONE",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_ND",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_ND_SPE",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_RESULT",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_HIV_RDT",	"itemOid": "I_CRF11_HIV_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_HIV_RDT_DONE",	"itemOid": "I_CRF11_HIV_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_HIV_RDT_ND",	"itemOid": "I_CRF11_HIV_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_HIV_RDT_ND_SPE",	"itemOid": "I_CRF11_HIV_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_HIV_RDT_RESULT",	"itemOid": "I_CRF11_HIV_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT",	"itemOid": "I_CRF11_TYP_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_DONE",	"itemOid": "I_CRF11_TYP_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_ND",	"itemOid": "I_CRF11_TYP_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_ND_SPE",	"itemOid": "I_CRF11_TYP_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_RESULT",	"itemOid": "I_CRF11_TYP_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_RESULT_S",	"itemOid": "I_CRF11_TYP_RDT_RESULT_S",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT",	"itemOid": "I_CRF11_STREPT_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_DONE",	"itemOid": "I_CRF11_STREPT_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_ND",	"itemOid": "I_CRF11_STREPT_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_ND_SPE",	"itemOid": "I_CRF11_STREPT_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_RESULT",	"itemOid": "I_CRF11_STREPT_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT",	"itemOid": "I_CRF11_FLU_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_DONE",	"itemOid": "I_CRF11_FLU_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_ND",	"itemOid": "I_CRF11_FLU_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_ND_SPE",	"itemOid": "I_CRF11_FLU_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_RESULT",	"itemOid": "I_CRF11_FLU_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT",	"itemOid": "I_CRF11_RSV_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_DONE",	"itemOid": "I_CRF11_RSV_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_ND",	"itemOid": "I_CRF11_RSV_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_ND_SPE",	"itemOid": "I_CRF11_RSV_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_RESULT",	"itemOid": "I_CRF11_RSV_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT",	"itemOid": "I_CRF11_STREP_PNEU_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_DONE",	"itemOid": "I_CRF11_STREP_PNEU_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_ND",	"itemOid": "I_CRF11_STREP_PNEU_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_ND_SPE",	"itemOid": "I_CRF11_STREP_PNEU_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_RESULT",	"itemOid": "I_CRF11_STREP_PNEU_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_DONE",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_ND",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_ND_SPE",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_RESULT",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_DONE",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_ND",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_ND_SPE",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_RESULT",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_DONE",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_ND",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_ND_SPE",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_RESULT",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DENGUE_NS1_AG",	"itemOid": "I_CRF11_DENGUE_NS1AG",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DENGUE_IGM",	"itemOid": "I_CRF11_DENGUE_IGM",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DENGUE_IGG",	"itemOid": "I_CRF11_DENGUE_IGG",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT",	"itemOid": "I_CRF11_SCRUB_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_DONE",	"itemOid": "I_CRF11_SCRUB_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_ND",	"itemOid": "I_CRF11_SCRUB_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_ND_SPE",	"itemOid": "I_CRF11_SCRUB_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_RESULT",	"itemOid": "I_CRF11_SCRUB_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_DONE",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_ND",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_ND_SPE",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_RESULT",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT",	"itemOid": "I_CRF11_MAL_RDT",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_DONE",	"itemOid": "I_CRF11_MAL_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_ND",	"itemOid": "I_CRF11_MAL_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_ND_SPE",	"itemOid": "I_CRF11_MAL_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_RESULT",	"itemOid": "I_CRF11_MAL_RDT_RESULT",	"item_type": "string"},
+
+	{"odk_column": "PAGE4_WELCOME_SIGN_OUT_GRP_DIAG_RES_COMP_D",	"itemOid": "I_CRF11_DIAG_RES_COMP_D",	"item_type": "date"},
+	{"odk_column": "PAGE4_WELCOME_SIGN_OUT_GRP_DIAG_RES_INV_INIT",	"itemOid": "I_CRF11_DIAG_RES_INV_INIT",	"item_type": "string"},
+
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP1_CRP",	"itemOid": "I_CRF11_CRP",	"item_type": "real"},
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP1_WBC",	"itemOid": "I_CRF11_WBC",	"item_type": "real"},
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP2_LYM",	"itemOid": "I_CRF11_LYM",	"item_type": "real"},
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP2_NEUT",	"itemOid": "I_CRF11_NEUT",	"item_type": "real"},
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP3_ALYM",	"itemOid": "I_CRF11_ALYM",	"item_type": "real"},
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP3_ANEUT",	"itemOid": "I_CRF11_ANEUT",	"item_type": "real"},
+	{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_WBC_GRP3_NEU_LYM_RATIO",	"itemOid": "I_CRF11_NEU_LYM_RATIO",	"item_type": "real"},
+
+	{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL",	"itemOid": "I_CRF11_DIAG_SAMP_COL",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_D",	"itemOid": "I_CRF11_DIAG_SAMP_COL_D",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_SAMP_COL_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_START_T",	"itemOid": "I_CRF11_DIAG_START_T",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_STOP_T",	"itemOid": "I_CRF11_DIAG_STOP_T",	"item_type": "string"},
+
+	{"odk_column": "PG3WLCMTSTCTRLRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT",	"item_type": "string"},
+	{"odk_column": "PG3WLCMTSTCTRLRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_DONE",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PG3WLCMTSTCTRLRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_ND",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PG3WLCMTSTCTRLRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PG3WLCMTSTCTRLRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PG3WLCMTSTCTRLRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_RESULT_",	"item_type": "string"},
+
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP4_CTRL_BAT_RDT",	"itemOid": "I_CRF11_CTRL_BAT_RDT",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_DONE",	"itemOid": "I_CRF11_CTRL_BAT_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_ND",	"itemOid": "I_CRF11_CTRL_BAT_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_BAT_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_BAT_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_BAT_RDT_RESULT_SPE",	"item_type": "string"},
+
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT",	"itemOid": "I_CRF11_CTRL_AFB_RDT",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_DONE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_DONE",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_ND",	"itemOid": "I_CRF11_CTRL_AFB_RDT_ND",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_ND_SPE",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_AFB_RDT_RESULT",	"item_type": "string"},
+	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_RESULT_SPE",	"item_type": "string"}
+	]
+}
 ]
 }
