@@ -2,7 +2,8 @@
 	"studyOid": "S_AM00_DX_(TEST)",
 	"siteMapping": {
 		"AM00101": "S_AM001_UG(TEST)",
-		"AM00102": "S_AM001_02(TEST)"
+		"AM00102": "S_AM001_02(TEST)",
+		"AM00199": "S_99(TEST)"
 	},
 	"odk_tables": [
 {
