@@ -523,6 +523,80 @@
 	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_AFB_RDT_RESULT",	"item_type": "string"},
 	{"odk_column": "PG3_WLCM_TST_CTRL_RS_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_RESULT_SPE",	"item_type": "string"}
 	]
+},
+{
+"table_name": "odk_am001.\"10112_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF12DIAGNOS",
+	"FormName": "CRF12: Diagnosis Post PoC",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry started"
+	},
+"itemgroupOid": "IG_CRF12_DIAG_POST_GRP",
+"odk_fields": [
+	{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG",	"itemOid": "I_CRF12_CONFIRMED_DIAG",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_PRESENT",	"itemOid": "I_CRF12_CONFIRMED_DIAG_PRESENT",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_RESP",	"itemOid": "I_CRF12_CONFIRMED_DIAG_RESP",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_SPE",	"itemOid": "I_CRF12_CONFIRMED_DIAG_SPE",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_POST_ANTI_BIO",	"itemOid": "I_CRF12_DIAG_POST_ANTI_BIO",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_RES_REVIEWED",	"itemOid": "I_CRF12_DIAG_RES_REVIEWED",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_COMP_D",	"itemOid": "I_CRF12_DIAG_POST_COMP_D",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_INV_INIT",	"itemOid": "I_CRF12_DIAG_POST_INV_INIT",	"item_type": "string"}
+	]
+},
+{
+"table_name": "odk_am001.\"10113_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF13PRESCRI",
+	"FormName": "CRF13: Prescription",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry started"
+	},
+"itemgroupOid": "IG_CRF13_PRESC_GRP",
+"odk_fields": [
+	{"odk_column": "PAGE_WELCOME_PRESC_GRP2_NEXT_VDATE",	"itemOid": "I_CRF13_NEXT_VDATE",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_COMP_D",	"itemOid": "I_CRF13_PRESC_COMP_D",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_INV_INIT",	"itemOid": "I_CRF13_PRESC_INV_INIT",	"item_type": "string"}
+	],
+"repeating_item_groups": [
+	{"rig_odk_table_name":"odk_am001.\"10113_PAGE_WELCOME_PRESC_GRP1_GRP1\"",
+	"rig_oid": "IG_CRF13_PRESC_GRP_RPT",
+	"rig_odk_fields": [
+		{"odk_column": "ANTI_BIO",	"itemOid": "I_CRF13_ANTI_BIO",	"item_type": "string"},
+		{"odk_column": "DOSE_FREQ",	"itemOid": "I_CRF13_DOSE_FREQ",	"item_type": "string"},
+		{"odk_column": "DRUG_NAME",	"itemOid": "I_CRF13_DRUG_NAME",	"item_type": "string"},
+		{"odk_column": "DUR",	"itemOid": "I_CRF13_DUR",	"item_type": "integer"},
+		{"odk_column": "DUR_UNIT",	"itemOid": "I_CRF13_DUR_UNIT",	"item_type": "string"},
+		{"odk_column": "MG_PER_DOSE",	"itemOid": "I_CRF13_MG_PER_DOSE",	"item_type": "string"}
+		]}
+	]
+},
+{
+"table_name": "odk_am001.\"10114_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF14QUALITA",
+	"FormName": "CRF14: Qualitative data Confirmation",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry started"
+	},
+"itemgroupOid": "IG_CRF14_DATA_QUAL_GRP",
+"odk_fields": [
+	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_COMP_D",	"itemOid": "I_CRF14_DQ_COMP_D",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_INV_INIT",	"itemOid": "I_CRF14_DQ_INV_INIT",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_BASE_KNOW_COL",	"itemOid": "I_CRF14_BASE_KNOW_COL",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_BASE_KNOW_COL_RSN",	"itemOid": "I_CRF14_BASE_KNOW_COL_RSN",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL",	"itemOid": "I_CRF14_COMM_MSG_DEL",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN_SPE",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN_SPE",	"item_type": "string"}
+	],
+"multi_fields": [
+	{"odk_table_name": "odk_am001.\"10114_PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN\"",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN"}
+	]
 }
 ]
 }
