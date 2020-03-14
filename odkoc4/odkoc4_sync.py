@@ -62,6 +62,9 @@ def cycle_through_syncs():
                 # check if StudySubjectID from odk is already in oc
                 add_subject_to_oc = True
                 study_subject_id = odk_result[odk_table['id_field']]
+                #if we have no study subject id, then we'll take the uri
+                if study_subject_id is None:
+                    study_subject_id = odk_result['_URI']
                 # find the site oid, based on the study subject id
                 # set the site oid default to zero length string
                 site_oid = 'no_site'
@@ -147,9 +150,9 @@ def cycle_through_syncs():
                                 for one_rig in all_rigs:
                                     # get the fields so we can use them further down
                                     all_rig_odk_fields = one_rig['rig_odk_fields']
-                                    rig_odk_results = conn_odk.ReadDataFromOdkTable(one_rig['rig_odk_table_name'], '"_PARENT_AURI"=\'%s\''  % uri)
+                                    rig_odk_results = conn_odk.ReadDataFromOdkTable(one_rig['rig_odk_table_name'], '"_PARENT_AURI"=\'%s\''  % uri, '"_ORDINAL_NUMBER"')
                                     for rig_odk_result in rig_odk_results:
-                                        # for each occurence, write an item group with an item group repeat key
+                                        # for each occurrence, write an item group with an item group repeat key
                                         odm_xml.group_open(one_rig['rig_oid'], rig_odk_result['_ORDINAL_NUMBER'] )
                                         # loop through the fields
                                         for rig_odk_field in all_rig_odk_fields:
@@ -184,7 +187,7 @@ def cycle_through_syncs():
                 util.uri.write_import_result(uri, job_result)
                 if(util.uri.has_import_errors(uri)):
                     # something went wrong with our import, so report that
-                    my_report.append_to_report('errors in %s - %s' % (uri, one_uri[6]))
+                    my_report.append_to_report('\nerrors in %s - %s' % (uri, one_uri[6]))
                     my_report.append_to_report('log says: %s' % one_uri[7])
                 else:
                     # we didn't find errors, so mark the uri complete

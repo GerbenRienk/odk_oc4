@@ -168,10 +168,14 @@ class ConnToOdkDB(object):
             print(self.init_result)
 
         
-    def ReadDataFromOdkTable(self, table_name, where_clause = 'True'):
+    def ReadDataFromOdkTable(self, table_name, where_clause = 'True', order_clause=''):
         'method to read table subjects into a list'
         cursor = self._conn.cursor(cursor_factory=RealDictCursor)  
-        sql_statement = "SELECT * from " + table_name + " where " + where_clause
+        # sql_statement = "SELECT * from " + table_name + " where " + where_clause
+        sql_statement = "SELECT * from %s where %s" % (table_name, where_clause)
+        if not order_clause == '':
+            sql_statement = sql_statement + 'order by ' + order_clause
+            
         try:
             cursor.execute(sql_statement)
         except:
