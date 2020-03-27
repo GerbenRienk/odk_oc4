@@ -42,7 +42,15 @@ def list_it():
             all_multi_fields = odk_table['multi_fields']
             for multi_field in all_multi_fields:
                 print(multi_field['itemOid'])
-    
+
+        if 'repeating_item_groups' in odk_table:
+            all_repeating_item_groups = odk_table['repeating_item_groups']
+            for repeating_item_group in all_repeating_item_groups:
+                print(multi_field['itemOid'])
+        
+        # repeating_item_groups
+        
+        
 if __name__ == '__main__':
     list_it()
 

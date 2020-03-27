@@ -91,17 +91,33 @@ def cycle_through_syncs():
                         else:
                             # write unsuccessful ones in the report
                             my_report.append_to_report('trying to add study subject resulted in: %s\n' % add_result)
-        
-                    # for now, let's schedule the event anyway
-                    event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
-                    schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
-                    # the result may be none, when the event has already been scheduled
-                    if(schedule_result):
-                        if (is_jsonable(schedule_result)):
-                            result = json.loads(schedule_result)
-                            if(result['eventStatus']!='scheduled'):
-                                # report back errors
-                                my_report.append_to_report('try to schedule event: %s\n' % schedule_result)
+                    
+                    # by default set the serk to 0
+                    serk = 0
+                    # make a distinction between tables for events with a study-event-repeat-key and the rest
+                    if 'serk' in odk_table:
+                        serk = odk_result[odk_table['serk']]
+                        event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01", "studyEventRepeatKey": serk}
+                        while True:
+                            # see if we can update the event with this serk
+                            update_result = api.events.update_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
+                            # if we can, then the event exists and the status code will be 200
+                            if update_result.status_code == 200:
+                                break
+                            # the serk does not exist, so we schedule an extra event and loop again to check if this was enough
+                            schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
+                        
+                    else:
+                        # for now, let's schedule the event anyway
+                        event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
+                        schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
+                        # the result may be none, when the event has already been scheduled
+                        if(schedule_result):
+                            if (is_jsonable(schedule_result)):
+                                result = json.loads(schedule_result)
+                                if(result['eventStatus']!='scheduled'):
+                                    # report back errors
+                                    my_report.append_to_report('try to schedule event: %s\n' % schedule_result)
     
                     # now we have the subject in oc4 plus the event scheduled
                     # we assume that we have the correct study subject oid in our util-db
@@ -118,7 +134,7 @@ def cycle_through_syncs():
                         if (resp_clin_data.status_code == 200):
                             util.uri.set_clinical_data(uri, resp_clin_data.text)
                         
-                        if (not util.uri.force_import(uri) and util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], odk_table['itemgroupOid'], verbose=False)):
+                        if (not util.uri.force_import(uri) and util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], odk_table['itemgroupOid'], serk, verbose=False)):
                             my_report.append_to_report(uri)
                             my_report.append_to_report('didn\'t submit data of %s for %s, because data exist in oc4 ' % (study_subject_id, odk_table['form_data']['FormName']))
                         else:
@@ -128,7 +144,7 @@ def cycle_through_syncs():
                             now = datetime.datetime.now()
                             time_stamp = now.strftime("%Y%m%d%H%M%S")
                             file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
-                            odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'])
+                            odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], serk, verbose=False)
                             odm_xml.group_open(odk_table['itemgroupOid'])
                             # now loop through the odk-fields of the table and add them to the odm-xml
                             all_odk_fields = odk_table['odk_fields']

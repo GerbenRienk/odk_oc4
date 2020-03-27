@@ -56,6 +56,9 @@ class _Utils(object):
             if request_type == 'get':
                 response = requests.get(url, params=params, headers=headers, data=data)
             
+            if request_type == 'put':
+                response = requests.put(url, params=params, headers=headers, data=data)
+            
             if request_type == 'delete':
                 response = requests.delete(url, params=params, headers=headers, data=data)
             
@@ -293,10 +296,40 @@ class _Events(object):
         #submit the request
         result = self.api.utils.request(url=url, headers=headers, request_type='post', data=data, verbose=verbose)
         # hopefully the request resulted in status code 200, which is fine for us, but also 400 is good
-        if(result.status_code == 200 or result.status_code == 200):
+        if(result.status_code == 200 or result.status_code == 400):
             result = None
         # if this is not the case something went wrong, so we just return whatever the response was
          
+        return result
+
+    def update_event(self, study_oid, site_oid, event_info, aut_token, verbose=False):
+        """
+        Change an event
+        """
+        url = self.api.url + "/pages/auth/api/clinicaldata/studies/" + study_oid + "/sites/" + site_oid + "/events"
+        
+        bearer = "bearer " + aut_token
+        headers = {"accept":"*/*","Content-Type": "application/json", "Authorization": bearer}
+        
+        data = json.dumps(event_info)
+        #submit the request
+        result = self.api.utils.request(url=url, headers=headers, request_type='put', data=data, verbose=verbose)
+        # hopefully the request resulted in status code 200, which is fine for us, but also 400 is good
+        #if(result.status_code == 200 or result.status_code == 200):
+            #result = None
+        # if this is not the case something went wrong, so we just return whatever the response was
+         
+        return result
+
+    def check_events(self, study_oid, aut_token, verbose=False):
+        """
+        It's a mystery what this end-point does, but it's in the swagger, so we leave it for now
+        """
+        url = self.api.url + "/pages/auth/api/%s/events/check" % study_oid 
+        bearer = "bearer " + aut_token
+        headers = {"accept":"*/*","Content-Type": "application/json", "Authorization": bearer}
+        #submit the request
+        result = self.api.utils.request(url=url, headers=headers, request_type='get', verbose=verbose)
         return result
 
 class _ClinicalData(object):
@@ -372,18 +405,29 @@ class _ODMParser(object):
     so it can be sent at the end of the day
     '''
 
-    def __init__(self, file_name, study_oid, subject_oid, event_oid, form_data):
+    def __init__(self, file_name, study_oid, subject_oid, event_oid, form_data, serk=0, verbose=False):
         '''
         Constructor
         '''
+        if verbose:
+            print('filename   : %s' % file_name)
+            print('study oid  : %s' % study_oid)
+            print('subject oid: %s' % subject_oid)
+            print('event oid  : %s' % event_oid)
+            print('form data  : %s' % form_data)
+            print('serk       : %s' % serk)
+            
+            
         self._file = open('request_files/%s' % file_name,'w') 
         self._file.write('<ODM>\n')
         self._file.write('\t<ClinicalData StudyOID="%s">\n' % study_oid)
         self._file.write('\t\t<SubjectData SubjectKey="%s">\n' % subject_oid)
-        self._file.write('\t\t\t<StudyEventData StudyEventOID="%s">\n' % event_oid)
+        if serk==0:
+            self._file.write('\t\t\t<StudyEventData StudyEventOID="%s">\n' % event_oid)
+        else:
+            self._file.write('\t\t\t<StudyEventData StudyEventOID="%s" StudyEventRepeatKey="%s">\n' % (event_oid, serk))
         # TODO: add layout id and form status
-        self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormName="ImpTest" OpenClinica:FormLayoutOID="2" OpenClinica:Status="data entry started">\n' % form_data['FormOID'])
-        
+        self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormLayoutOID="%s" OpenClinica:Status="%s">\n' % (form_data['FormOID'], form_data['FormLayoutOID'], form_data['Status']))  
 
     def group_open(self, item_group_oid, igrk=''):
         # ItemGroupRepeatKey="2"
@@ -396,7 +440,7 @@ class _ODMParser(object):
         _final_value = item_value
         if(item_type == 'date'):
             # date can be a date-time or None
-            if(item_value):
+            if(not item_value is None):
                 _final_value = item_value.strftime('%Y-%m-%d')
             else:
                 _final_value = ''

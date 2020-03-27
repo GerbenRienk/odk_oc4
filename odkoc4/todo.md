@@ -1,5 +1,5 @@
 # some things that are not yet clear
-- what will the pattern of the study-subject-id be? will there be a connection between site and id? if not, we must build something between the reading of odk and adding the participants in oc4
+- check for enrol=1 for odk-data
 - will we talk about participant or about subjects?
 - how to deal with subjects already in oc4
 - can we do some stress testing with 20k subjects?
@@ -9,7 +9,6 @@
 - it looks like some questions depend on the site, see column relevant ${site_id}
 - backup of odk and odk_util on aws
 - odk-5 demographics and then especially date of birth
-
 
 # first we should
 - write a workflow about what to do in case of crf-changes
@@ -31,8 +30,12 @@
 - rewrite pg_api so that we can refer to classes without knowing the actual names of the classes
 - rewrite _ODMParser to get all parameters in one json thing
 
-# done that  
+# done that 
+- study event repeat key for unscheduled and protocol deviations
+- complete list will follow for site mapping 
 - store the odm-xml in the util-db
 - write the job-uid to postgres when submitting an import, so we can later retrieve the results
 - make a script to dump the database on aws and retrieve it and restore it locally
 - hard-code in the config file which odk-table corresponds with which oc4-event
+- qr-code for ssid: see also https://opendatakit.org/2017/06/configure-collect-on-many-devices-with-qr-codes/
+- what will the pattern of the study-subject-id be? will there be a connection between site and id? if not, we must build something between the reading of odk and adding the participants in oc4

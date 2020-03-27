@@ -568,7 +568,7 @@ class _URI(object):
             
         return None
 
-    def has_data_in_itemgroup(self, uri, study_event_oid, form_oid, item_group_oid, verbose=False):
+    def has_data_in_itemgroup(self, uri, study_event_oid, form_oid, item_group_oid, serk=0, verbose=False):
         'check for data in a specific item group '
         cursor = self.util._conn.cursor()  
         try:
@@ -592,17 +592,32 @@ class _URI(object):
         # FormData may be in se_data, but maybe not
         forms_exist = False
         if (type(se_data) is dict):
-            if (se_data['@StudyEventOID'] == study_event_oid):
-                if 'FormData' in se_data:
-                    forms_exist = True
-                    form_data = se_data['FormData']
-            
-        if (type(se_data) is list):
-            for one_event in se_data:
-                if (one_event['@StudyEventOID'] == study_event_oid):
-                    if 'FormData' in one_event:
+            # study event can be repeating or not, i.e. have a serk or not
+            if serk == 0:
+                if (se_data['@StudyEventOID'] == study_event_oid):
+                    if 'FormData' in se_data:
                         forms_exist = True
-                        form_data = one_event['FormData']
+                        form_data = se_data['FormData']
+            else:
+                if (se_data['@StudyEventOID'] == study_event_oid) and (se_data['@StudyEventRepeatKey'] == str(serk)):
+                    if 'FormData' in se_data:
+                        forms_exist = True
+                        form_data = se_data['FormData']
+                
+        if (type(se_data) is list):
+            if serk == 0:
+                for one_event in se_data:
+                    if (one_event['@StudyEventOID'] == study_event_oid):
+                        if 'FormData' in one_event:
+                            forms_exist = True
+                            form_data = one_event['FormData']
+            else:
+                for one_event in se_data:
+                    if (one_event['@StudyEventOID'] == study_event_oid) and (one_event['@StudyEventRepeatKey'] == str(serk)):
+                        if 'FormData' in se_data:
+                            forms_exist = True
+                            form_data = se_data['FormData']
+                
                 
         # only continue if forms exist
         if forms_exist: 
