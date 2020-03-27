@@ -179,7 +179,10 @@ def cycle_through_syncs():
                             odm_xml.close_file()
                             
                             # now submit the composed odm-xml file to the rest api
-                            my_report.append_to_report('submitting data of %s for %s' % (odk_table['form_data']['FormName'], study_subject_id))
+                            study_event_info = ''
+                            if not serk == 0 :
+                               study_event_info = ', event repeat key is %s' % serk 
+                            my_report.append_to_report('submitting data of %s for %s%s' % (odk_table['form_data']['FormName'], study_subject_id, study_event_info))
                             import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
                             
                             # do the administration
