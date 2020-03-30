@@ -130,7 +130,7 @@
 	"FormOID": "F_CRF06MEDICAL",
 	"FormName": "CRF06: Medical History",
 	"FormLayoutOID": "v.0.1",
-	"Status": "data entry started"},
+	"Status": "data entry complete"},
 "itemgroupOid": "IG_CRF06_MEDHIST_GRP",
 "odk_fields": [
 	{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D0_DIA",	"itemOid": "I_CRF06_D0_DIA",	"item_type": "string"},
@@ -593,7 +593,7 @@
 "form_data": {
 	"FormOID": "F_CRF14QUALITA",
 	"FormName": "CRF14: Qualitative data Confirmation",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.1.0",
 	"Status": "data entry started"
 	},
 "itemgroupOid": "IG_CRF14_DATA_QUAL_GRP",

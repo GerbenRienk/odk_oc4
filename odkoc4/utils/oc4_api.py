@@ -427,7 +427,10 @@ class _ODMParser(object):
         else:
             self._file.write('\t\t\t<StudyEventData StudyEventOID="%s" StudyEventRepeatKey="%s">\n' % (event_oid, serk))
         # TODO: add layout id and form status
-        self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormLayoutOID="%s" OpenClinica:Status="%s">\n' % (form_data['FormOID'], form_data['FormLayoutOID'], form_data['Status']))  
+        if form_data['Status'] == 'data entry started':
+            self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormName="this_is_a_bug" OpenClinica:FormLayoutOID="%s" OpenClinica:Status="%s">\n' % (form_data['FormOID'], form_data['FormLayoutOID'], form_data['Status']))
+        else:
+            self._file.write('\t\t\t\t<FormData FormOID="%s" OpenClinica:FormLayoutOID="%s" OpenClinica:Status="%s">\n' % (form_data['FormOID'], form_data['FormLayoutOID'], form_data['Status']))  
 
     def group_open(self, item_group_oid, igrk=''):
         # ItemGroupRepeatKey="2"
