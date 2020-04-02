@@ -31,6 +31,7 @@
 - rewrite _ODMParser to get all parameters in one json thing
 
 # done that 
+- upload CRF11 to odk aggregate
 - study event repeat key for unscheduled and protocol deviations
 - complete list will follow for site mapping 
 - store the odm-xml in the util-db

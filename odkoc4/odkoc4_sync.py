@@ -230,6 +230,20 @@ def cycle_through_syncs():
         if difference > max_difference:
             break
     
+    # retrieve all candidates for check
+    my_report.append_to_report('\nenrolment check')
+    all_check_enrol = util.subjects.list_check_enrol()
+    for check_enrol in all_check_enrol:
+        study_subject_id=check_enrol[0]
+        study_subject_oid=check_enrol[1]
+        # check if we can find the enrollment in clinical data
+        if util.subjects.check_enrol(study_subject_oid) == True:
+            util.subjects.set_enrol_ok(study_subject_oid)
+        else:
+            my_report.append_to_report('data were imported for %s, but the subject is not enrolled' % study_subject_id)
+            util.subjects.set_report_date(study_subject_oid)
+
+    
     my_report.append_to_report('\nfinished looping from %s till %s.' % (start_time, current_time))
     # close the file so we can send it
     my_report.close_file()

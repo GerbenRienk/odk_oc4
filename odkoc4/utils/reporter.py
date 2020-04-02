@@ -19,7 +19,7 @@ class Reporter(object):
         self._file.write('start of report\n')
         
     def append_to_report(self, report_line):
-        self._file.write(report_line + '\n')
+        self._file.write('%s\n' % report_line)
         return None
     
     def close_file(self):

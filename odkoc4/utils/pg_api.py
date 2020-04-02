@@ -241,6 +241,31 @@ class _Subjects(object):
         results = cursor.fetchall()
         return results
         
+    def list_check_enrol(self):
+        'method to read view no_enrol into a list'
+        cursor = self.util._conn.cursor()  
+        try:
+            sql_query = 'SELECT * FROM no_enrol'
+            cursor.execute(sql_query)
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute %s : %s " % (sql_query, error))
+        
+        results = cursor.fetchall()
+        return results
+
+    def get_subject_clinical_data(self, study_subject_oid):
+        'method to read table subjects into a list'
+        cursor = self.util._conn.cursor()  
+        try:
+            sql_query = "SELECT clinical_data_before_import FROM uri_status  where (not clinical_data_before_import is null) and study_subject_oid='%s'" % study_subject_oid
+            cursor.execute(sql_query)
+        except (Exception, psycopg2.Error) as error :
+            print ("not able to execute %s : %s " % (sql_query, error))
+        
+        results = cursor.fetchall()
+        return results
+
+        
     def get_oid(self, study_subject_id):
         cursor = self.util._conn.cursor()  
         sql_statement = "select study_subject_oid from study_subject_oc where study_subject_id=%s"
@@ -268,6 +293,78 @@ class _Subjects(object):
             print ("using '%s' " % (sql_statement))
         self.util._conn.commit()
         return None
+
+    def check_enrol(self, study_subject_oid):
+        # get all clinical data for this subject and iterate to find item 
+        # with item oid I_CRF02_ENROL and then retrieve the value 
+        # by default set result to false
+        ce_result = False 
+        all_clinical_data = self.get_subject_clinical_data(study_subject_oid)
+        for clinical_data in all_clinical_data:
+            cd_json = json.loads(clinical_data[0])
+            se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
+            
+            # create an empty list
+            construct_se_data=[]
+            if (type(se_data) is dict):
+                construct_se_data.append(se_data)       
+            if (type(se_data) is list):
+                construct_se_data=se_data
+                
+            for se in construct_se_data:
+                if 'FormData' in se_data:
+                    form_data = se['FormData']
+                    construct_form_data=[]
+                    if (type(form_data) is dict):
+                        construct_form_data.append(form_data)  
+                    if (type(form_data) is list):
+                        construct_form_data=form_data
+                        
+                    for one_form in construct_form_data:
+                        item_group_data = one_form['ItemGroupData']
+                        construct_group_data=[]
+                        if (type(item_group_data) is dict):
+                            construct_group_data.append(item_group_data)  
+                        if (type(item_group_data) is list):
+                            construct_group_data=item_group_data
+                            
+                        for one_group in construct_group_data:
+                            item_data = one_group['ItemData']
+                
+                            construct_item_data=[]
+                            if (type(item_data) is dict):
+                                construct_item_data.append(item_data)  
+                            if (type(item_data) is list):
+                                construct_item_data=item_data
+                                
+                            for one_item in construct_item_data:
+                                if one_item['@ItemOID'] == 'I_CRF02_ENROL':
+                                    if one_item['@Value'] == '1':
+                                        ce_result = True
+           
+        return ce_result
+
+    def set_enrol_ok(self, study_subject_oid):
+        # enrol is ok, so update the table
+        cursor = self.util._conn.cursor()  
+        update_statement = "update study_subject_oc set enrol_ok=True where study_subject_oid='%s'" % (study_subject_oid)
+        try:
+            cursor.execute(update_statement)
+        except:
+            print ("not able to execute the update %s" % update_statement)
+        self.util._conn.commit()
+        return
+        
+    def set_report_date(self, study_subject_oid):
+        # enrol is ok, so update the table
+        cursor = self.util._conn.cursor()  
+        update_statement = "update study_subject_oc set report_date=Now() where study_subject_oid='%s'" % (study_subject_oid)
+        try:
+            cursor.execute(update_statement)
+        except:
+            print ("not able to execute the update %s" % update_statement)
+        self.util._conn.commit()
+        return
 
     def check_and_update(self, study_subject_id, study_subject_oid):
         # first check if the id is in the util db
