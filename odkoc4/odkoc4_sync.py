@@ -144,7 +144,7 @@ def cycle_through_syncs():
                             now = datetime.datetime.now()
                             time_stamp = now.strftime("%Y%m%d%H%M%S")
                             file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
-                            odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], serk, verbose=True)
+                            odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], serk, verbose=False)
                             odm_xml.group_open(odk_table['itemgroupOid'])
                             # now loop through the odk-fields of the table and add them to the odm-xml
                             all_odk_fields = odk_table['odk_fields']

@@ -351,7 +351,7 @@
 	]
 },
 {
-"table_name": "odk_am001.\"10111_CORE\"",
+"table_name": "odk_am001.\"1011_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
