@@ -1,14 +1,13 @@
 # some things that are not yet clear
-- check for enrol=1 for odk-data
+- it looks like some questions depend on the site, see column relevant ${site_id}
+- odk-5 demographics and then especially date of birth
+
 - will we talk about participant or about subjects?
-- how to deal with subjects already in oc4
 - can we do some stress testing with 20k subjects?
-- should we set the status of the crf to started or to complete?
 - shall we make odk_admin data-entry for just the first site? it now has the role of data-entry-person for the study as a whole
 - discuss naming conventions
-- it looks like some questions depend on the site, see column relevant ${site_id}
 - backup of odk and odk_util on aws
-- odk-5 demographics and then especially date of birth
+
 
 # first we should
 - write a workflow about what to do in case of crf-changes
@@ -40,3 +39,6 @@
 - hard-code in the config file which odk-table corresponds with which oc4-event
 - qr-code for ssid: see also https://opendatakit.org/2017/06/configure-collect-on-many-devices-with-qr-codes/
 - what will the pattern of the study-subject-id be? will there be a connection between site and id? if not, we must build something between the reading of odk and adding the participants in oc4
+- check for enrol=1 for odk-data
+- how to deal with subjects already in oc4
+- should we set the status of the crf to started or to complete?
