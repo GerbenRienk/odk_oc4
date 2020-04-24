@@ -134,7 +134,14 @@ def cycle_through_syncs():
                         if (resp_clin_data.status_code == 200):
                             util.uri.set_clinical_data(uri, resp_clin_data.text)
                         
-                        if (not util.uri.force_import(uri) and util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], odk_table['itemgroupOid'], serk, verbose=False)):
+                        # before we try to compose the data to import, we must check for each item-group if there's data in oc4
+                        has_data = False
+                        all_itemgroups = odk_table['itemgroups']
+                        for item_group in all_itemgroups:    
+                                if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=False):
+                                    has_data = True
+                        
+                        if (not util.uri.force_import(uri) and has_data):
                             my_report.append_to_report(uri)
                             my_report.append_to_report('didn\'t submit data of %s for %s, because data exist in oc4 ' % (study_subject_id, odk_table['form_data']['FormName']))
                         else:
@@ -145,20 +152,22 @@ def cycle_through_syncs():
                             time_stamp = now.strftime("%Y%m%d%H%M%S")
                             file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
                             odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], serk, verbose=False)
-                            odm_xml.group_open(odk_table['itemgroupOid'])
-                            # now loop through the odk-fields of the table and add them to the odm-xml
-                            all_odk_fields = odk_table['odk_fields']
-                            for odk_field in all_odk_fields:
-                                odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], odk_field['item_type'])
-                            # one last loop for multi selects
-                            if 'multi_fields' in odk_table:
-                                all_multi_fields = odk_table['multi_fields']
-                                for multi_field in all_multi_fields:
-                                    # mind that we use the uri to get all the selected values
-                                    selected_values = conn_odk.GetMultiAnswers(multi_field['odk_table_name'], uri)
-                                    odm_xml.add_multi_item(multi_field['itemOid'], selected_values)
-                            # now close the ungrouped group
-                            odm_xml.group_close()
+                            
+                            for item_group in all_itemgroups:
+                                odm_xml.group_open(item_group['itemgroupOid'])
+                                # now loop through the odk-fields of the table and add them to the odm-xml
+                                all_odk_fields = item_group['odk_fields']
+                                for odk_field in all_odk_fields:
+                                    odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], odk_field['item_type'])
+                                # one last loop for multi selects
+                                if 'multi_fields' in odk_table:
+                                    all_multi_fields = odk_table['multi_fields']
+                                    for multi_field in all_multi_fields:
+                                        # mind that we use the uri to get all the selected values
+                                        selected_values = conn_odk.GetMultiAnswers(multi_field['odk_table_name'], uri)
+                                        odm_xml.add_multi_item(multi_field['itemOid'], selected_values)
+                                # now close the ungrouped group
+                                odm_xml.group_close()
                             
                             # check if we have repeating item groups
                             if 'repeating_item_groups' in odk_table:
