@@ -17,7 +17,7 @@ from utils.reporter import Reporter
 
 from _operator import itemgetter
 
-def list_it():
+def check_it():
     my_report = Reporter()
     config=readDictFile('odkoc4.config')
     with open('config/data_definition.json') as json_file:
@@ -31,27 +31,23 @@ def list_it():
     my_report.append_to_report('try to connect to odk database, result: %s \n' % conn_odk.init_result)
         
         
-    # now loop through all the odk-tables in the data-definition
-    for odk_table in data_def['odk_tables']:
-        my_report.append_to_report('\n' + odk_table['table_name'])
-        all_itemgroups = odk_table['itemgroups']
-        all_odk_fields = odk_table['odk_fields']
-        for odk_field in all_odk_fields:
-            my_report.append_to_report(odk_field['odk_column'] + '\t' + odk_field['itemOid'] + '\t' + odk_field['item_type'])
-        # one last round for multi selects
-        if 'multi_fields' in odk_table:
-            all_multi_fields = odk_table['multi_fields']
-            for multi_field in all_multi_fields:
-                print(multi_field['itemOid'])
-
-        if 'repeating_item_groups' in odk_table:
-            all_repeating_item_groups = odk_table['repeating_item_groups']
-            for repeating_item_group in all_repeating_item_groups:
-                print(multi_field['itemOid'])
+    # retrieve all candidates for check
+    all_check_enrol = util.subjects.list_check_enrol()
+    for check_enrol in all_check_enrol:
+        study_subject_id=check_enrol[0]
+        study_subject_oid=check_enrol[1]
+        # check if we can find the enrollment in clinical data
+        if util.subjects.check_enrol(study_subject_oid) == True:
+            util.subjects.set_enrol_ok(study_subject_oid)
+        else:
+            my_report.append_to_report('data were imported for %s, but the subject is not enrolled' % study_subject_id)
+            util.subjects.set_report_date(study_subject_oid)
         
-        # repeating_item_groups
+    # if you find enrol = 1 set enrol_ok = true
+    
+    # else add to the report and set set report date to now
         
         
 if __name__ == '__main__':
-    list_it()
+    check_it()
 
