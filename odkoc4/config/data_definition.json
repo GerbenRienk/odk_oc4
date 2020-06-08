@@ -399,6 +399,317 @@
 		]
 	}]
 }
+,
+{
+"table_name": "odk_am001.\"1010_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF11DAY0POC",
+	"FormName": "D0 10: Diagnostic Test Results",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry complete"
+	},
+"itemgroups": [{
+	"itemgroupOid": "IG_CRF11_DIAG_TEST_RES_GRP",
+	"odk_fields": [
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_ND",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_RESULT_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP3_CTRL_BL_CUL_RDT",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP3_CTRL_BL_CUL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP3_CTRL_BL_CUL_RDT_ND",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP3_CTRL_BL_CUL_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP3_CTRL_BL_CUL_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP3_CTRL_BL_CUL_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_BL_CUL_RDT_RESULT_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAG2WELCOMETESTRESTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2WELCOMETESTRESTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_DONE",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2WELCOMETESTRESTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_ND",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2WELCOMETESTRESTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2WELCOMETESTRESTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2WELCOMETESTRESTSTCTRLRESGRP9_CTRL_STOOL_MIC_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_STOOL_MIC_RDT_RESULT_S",	"item_type": "string"},
+
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP5_CTRL_BL_FILM_RDT",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP5_CTRL_BL_FILM_RDT_DONE",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP5_CTRL_BL_FILM_RDT_ND",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP5_CTRL_BL_FILM_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP5_CTRL_BL_FILM_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP5_CTRL_BL_FILM_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_BL_FILM_RDT_RESULT_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP6_CTRL_U_RDT",	"itemOid": "I_CRF11_CTRL_U_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP6_CTRL_U_RDT_DONE",	"itemOid": "I_CRF11_CTRL_U_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP6_CTRL_U_RDT_ND",	"itemOid": "I_CRF11_CTRL_U_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP6_CTRL_U_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_U_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP6_CTRL_U_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_U_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP6_CTRL_U_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_U_RDT_RESULT_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP2_CTRL_HIV_RDT",	"itemOid": "I_CRF11_CTRL_HIV_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP2_CTRL_HIV_RDT_DONE",	"itemOid": "I_CRF11_CTRL_HIV_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP2_CTRL_HIV_RDT_ND",	"itemOid": "I_CRF11_CTRL_HIV_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP2_CTRL_HIV_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_HIV_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP2_CTRL_HIV_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_HIV_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP7_CTRL_CXR_RDT",	"itemOid": "I_CRF11_CTRL_CXR_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP7_CTRL_CXR_RDT_DONE",	"itemOid": "I_CRF11_CTRL_CXR_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP7_CTRL_CXR_RDT_ND",	"itemOid": "I_CRF11_CTRL_CXR_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP7_CTRL_CXR_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_CXR_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_CTRL_RES_GRP7_CTRL_CXR_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_CXR_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_DONE",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_ND",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_ND_SPE",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP10_DIPSTICK_NIT_RDT_RESULT",	"itemOid": "I_CRF11_DIPSTICK_NIT_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT",	"itemOid": "I_CRF11_TYP_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_DONE",	"itemOid": "I_CRF11_TYP_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_ND",	"itemOid": "I_CRF11_TYP_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_ND_SPE",	"itemOid": "I_CRF11_TYP_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_RESULT",	"itemOid": "I_CRF11_TYP_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP2_TYP_RDT_RESULT_S",	"itemOid": "I_CRF11_TYP_RDT_RESULT_S",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT",	"itemOid": "I_CRF11_STREPT_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_DONE",	"itemOid": "I_CRF11_STREPT_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_ND",	"itemOid": "I_CRF11_STREPT_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_ND_SPE",	"itemOid": "I_CRF11_STREPT_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP3_STREPT_RDT_RESULT",	"itemOid": "I_CRF11_STREPT_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT",	"itemOid": "I_CRF11_FLU_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_DONE",	"itemOid": "I_CRF11_FLU_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_ND",	"itemOid": "I_CRF11_FLU_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_ND_SPE",	"itemOid": "I_CRF11_FLU_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP4_FLU_RDT_RESULT",	"itemOid": "I_CRF11_FLU_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT",	"itemOid": "I_CRF11_RSV_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_DONE",	"itemOid": "I_CRF11_RSV_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_ND",	"itemOid": "I_CRF11_RSV_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_ND_SPE",	"itemOid": "I_CRF11_RSV_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP5_RSV_RDT_RESULT",	"itemOid": "I_CRF11_RSV_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT",	"itemOid": "I_CRF11_STREP_PNEU_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_DONE",	"itemOid": "I_CRF11_STREP_PNEU_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_ND",	"itemOid": "I_CRF11_STREP_PNEU_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_ND_SPE",	"itemOid": "I_CRF11_STREP_PNEU_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP6_STREP_PNEU_RDT_RESULT",	"itemOid": "I_CRF11_STREP_PNEU_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_DONE",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_ND",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_ND_SPE",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DEBGUE_NS1_AG_RDT_RESULT",	"itemOid": "I_CRF11_DEBGUE_NS1AG_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_DONE",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_ND",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_ND_SPE",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DEBGUE_IGM_RDT_RESULT",	"itemOid": "I_CRF11_DEBGUE_IGM_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_1_DENGUE_NS1_AG",	"itemOid": "I_CRF11_DENGUE_NS1AG",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_2_DENGUE_IGM",	"itemOid": "I_CRF11_DENGUE_IGM",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT",	"itemOid": "I_CRF11_SCRUB_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_DONE",	"itemOid": "I_CRF11_SCRUB_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_ND",	"itemOid": "I_CRF11_SCRUB_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_ND_SPE",	"itemOid": "I_CRF11_SCRUB_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP8_SCRUB_RDT_RESULT",	"itemOid": "I_CRF11_SCRUB_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_DONE",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_ND",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_ND_SPE",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP9_DIPSTICK_EST_RDT_RESULT",	"itemOid": "I_CRF11_DIPSTICK_EST_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT",	"itemOid": "I_CRF11_MAL_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_DONE",	"itemOid": "I_CRF11_MAL_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_ND",	"itemOid": "I_CRF11_MAL_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_ND_SPE",	"itemOid": "I_CRF11_MAL_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_RESULT",	"itemOid": "I_CRF11_MAL_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_SIGN_OUT_GRP_DIAG_RES_COMP_D",	"itemOid": "I_CRF11_DIAG_RES_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_SIGN_OUT_GRP_DIAG_RES_INV_INIT",	"itemOid": "I_CRF11_DIAG_RES_INV_INIT",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP",	"itemOid": "I_CRF11_CRP",	"item_type": "real"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP_DONE",	"itemOid": "I_CRF11_CRP_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP_ND",	"itemOid": "I_CRF11_CRP_ND",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP_ND_SPE",	"itemOid": "I_CRF11_CRP_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP_REQ",	"itemOid": "I_CRF11_CRP_REQ",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_WBC_RES_GRP_WBC",	"itemOid": "I_CRF11_WBC",	"item_type": "real"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_WBC_RES_GRP_WBC_DONE",	"itemOid": "I_CRF11_WBC_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_WBC_RES_GRP_WBC_ND",	"itemOid": "I_CRF11_WBC_ND",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_WBC_RES_GRP_WBC_ND_SPE",	"itemOid": "I_CRF11_WBC_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_WBC_RES_GRP_WBC_REQ",	"itemOid": "I_CRF11_WBC_REQ",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_WBC_RES_GRP_WBC_TEST_METH",	"itemOid": "I_CRF11_WBC_TEST_METH",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_LYM_RES_GRP_LYM",	"itemOid": "I_CRF11_LYM",	"item_type": "real"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_LYM_RES_GRP_LYM_DONE",	"itemOid": "I_CRF11_LYM_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_LYM_RES_GRP_LYM_ND",	"itemOid": "I_CRF11_LYM_ND",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_LYM_RES_GRP_LYM_ND_SPE",	"itemOid": "I_CRF11_LYM_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_LYM_RES_GRP_LYM_REQ",	"itemOid": "I_CRF11_LYM_REQ",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_LYM_RES_GRP_LYM_TEST_METH",	"itemOid": "I_CRF11_LYM_TEST_METH",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_NEUT_RES_GRP_NEUT",	"itemOid": "I_CRF11_NEUT",	"item_type": "real"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_NEUT_RES_GRP_NEUT_DONE",	"itemOid": "I_CRF11_NEUT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_NEUT_RES_GRP_NEUT_ND",	"itemOid": "I_CRF11_NEUT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_NEUT_RES_GRP_NEUT_ND_SPE",	"itemOid": "I_CRF11_NEUT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_NEUT_RES_GRP_NEUT_REQ",	"itemOid": "I_CRF11_NEUT_REQ",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_NEUT_RES_GRP_NEUT_TEST_METH",	"itemOid": "I_CRF11_NEUT_TEST_METH",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_RES_GRP_ALYM",	"itemOid": "I_CRF11_ALYM",	"item_type": "real"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_RES_GRP_ALYM_DONE",	"itemOid": "I_CRF11_ALYM_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_RES_GRP_ALYM_ND",	"itemOid": "I_CRF11_ALYM_ND",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_RES_GRP_ALYM_ND_SPE",	"itemOid": "I_CRF11_ALYM_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_RES_GRP_ALYM_REQ",	"itemOid": "I_CRF11_ALYM_REQ",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_RES_GRP_ALYM_TEST_METH",	"itemOid": "I_CRF11_ALYM_TEST_METH",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ANEUT_RES_GRP_ANEUT",	"itemOid": "I_CRF11_ANEUT",	"item_type": "real"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ANEUT_RES_GRP_ANEUT_DONE",	"itemOid": "I_CRF11_ANEUT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ANEUT_RES_GRP_ANEUT_ND",	"itemOid": "I_CRF11_ANEUT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ANEUT_RES_GRP_ANEUT_ND_SPE",	"itemOid": "I_CRF11_ANEUT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ANEUT_RES_GRP_ANEUT_REQ",	"itemOid": "I_CRF11_ANEUT_REQ",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ANEUT_RES_GRP_ANEUT_TEST_METH",	"itemOid": "I_CRF11_ANEUT_TEST_METH",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_ALYM_NEUT_GRP_NEU_LYM_RATIO",	"itemOid": "I_CRF11_NEU_LYM_RATIO",	"item_type": "real"},
+
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_D",	"itemOid": "I_CRF11_DIAG_SAMP_COL_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_DT",	"itemOid": "I_CRF11_DIAG_SAMP_COL_DT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_HR",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_HR",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_MIN",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_MIN",	"item_type": "string"},
+
+		{"odk_column": "PAG2WLCOMETESTRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2WLCOMETESTRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_DONE",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2WLCOMETESTRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_ND",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2WLCOMETESTRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2WLCOMETESTRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2WLCOMETESTRSTSTCTRLRESGRP10_CTRL_GRAM_STAIN_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_GRAM_STAIN_RDT_RESULT_",	"item_type": "string"},
+
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP4_CTRL_BAT_RDT",	"itemOid": "I_CRF11_CTRL_BAT_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_DONE",	"itemOid": "I_CRF11_CTRL_BAT_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_ND",	"itemOid": "I_CRF11_CTRL_BAT_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_BAT_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_BAT_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP4_CTRL_BAT_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_BAT_RDT_RESULT_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP8_CTRL_AFB_RDT",	"itemOid": "I_CRF11_CTRL_AFB_RDT",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_DONE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_ND",	"itemOid": "I_CRF11_CTRL_AFB_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_ND_SPE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_RESULT",	"itemOid": "I_CRF11_CTRL_AFB_RDT_RESULT",	"item_type": "string"},
+		{"odk_column": "PAG2_WELCOME_TEST_RES_TST_CTRL_RES_GRP8_CTRL_AFB_RDT_RESULT_SPE",	"itemOid": "I_CRF11_CTRL_AFB_RDT_RESULT_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_OTHER_TEST",	"itemOid": "I_CRF11_OTHER_TEST",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_BL_SAMP_COL",	"itemOid": "I_CRF11_DIAG_BL_SAMP_COL",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_BL_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_BL_SAMP_COL_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_START_DT",	"itemOid": "I_CRF11_DIAG_START_DT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_START_DT_2",	"itemOid": "I_CRF11_DIAG_START_DT_2",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_START_T_HR",	"itemOid": "I_CRF11_DIAG_START_T_HR",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_START_T_MIN",	"itemOid": "I_CRF11_DIAG_START_T_MIN",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SW_SAMP_COL",	"itemOid": "I_CRF11_DIAG_SW_SAMP_COL",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SW_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_SW_SAMP_COL_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_U_SAMP_COL",	"itemOid": "I_CRF11_DIAG_U_SAMP_COL",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_U_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_U_SAMP_COL_SPE",	"item_type": "string"}
+		]
+	}],
+"repeating_item_groups": [
+	{"rig_odk_table_name":"odk_am001.\"1010_PAGE2_WELCOME_TEST_RES_OTHER_TEST_RES_GRP\"",
+	"rig_oid": "IG_CRF11_DIAG_TEST_RES_GRP_RPT",
+	"rig_odk_fields": [
+		{"odk_column": "OTHER_TEST_DONE",	"itemOid": "I_CRF11_OTHER_TEST_DONE",	"item_type": "string"},
+		{"odk_column": "OTHER_TEST_ND",	"itemOid": "I_CRF11_OTHER_TEST_ND",	"item_type": "string"},
+		{"odk_column": "OTHER_TEST_ND_SPE",	"itemOid": "I_CRF11_OTHER_TEST_ND_SPE",	"item_type": "string"},
+		{"odk_column": "OTHER_TEST_RES",	"itemOid": "I_CRF11_OTHER_TEST_RES",	"item_type": "string"},
+		{"odk_column": "OTHER_TEST_SPE",	"itemOid": "I_CRF11_OTHER_TEST_SPE",	"item_type": "string"}
+		]
+	}]
+}
+,
+{
+"table_name": "odk_am001.\"10111_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF12DIAGNOS",
+	"FormName": "D0 11: Diagnosis Post PoC",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry complete"
+	},
+"itemgroups": [{
+	"itemgroupOid": "IG_CRF12_DIAG_POST_GRP",
+	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG",	"itemOid": "I_CRF12_CONFIRMED_DIAG",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_PRESENT",	"itemOid": "I_CRF12_CONFIRMED_DIAG_PRESENT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_RESP",	"itemOid": "I_CRF12_CONFIRMED_DIAG_RESP",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_SPE",	"itemOid": "I_CRF12_CONFIRMED_DIAG_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_POST_ANTI_BIO",	"itemOid": "I_CRF12_DIAG_POST_ANTI_BIO",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_RES_REVIEWED",	"itemOid": "I_CRF12_DIAG_RES_REVIEWED",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_COMP_D",	"itemOid": "I_CRF12_DIAG_POST_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_INV_INIT",	"itemOid": "I_CRF12_DIAG_POST_INV_INIT",	"item_type": "string"}
+		]
+	}]
+}
+,
+{
+"table_name": "odk_am001.\"10112_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF13PRESCRI",
+	"FormName": "D0 12: Prescription",
+	"FormLayoutOID": "v.0.1",
+	"Status": "data entry complete"
+	},
+	"itemgroups": [{
+	"itemgroupOid": "IG_CRF13_PRESC_GRP",
+	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_COMP_D",	"itemOid": "I_CRF13_PRESC_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_INV_INIT",	"itemOid": "I_CRF13_PRESC_INV_INIT",	"item_type": "string"}
+		]
+		}],
+	"repeating_item_groups": [
+		{"rig_odk_table_name":"odk_am001.\"10112_PAGE_WELCOME_PRESC_GRP1_GRP1\"",
+		"rig_oid": "IG_CRF13_PRESC_GRP_RPT",
+		"rig_odk_fields": [
+			{"odk_column": "ANTI_BIO",	"itemOid": "I_CRF13_ANTI_BIO",	"item_type": "string"},
+			{"odk_column": "DOSE_FREQ",	"itemOid": "I_CRF13_DOSE_FREQ",	"item_type": "string"},
+			{"odk_column": "DOSE_FREQ_SPE",	"itemOid": "I_CRF13_DOSE_FREQ_SPE",	"item_type": "string"},
+			{"odk_column": "DRUG_NAME",	"itemOid": "I_CRF13_DRUG_NAME",	"item_type": "string"},
+			{"odk_column": "DUR",	"itemOid": "I_CRF13_DUR",	"item_type": "integer"},
+			{"odk_column": "DUR_UNIT",	"itemOid": "I_CRF13_DUR_UNIT",	"item_type": "string"},
+			{"odk_column": "MG_PER_DOSE",	"itemOid": "I_CRF13_MG_PER_DOSE",	"item_type": "string"}
+			]}
+	]
+}
+,
+{
+"table_name": "odk_am001.\"10114_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF14QUALITA",
+	"FormName": "D0 13: Qualitative data Confirmation",
+	"FormLayoutOID": "v.1.0",
+	"Status": "data entry complete"
+	},
+"itemgroups": [{
+	"itemgroupOid": "IG_CRF14_DATA_QUAL_GRP",
+"odk_fields": [
+	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_COMP_D",	"itemOid": "I_CRF14_DQ_COMP_D",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_INV_INIT",	"itemOid": "I_CRF14_DQ_INV_INIT",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_BASE_KNOW_COL",	"itemOid": "I_CRF14_BASE_KNOW_COL",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_BASE_KNOW_COL_RSN",	"itemOid": "I_CRF14_BASE_KNOW_COL_RSN",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL",	"itemOid": "I_CRF14_COMM_MSG_DEL",	"item_type": "string"},
+	{"odk_column": "PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN_SPE",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN_SPE",	"item_type": "string"}
+	],
+"multi_fields": [
+	{"odk_table_name": "odk_am001.\"10114_PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN\"",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN"}
+	]
+	}]
+}
 
 ]
 }
