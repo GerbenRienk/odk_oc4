@@ -24,9 +24,15 @@ def cycle_through_syncs():
     
     # read configuration file for usernames and passwords and other parameters
     config=readDictFile('odkoc4.config')
+    
+    # based on the setting environment we use the test- or the prod-data_definition
     # read configuration file for tables, fields and oc4 oid's
-    with open('config/data_definition.json') as json_file:
-        data_def = json.load(json_file)
+    if(config['environment'] == 'test'):
+        with open('config/data_definition_test.json') as json_file:
+            data_def = json.load(json_file)
+    else:
+        with open('config/data_definition_prod.json') as json_file:
+            data_def = json.load(json_file)
     
     # for selecting the correct site, based on the first 7 characters of the study subject id, we need 
     # the dictionary with site mapping
@@ -37,7 +43,7 @@ def cycle_through_syncs():
     aut_token = api.sessions.get_authentication_token(config['autApiUrl'], config['oc4_username'], config['oc4_password'])
     
     # create connections to the postgresql databases
-    my_report.append_to_report("preparing connections")
+    my_report.append_to_report("preparing connections in %s" % config['environment'])
     util = UtilDB(config, verbose=False)
     my_report.append_to_report('try to connect to util database, result: %s ' % util.init_result)
     conn_odk= ConnToOdkDB(config, verbose=False)
@@ -57,7 +63,6 @@ def cycle_through_syncs():
         for odk_table in data_def['odk_tables']:
             # 1: start with retrieving the rows of this table
             odk_results = conn_odk.ReadDataFromOdkTable(odk_table['table_name'])
-                        
             for odk_result in odk_results:
                 # check if StudySubjectID from odk is already in oc
                 add_subject_to_oc = True
@@ -71,7 +76,7 @@ def cycle_through_syncs():
                 for prefix, mapped_site_oid in site_mapping.items():
                     if (study_subject_id.find(prefix) == 0):
                         site_oid = mapped_site_oid
-                
+
                 if site_oid == 'no_site':
                     my_report.append_to_report('could not find a site for study subject %s in %s' % (study_subject_id, odk_table['table_name']))
                 else:   
@@ -96,6 +101,8 @@ def cycle_through_syncs():
                     serk = 0
                     # make a distinction between tables for events with a study-event-repeat-key and the rest
                     if 'serk' in odk_table:
+                        # to prevent looping indefinitely we count the retries
+                        retries = 0
                         serk = odk_result[odk_table['serk']]
                         event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01", "studyEventRepeatKey": serk}
                         while True:
@@ -106,7 +113,10 @@ def cycle_through_syncs():
                                 break
                             # the serk does not exist, so we schedule an extra event and loop again to check if this was enough
                             schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
-                        
+                            retries = retries + 1
+                            if(retries > 10):
+                                my_report.append_to_report('tried more than 10 times without success to schedule %s, serk %s, for %s' % (odk_table['eventOid'], serk, study_subject_id))
+                                break
                     else:
                         # for now, let's schedule the event anyway
                         event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
@@ -117,7 +127,7 @@ def cycle_through_syncs():
                                 result = json.loads(schedule_result)
                                 if(result['eventStatus']!='scheduled'):
                                     # report back errors
-                                    my_report.append_to_report('try to schedule event: %s\n' % schedule_result)
+                                    my_report.append_to_report('trying to schedule event resulted in: %s\n' % schedule_result)
     
                     # now we have the subject in oc4 plus the event scheduled
                     # we assume that we have the correct study subject oid in our util-db
@@ -138,8 +148,8 @@ def cycle_through_syncs():
                         has_data = False
                         all_itemgroups = odk_table['itemgroups']
                         for item_group in all_itemgroups:    
-                                if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=False):
-                                    has_data = True
+                            if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=False):
+                                has_data = True
                         
                         if (not util.uri.force_import(uri) and has_data):
                             my_report.append_to_report(uri)
@@ -152,23 +162,25 @@ def cycle_through_syncs():
                             time_stamp = now.strftime("%Y%m%d%H%M%S")
                             file_name = 'odm_%s_%s.xml' % (study_subject_oid, time_stamp)
                             odm_xml = api.odm_parser(file_name, data_def['studyOid'], study_subject_oid, odk_table['eventOid'], odk_table['form_data'], serk, verbose=False)
-                            
+                                                        
                             for item_group in all_itemgroups:
                                 odm_xml.group_open(item_group['itemgroupOid'])
                                 # now loop through the odk-fields of the table and add them to the odm-xml
                                 all_odk_fields = item_group['odk_fields']
                                 for odk_field in all_odk_fields:
                                     odm_xml.add_item(odk_field['itemOid'], odk_result[odk_field['odk_column']], odk_field['item_type'])
+                                
                                 # one last loop for multi selects
-                                if 'multi_fields' in odk_table:
-                                    all_multi_fields = odk_table['multi_fields']
+                                if 'multi_fields' in item_group:
+                                    all_multi_fields = item_group['multi_fields']
                                     for multi_field in all_multi_fields:
                                         # mind that we use the uri to get all the selected values
                                         selected_values = conn_odk.GetMultiAnswers(multi_field['odk_table_name'], uri)
                                         odm_xml.add_multi_item(multi_field['itemOid'], selected_values)
-                                # now close the ungrouped group
+                                        
+                                # now close the group
                                 odm_xml.group_close()
-                            
+
                             # check if we have repeating item groups
                             if 'repeating_item_groups' in odk_table:
                                 all_rigs = odk_table['repeating_item_groups']
@@ -184,6 +196,7 @@ def cycle_through_syncs():
                                             odm_xml.add_item(rig_odk_field['itemOid'], rig_odk_result[rig_odk_field['odk_column']], rig_odk_field['item_type'])
                                            
                                         odm_xml.group_close()
+                            
                             # write the closing tags of the odm-file
                             odm_xml.close_file()
                             
