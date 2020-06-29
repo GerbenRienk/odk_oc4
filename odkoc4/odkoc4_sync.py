@@ -267,8 +267,6 @@ def cycle_through_syncs():
 
     
     my_report.append_to_report('\nfinished looping from %s till %s.' % (start_time, current_time))
-    # close the file so we can send it
-    my_report.close_file()
     # set up the mailer
     my_mailer = Mailer(config)
     # send the report
