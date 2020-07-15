@@ -152,7 +152,7 @@ def cycle_through_syncs():
                         has_data = False
                         all_itemgroups = odk_table['itemgroups']
                         for item_group in all_itemgroups:    
-                            if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=True):
+                            if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=False):
                                 has_data = True
                         
                         if (not util.uri.force_import(uri) and has_data):
