@@ -7,6 +7,7 @@ Read subjects and write subjects and keep administration of uri's
 import psycopg2
 import json
 from psycopg2.extras import RealDictCursor
+#from lib2to3.fixer_util import String
 
 class _DNU_ConnToOdkUtilDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
@@ -32,11 +33,12 @@ class _DNU_ConnToOdkUtilDB(object):
 
     def ReadSubjectsFromDB(self):
         'method to read table subjects into a list'
-        cursor = self._conn.cursor()  
+        cursor = self._conn.cursor() 
+        sql_statement = "SELECT * from subjects"
         try:
-            cursor.execute("""SELECT * from subjects""")
+            cursor.execute(sql_statement)
         except:
-            print ("not able to execute the select")
+            print ("not able to execute the select: %s" % sql_statement)
         results = cursor.fetchall()
         return results
     
@@ -63,13 +65,13 @@ class _DNU_ConnToOdkUtilDB(object):
         It is made to handle multiple inserts
         """
         cursor = self._conn.cursor()  
-        sql_statement = """INSERT INTO study_subject_oc (study_subject_oid,study_subject_id) VALUES ('%s', '%s')""" % (study_subject_oid, study_subject_id)
+        sql_statement = """INSERT INTO study_subject_oc (study_subject_oid,study_subject_id) VALUES (%s, %s)""" 
         
         try:
-            cursor.execute(sql_statement)
+            cursor.execute(sql_statement, (study_subject_oid, study_subject_id))
         except:
             print ("AddSubjectToDB: not able to execute the insert '%s', '%s' " % (study_subject_oid, study_subject_id))
-            print ("using '%s' " % (sql_statement))
+            print ("using '%s' " % sql_statement)
         self._conn.commit()
         return None
 
@@ -81,13 +83,12 @@ class _DNU_ConnToOdkUtilDB(object):
         if (self.DLookup('study_subject_oid', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)!=study_subject_oid):
             # id is ok, but oid not, so update the table
             cursor = self._conn.cursor()  
-            update_statement = "update study_subject_oc set study_subject_oid='%s' where study_subject_id='%s'" % (study_subject_oid, study_subject_id)
+            update_statement = "update study_subject_oc set study_subject_oid=%s where study_subject_id=%s"
             try:
-                cursor.execute(update_statement)
+                cursor.execute(update_statement, (study_subject_oid, study_subject_id))
             except:
-                print ("not able to execute the update %s" % update_statement)
-            self._conn.commit()
-        
+                print ("not able to execute the update %s for %s, %s" % (update_statement, study_subject_oid, study_subject_id))
+            self._conn.commit()   
             
         if(self.DCount('*', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)==0):
             cau_result = True
@@ -102,12 +103,12 @@ class _DNU_ConnToOdkUtilDB(object):
         If no result, then a list containing an empty string is returned
         '''
         cursor = self._conn.cursor()  
-        sql_statement = "SELECT COUNT(%s) from %s where %s" % (field_name, table_name, where_clause)
+        sql_statement = "SELECT COUNT(%s) from %s where %s"
         
         try:
-            cursor.execute(sql_statement)
+            cursor.execute(sql_statement, (field_name, table_name, where_clause))
         except:
-            print ("not able to execute %s" % sql_statement)
+            print ("not able to execute %s for %s, %s, %s" % (sql_statement, field_name, table_name, where_clause))
         results = cursor.fetchone()
         if not results:
             results = ['']
@@ -130,14 +131,13 @@ class _DNU_ConnToOdkUtilDB(object):
         return results[0]
 
     def AddUriToDB(self, uri):
-        """ Method to add a dictionary of subjects to the table subjects
-        It is made to handle multiple inserts
+        """ Method to add an odk-submission
         """
         cursor = self._conn.cursor()  
-        sql_statement = """INSERT INTO uri_status (uri) select '%s'""" % (uri)
+        sql_statement = """INSERT INTO uri_status (uri) select %s"""
         
         try:
-            cursor.execute(sql_statement)
+            cursor.execute(sql_statement, (uri,))
         except (Exception, psycopg2.Error) as error :
             print ("error ", error)
             print ("AddUriToDB: not able to execute the insert %s " % (uri))
@@ -374,11 +374,11 @@ class _Subjects(object):
         if (self.DLookup('study_subject_oid', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id)!=study_subject_oid):
             # id is ok, but oid not, so update the table
             cursor = self.util._conn.cursor()  
-            update_statement = "update study_subject_oc set study_subject_oid='%s' where study_subject_id='%s'" % (study_subject_oid, study_subject_id)
+            update_statement = "update study_subject_oc set study_subject_oid=%s where study_subject_id=%s" 
             try:
-                cursor.execute(update_statement)
+                cursor.execute(update_statement, (study_subject_oid, study_subject_id))
             except:
-                print ("not able to execute the update %s" % update_statement)
+                print ("not able to execute the update %s with %s" % update_statement)
             self.util._conn.commit()
            
         if(self.DCount('*', 'study_subject_oc', "study_subject_id='%s'" % study_subject_id) == 0):
@@ -412,7 +412,7 @@ class _Subjects(object):
         '''
         cursor = self.util._conn.cursor()  
         sql_statement = "select %s from %s where %s "
-        #TODO: rewrite this to be safe        
+             
         try:
             cursor.execute(sql_statement % (field_name, table_name, where_clause))
             results = cursor.fetchone()
@@ -456,7 +456,7 @@ class _URI(object):
         return None
 
     def list(self):
-        'method to read table subjects into a list'
+        'method to read all odk-submissions into a list'
         cursor = self.util._conn.cursor()  
         try:
             cursor.execute("""SELECT * from uri_status""")
@@ -654,9 +654,9 @@ class _URI(object):
     def set_clinical_data(self, uri, clinical_data):
         cursor = self.util._conn.cursor()
                 
-        sql_statement = "update uri_status set clinical_data_before_import='%s' where uri='%s'" % (clinical_data, uri)            
+        sql_statement = "update uri_status set clinical_data_before_import=%s where uri=%s"          
         try:
-            cursor.execute(sql_statement)
+            cursor.execute(sql_statement, (clinical_data, uri))
         except (Exception, psycopg2.Error) as error :
             print ("error: %s" % error)
             print ("using: '%s'" % (sql_statement))
@@ -667,35 +667,39 @@ class _URI(object):
 
     def has_data_in_itemgroup(self, uri, study_event_oid, form_oid, item_group_oid, serk=0, verbose=False):
         'check for data in a specific item group '
-        cursor = self.util._conn.cursor()  
+        cursor = self.util._conn.cursor()
         try:
-            sql_query = "SELECT clinical_data_before_import FROM uri_status  where uri='%s'" % uri
-            cursor.execute(sql_query)
+            sql_query = "SELECT clinical_data_before_import FROM uri_status where uri=%s"
+            cursor.execute(sql_query, (uri,))
         except (Exception, psycopg2.Error) as error :
-            print ("not able to execute %s : %s " % (sql_query, error))
+            print ("has_data_in_itemgroup: not able to execute %s for %s: %s" % (sql_query, uri, error))
+            
         
         results = cursor.fetchall()
         cd_json = json.loads(results[0][0])
-        if (verbose):
-            print(cd_json)
         se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
                
         # by default we set item_group_data_exist to False
         item_group_data_exist = False
         # a subject can have one event or more
         if (verbose):
-            print(se_data)
+            print('looking for: %s-%s-%s-%s' % (study_event_oid, str(serk), form_oid, item_group_oid))
+            print('study event data: %s' % se_data)
         
         # FormData may be in se_data, but maybe not
         forms_exist = False
         if (type(se_data) is dict):
             # study event can be repeating or not, i.e. have a serk or not
             if serk == 0:
+                if (verbose):
+                    print('one event, no serk')
                 if (se_data['@StudyEventOID'] == study_event_oid):
                     if 'FormData' in se_data:
                         forms_exist = True
                         form_data = se_data['FormData']
             else:
+                if (verbose):
+                    print('one event with serk')
                 if (se_data['@StudyEventOID'] == study_event_oid) and (se_data['@StudyEventRepeatKey'] == str(serk)):
                     if 'FormData' in se_data:
                         forms_exist = True
@@ -703,21 +707,26 @@ class _URI(object):
                 
         if (type(se_data) is list):
             if serk == 0:
+                if (verbose):
+                    print('more than one event, no serk')
                 for one_event in se_data:
                     if (one_event['@StudyEventOID'] == study_event_oid):
                         if 'FormData' in one_event:
                             forms_exist = True
                             form_data = one_event['FormData']
             else:
+                if (verbose):
+                    print('more than one event with serk')
                 for one_event in se_data:
                     if (one_event['@StudyEventOID'] == study_event_oid) and (one_event['@StudyEventRepeatKey'] == str(serk)):
-                        if 'FormData' in se_data:
+                        if ('FormData' in one_event):
                             forms_exist = True
-                            form_data = se_data['FormData']
-                
+                            form_data = one_event['FormData']
                 
         # only continue if forms exist
         if forms_exist: 
+            if (verbose):
+                print('form data: %s' % form_data)
             # first we must check if we have one form in the event, or more
             # set a flag to indicate that we have any groups at all to False
             groups_exist = False

@@ -3,7 +3,7 @@
 https://docs.openclinica.com/oc4/participantsbulk-add-bulk-list-participant-ids
 
 
-- hwo can I find the log id after I imported an odm-file?
+- how can I find the log id after I imported an odm-file?
 - add logging
 - rollback if update was not successful or otherwise prevent pg-sessions 
 

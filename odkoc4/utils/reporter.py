@@ -3,6 +3,7 @@ Created on 20180818
 
 @author: GerbenRienk
 '''
+import os
 
 class Reporter(object):
     '''
@@ -16,8 +17,11 @@ class Reporter(object):
         Constructor
         '''
         self.report_name=report_name
-        self._file = open(report_name,'w') 
-        self._file.write('start of report\n')
+        if os.path.exists(report_name):
+            mode = 'a'
+        else:
+            mode = 'w'
+        self._file = open(report_name, mode) 
         self._file.close()
         
         

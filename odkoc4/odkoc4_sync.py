@@ -18,8 +18,11 @@ from utils.reporter import Reporter
 from _operator import itemgetter
 
 def cycle_through_syncs():
-    # we start by reading the config file and preparing the connections to the databases 
-    my_report = Reporter()
+    # create or re-use a log file to write actions and messages
+    this_date = datetime.datetime.now()
+    date_stamp = this_date.strftime("%Y%m%d")
+    report_name = 'logs/odkoc4_%s.log' % date_stamp 
+    my_report = Reporter(report_name)
     start_time = datetime.datetime.now()
     
     # read configuration file for usernames and passwords and other parameters
@@ -45,12 +48,12 @@ def cycle_through_syncs():
     # create connections to the postgresql databases
     my_report.append_to_report("preparing connections in %s" % config['environment'])
     util = UtilDB(config, verbose=False)
-    my_report.append_to_report('try to connect to util database, result: %s ' % util.init_result)
+    my_report.append_to_report('try to connect to util database, result: %s' % util.init_result)
     conn_odk= ConnToOdkDB(config, verbose=False)
-    my_report.append_to_report('try to connect to odk database, result: %s \n' % conn_odk.init_result)
+    my_report.append_to_report('try to connect to odk database, result: %s' % conn_odk.init_result)
     
     # our cycle starts here and ends at the break
-    my_report.append_to_report('cycle started at %s\n' % str(start_time))
+    my_report.append_to_report('cycle started at %s' % str(start_time))
     while True:
         # retrieve all study-subjects / participants from oc4, using the api
         all_participants = api.participants.list_participants(data_def['studyOid'], aut_token, verbose=False)
@@ -95,7 +98,7 @@ def cycle_through_syncs():
                             util.subjects.add_subject(new_participant['subjectOid'], new_participant['subjectKey'])
                         else:
                             # write unsuccessful ones in the report
-                            my_report.append_to_report('trying to add study subject resulted in: %s\n' % add_result)
+                            my_report.append_to_report('trying to add study subject resulted in: %s' % add_result)
                     
                     # by default set the serk to 0
                     serk = 0
@@ -127,7 +130,7 @@ def cycle_through_syncs():
                                 result = json.loads(schedule_result)
                                 if(result['eventStatus']!='scheduled'):
                                     # report back errors
-                                    my_report.append_to_report('trying to schedule event resulted in: %s\n' % schedule_result)
+                                    my_report.append_to_report('trying to schedule event resulted in: %s' % schedule_result)
     
                     # now we have the subject in oc4 plus the event scheduled
                     # we assume that we have the correct study subject oid in our util-db
@@ -148,7 +151,7 @@ def cycle_through_syncs():
                         has_data = False
                         all_itemgroups = odk_table['itemgroups']
                         for item_group in all_itemgroups:    
-                            if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=False):
+                            if util.uri.has_data_in_itemgroup(uri, odk_table['eventOid'], odk_table['form_data']['FormOID'], item_group['itemgroupOid'], serk, verbose=True):
                                 has_data = True
                         
                         if (not util.uri.force_import(uri) and has_data):
@@ -228,7 +231,7 @@ def cycle_through_syncs():
                 util.uri.write_import_result(uri, job_result)
                 if(util.uri.has_import_errors(uri)):
                     # something went wrong with our import, so report that
-                    my_report.append_to_report('\nerrors in %s - %s' % (uri, one_uri[6]))
+                    my_report.append_to_report('errors in %s - %s' % (uri, one_uri[6]))
                     my_report.append_to_report('log says: %s' % one_uri[7])
                 else:
                     # we didn't find errors, so mark the uri complete
@@ -253,7 +256,7 @@ def cycle_through_syncs():
             break
     
     # retrieve all candidates for check
-    my_report.append_to_report('\nenrolment check')
+    my_report.append_to_report('enrolment check')
     all_check_enrol = util.subjects.list_check_enrol()
     for check_enrol in all_check_enrol:
         study_subject_id=check_enrol[0]
@@ -266,11 +269,11 @@ def cycle_through_syncs():
             util.subjects.set_report_date(study_subject_oid)
 
     
-    my_report.append_to_report('\nfinished looping from %s till %s.' % (start_time, current_time))
+    my_report.append_to_report('finished looping from %s to %s.' % (start_time, current_time))
     # set up the mailer
     my_mailer = Mailer(config)
     # send the report
-    my_mailer.send_file('logs/report.txt')
+    my_mailer.send_file(report_name)
     
 if __name__ == '__main__':
     cycle_through_syncs()
