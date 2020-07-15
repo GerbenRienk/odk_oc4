@@ -10,7 +10,7 @@ import os
 
 from utils.dictfile import readDictFile
 from utils.general_functions import is_jsonable
-from utils.logmailer import Mailer
+#from utils.logmailer import Mailer
 from utils.oc4_api import OC4Api
 from utils.pg_api import UtilDB, ConnToOdkDB
 from utils.reporter import Reporter
@@ -51,6 +51,7 @@ def cycle_through_syncs():
     my_report.append_to_report('try to connect to util database, result: %s' % util.init_result)
     conn_odk= ConnToOdkDB(config, verbose=False)
     my_report.append_to_report('try to connect to odk database, result: %s' % conn_odk.init_result)
+    my_report.append_to_report('\n')
     
     # our cycle starts here and ends at the break
     my_report.append_to_report('cycle started at %s' % str(start_time))
@@ -267,14 +268,14 @@ def cycle_through_syncs():
         else:
             my_report.append_to_report('data were imported for %s, but the subject is not enrolled' % study_subject_id)
             util.subjects.set_report_date(study_subject_oid)
-
     
     my_report.append_to_report('finished looping from %s to %s.' % (start_time, current_time))
-    # set up the mailer
-    my_mailer = Mailer(config)
-    # send the report
-    my_mailer.send_file(report_name)
     
+    # say we're good
+    if(config['mail_enabled'].lower() == "false"):
+        with open(report_name) as fp:
+            print(fp.read())
+   
 if __name__ == '__main__':
     cycle_through_syncs()
 
