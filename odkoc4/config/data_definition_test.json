@@ -132,7 +132,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10105_CORE3\"",
+"table_name": "odk_am001.\"10105_CORE2\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -160,7 +160,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10106_CORE2\"",
+"table_name": "odk_am001.\"10106_CORE3\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -273,7 +273,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10107_CORE2\"",
+"table_name": "odk_am001.\"10107_CORE3\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -322,7 +322,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10108_CORE2\"",
+"table_name": "odk_am001.\"10108_CORE3\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -363,7 +363,7 @@
 		],
 	"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP2_D0_PERI_SIGNS2\"",	"itemOid": "I_CRF08_D0_PERI_SIGNS"},
-		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_1_D0_HEENT2\"",	"itemOid": "I_CRF08_D0_HEENT"},
+		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_1_D0_HEENT3\"",	"itemOid": "I_CRF08_D0_HEENT"},
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_2_D0_LUNGS2\"",	"itemOid": "I_CRF08_D0_LUNGS"},
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_3_D0_HEART2\"",	"itemOid": "I_CRF08_D0_HEART"},
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_4_D0_ABD\"",	"itemOid": "I_CRF08_D0_ABD"},
@@ -383,7 +383,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10109_CORE2\"",
+"table_name": "odk_am001.\"10109_CORE3\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -535,8 +535,8 @@
 		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_ND_SPE",	"itemOid": "I_CRF11_MAL_RDT_ND_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP_MAL_RDT_RESULT",	"itemOid": "I_CRF11_MAL_RDT_RESULT",	"item_type": "string"},
 
-		{"odk_column": "PAGE2_WELCOME_TEST_RES_SIGN_OUT_GRP_DIAG_RES_COMP_D",	"itemOid": "I_CRF11_DIAG_RES_COMP_D",	"item_type": "date"},
-		{"odk_column": "PAGE2_WELCOME_TEST_RES_SIGN_OUT_GRP_DIAG_RES_INV_INIT",	"itemOid": "I_CRF11_DIAG_RES_INV_INIT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_SIGN_OUT_GRP_DIAG_RES_COMP_D",	"itemOid": "I_CRF11_DIAG_RES_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE2_WELCOME_SIGN_OUT_GRP_DIAG_RES_INV_INIT",	"itemOid": "I_CRF11_DIAG_RES_INV_INIT",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP",	"itemOid": "I_CRF11_CRP",	"item_type": "real"},
 		{"odk_column": "PAGE_WELCOME_CRP_WBC_GRP_CRP_RES_GRP_CRP_DONE",	"itemOid": "I_CRF11_CRP_DONE",	"item_type": "string"},
@@ -693,7 +693,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10114_CORE\"",
+"table_name": "odk_am001.\"10114_CORE2\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
