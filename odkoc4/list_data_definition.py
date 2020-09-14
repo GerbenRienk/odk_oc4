@@ -18,10 +18,14 @@ from utils.reporter import Reporter
 from _operator import itemgetter
 
 def list_it():
-    my_report = Reporter()
+    my_report = Reporter('logs/list_data_definition.txt')
     config=readDictFile('odkoc4.config')
-    with open('config/data_definition.json') as json_file:
-        data_def = json.load(json_file)
+    if(config['environment'] == 'test'):
+        with open('config/data_definition_test.json') as json_file:
+            data_def = json.load(json_file)
+    else:
+        with open('config/data_definition_prod.json') as json_file:
+            data_def = json.load(json_file)
     
     # create connections to the postgresql databases
     my_report.append_to_report("preparing connections")
@@ -34,23 +38,28 @@ def list_it():
     # now loop through all the odk-tables in the data-definition
     for odk_table in data_def['odk_tables']:
         my_report.append_to_report('\n' + odk_table['table_name'])
+
         all_itemgroups = odk_table['itemgroups']
-        all_odk_fields = odk_table['odk_fields']
-        for odk_field in all_odk_fields:
-            my_report.append_to_report(odk_field['odk_column'] + '\t' + odk_field['itemOid'] + '\t' + odk_field['item_type'])
-        # one last round for multi selects
-        if 'multi_fields' in odk_table:
-            all_multi_fields = odk_table['multi_fields']
-            for multi_field in all_multi_fields:
-                print(multi_field['itemOid'])
+        for item_group in all_itemgroups:
+            all_odk_fields = item_group['odk_fields']
+            for odk_field in all_odk_fields:
+                my_report.append_to_report(odk_field['odk_column'] + '\t' + odk_field['itemOid'] + '\t' + odk_field['item_type'])
+
+            # one last round for multi selects
+            if 'multi_fields' in item_group:
+                all_multi_fields = item_group['multi_fields']
+                print('m')
+                for multi_field in all_multi_fields:
+                    my_report.append_to_report('multi: ' + multi_field['odk_table_name'] + '\t' + multi_field['itemOid'])
 
         if 'repeating_item_groups' in odk_table:
             all_repeating_item_groups = odk_table['repeating_item_groups']
             for repeating_item_group in all_repeating_item_groups:
-                print(multi_field['itemOid'])
-        
-        # repeating_item_groups
-        
+                my_report.append_to_report('rig: ' + repeating_item_group['rig_odk_table_name'] + '\t' + repeating_item_group['rig_oid'])
+                all_rig_odk_fields = repeating_item_group['rig_odk_fields']
+                for rig_odk_field in all_rig_odk_fields:
+                    my_report.append_to_report(rig_odk_field['odk_column'] + '\t' + rig_odk_field['itemOid'] + '\t' + rig_odk_field['item_type'])
+       
         
 if __name__ == '__main__':
     list_it()

@@ -12,24 +12,11 @@ from psycopg2.extras import RealDictCursor
 class _DNU_ConnToOdkUtilDB(object):
     '''Class for connecting to the postgresql database as defined in odkoc.config
     Methods implemented now are read subjects and add subjects '''
-    def __init__(self, config, verbose=False):
+    def __init__(self):
         'try to create the connection to use multiple times '
-        conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
         self.init_result = ''
-
         # get a connection, if a connect cannot be made an exception will be raised here
-        try:
-            self._conn = psycopg2.connect(conn_string)
-            self.init_result = 'class connected '
         
-        except (Exception, psycopg2.Error) as error :
-            print ("error while connecting to postgres", error)
-            self.init_result = 'attempt to connect not successful '
-         
-        if (verbose):
-            print(conn_string)
-            print(self.init_result)
-
 
     def ReadSubjectsFromDB(self):
         'method to read table subjects into a list'
@@ -209,7 +196,10 @@ class UtilDB(object):
         self.uri = _URI(self)
         
         'try to create the connection to use multiple times '
-        conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
+        if(config['environment'] == 'test'):
+            conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name_test'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'" 
+        else:
+            conn_string = "host='" + config['db_util_host'] + "' dbname='" + config['db_util_name_prod'] + "' user='" + config['db_util_user'] + "' password='" + config['db_util_pass'] + "' port='" + config['db_util_port'] + "'"
         self.init_result = ''
 
         # get a connection, if a connect cannot be made an exception will be raised here

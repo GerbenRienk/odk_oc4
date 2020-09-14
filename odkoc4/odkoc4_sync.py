@@ -84,6 +84,12 @@ def cycle_through_syncs():
                 if site_oid == 'no_site':
                     my_report.append_to_report('could not find a site for study subject %s in %s' % (study_subject_id, odk_table['table_name']))
                 else:   
+                    # for the administration of the following steps we need the uri
+                    # we assume that we have the correct study subject oid in our util-db
+                    study_subject_oid = util.subjects.get_oid(study_subject_id)
+                    uri = odk_result['_URI']
+                    util.uri.add(uri, study_subject_oid)
+                    
                     # compare with all oc subjects / participants
                     for one_participant in all_participants:
                         if(one_participant['subjectKey'] == study_subject_id):
@@ -100,46 +106,41 @@ def cycle_through_syncs():
                         else:
                             # write unsuccessful ones in the report
                             my_report.append_to_report('trying to add study subject resulted in: %s' % add_result)
-                    
-                    # by default set the serk to 0
-                    serk = 0
-                    # make a distinction between tables for events with a study-event-repeat-key and the rest
-                    if 'serk' in odk_table:
-                        # to prevent looping indefinitely we count the retries
-                        retries = 0
-                        serk = odk_result[odk_table['serk']]
-                        event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01", "studyEventRepeatKey": serk}
-                        while True:
-                            # see if we can update the event with this serk
-                            update_result = api.events.update_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
-                            # if we can, then the event exists and the status code will be 200
-                            if update_result.status_code == 200:
-                                break
-                            # the serk does not exist, so we schedule an extra event and loop again to check if this was enough
+                    # schedule the necessary event, but only if the uri isn't complete yet
+                    if(not util.uri.is_complete(uri)):
+                        # by default set the serk to 0
+                        serk = 0
+                        # make a distinction between tables for events with a study-event-repeat-key and the rest
+                        if 'serk' in odk_table:
+                            # to prevent looping indefinitely we count the retries
+                            retries = 0
+                            serk = odk_result[odk_table['serk']]
+                            event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01", "studyEventRepeatKey": serk}
+                            while True:
+                                # see if we can update the event with this serk
+                                update_result = api.events.update_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
+                                # if we can, then the event exists and the status code will be 200
+                                if update_result.status_code == 200:
+                                    break
+                                # the serk does not exist, so we schedule an extra event and loop again to check if this was enough
+                                schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
+                                retries = retries + 1
+                                if(retries > 10):
+                                    my_report.append_to_report('tried more than 10 times without success to schedule %s, serk %s, for %s' % (odk_table['eventOid'], serk, study_subject_id))
+                                    break
+                        else:
+                            # for now, let's schedule the event anyway
+                            event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
                             schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
-                            retries = retries + 1
-                            if(retries > 10):
-                                my_report.append_to_report('tried more than 10 times without success to schedule %s, serk %s, for %s' % (odk_table['eventOid'], serk, study_subject_id))
-                                break
-                    else:
-                        # for now, let's schedule the event anyway
-                        event_info = {"subjectKey":study_subject_id, "studyEventOID": odk_table['eventOid'], "startDate":"1980-01-01", "endDate":"1980-01-01"}
-                        schedule_result = api.events.schedule_event(data_def['studyOid'], site_oid, event_info, aut_token, verbose=False)
-                        # the result may be none, when the event has already been scheduled
-                        if(schedule_result):
-                            if (is_jsonable(schedule_result)):
-                                result = json.loads(schedule_result)
-                                if(result['eventStatus']!='scheduled'):
-                                    # report back errors
-                                    my_report.append_to_report('trying to schedule event resulted in: %s' % schedule_result)
+                            # the result may be none, when the event has already been scheduled
+                            if(schedule_result):
+                                if (is_jsonable(schedule_result)):
+                                    result = json.loads(schedule_result)
+                                    if(result['eventStatus']!='scheduled'):
+                                        # report back errors
+                                        my_report.append_to_report('trying to schedule event resulted in: %s' % schedule_result)
     
                     # now we have the subject in oc4 plus the event scheduled
-                    # we assume that we have the correct study subject oid in our util-db
-                    study_subject_oid = util.subjects.get_oid(study_subject_id)
-                    
-                    # for the administration of the following steps we need the uri
-                    uri = odk_result['_URI']
-                    util.uri.add(uri, study_subject_oid)
                     
                     # only compose the odm and import, if the uri is not complete yet
                     if(not util.uri.is_complete(uri)):
