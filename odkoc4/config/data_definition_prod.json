@@ -8,20 +8,11 @@
 	"AM00105": "S_AM001_01(PROD)",
 	"AM00106": "S_AM001_01(PROD)",
 	"AM00107": "S_AM001_01(PROD))",
-	"AM00108": "S_AM001_02(XXX)",
-	"AM00109": "S_AM001_08(XXX)",
-	"AM00110": "S_AM001_06(XXX)",
-	"AM00111": "S_AM001_06(XXX)",
-	"AM00112": "S_AM001_06(XXX)",
-	"AM00113": "S_AM001_06(XXX)",
-	"AM00114": "S_AM001_07(XXX)",
-	"AM00115": "S_AM001_09(XXX)",
-	"AM00116": "S_AM001_09(XXX)",
-	"AM00199": "S_99(XXX)"
+	"AM00199": "S_99_9071(PROD)"
 },
 	"odk_tables": [
 {
-	"table_name": "odk_am001.\"10101_CORE2\"",
+	"table_name": "odk_am001.\"10101_CORE\"",
 	"id_field": "STUDY_SUBJECT_ID",
 	"eventOid": "SE_DAY0",
 	"form_data": {
@@ -40,7 +31,7 @@
 }]
 },
 {
-"table_name": "odk_am001.\"10102_CORE3\"",
+"table_name": "odk_am001.\"10102_CORE2\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -74,7 +65,7 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10103_CORE3\"",
+"table_name": "odk_am001.\"10103_CORE2\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
@@ -1520,7 +1511,6 @@
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES",	"itemOid": "I_SYMPT_D7_RED_EYES",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_DAY0",	"itemOid": "I_SYMPT_D7_RED_EYES_DAY0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_DUR",	"itemOid": "I_SYMPT_D7_RED_EYES_DUR",	"item_type": "integer"},
-		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_DUR",	"itemOid": "I_SYMPT_RED_EYES_DUR",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_STAT",	"itemOid": "I_SYMPT_D7_RED_EYES_STAT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP3_D7_EYE_DIS",	"itemOid": "I_SYMPT_D7_EYE_DIS",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP3_D7_EYE_DIS_DAY0",	"itemOid": "I_SYMPT_D7_EYE_DIS_DAY0",	"item_type": "string"},

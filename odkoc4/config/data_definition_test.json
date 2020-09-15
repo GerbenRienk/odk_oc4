@@ -1520,7 +1520,6 @@
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES",	"itemOid": "I_SYMPT_D7_RED_EYES",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_DAY0",	"itemOid": "I_SYMPT_D7_RED_EYES_DAY0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_DUR",	"itemOid": "I_SYMPT_D7_RED_EYES_DUR",	"item_type": "integer"},
-		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_DUR",	"itemOid": "I_SYMPT_RED_EYES_DUR",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP2_D7_RED_EYES_STAT",	"itemOid": "I_SYMPT_D7_RED_EYES_STAT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP3_D7_EYE_DIS",	"itemOid": "I_SYMPT_D7_EYE_DIS",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP3_D7_EYE_DIS_DAY0",	"itemOid": "I_SYMPT_D7_EYE_DIS_DAY0",	"item_type": "string"},

@@ -170,6 +170,19 @@ class ConnToOdkDB(object):
         results = cursor.fetchall()
         return results
 
+    def list_double_entries(self, table_name):
+        'method to read subjects that have been entered more than once'
+        cursor = self._conn.cursor(cursor_factory=RealDictCursor)  
+        
+        sql_statement = 'select "STUDY_SUBJECT_ID", count("STUDY_SUBJECT_ID") from %s group by "STUDY_SUBJECT_ID" having count("STUDY_SUBJECT_ID")>1 order by "STUDY_SUBJECT_ID"' % (table_name,) 
+            
+        try:
+            cursor.execute(sql_statement)
+        except:
+            print ("ReadDataFromOdkTable: not able to execute: " + sql_statement)
+        results = cursor.fetchall()
+        return results
+
     def GetMultiAnswers(self, table_name, parent_auri):
         'method to read table subjects into a list'
         cursor = self._conn.cursor(cursor_factory=RealDictCursor)  
