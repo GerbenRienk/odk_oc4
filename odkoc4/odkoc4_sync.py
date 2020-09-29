@@ -75,8 +75,8 @@ def cycle_through_syncs():
                 if(config['environment'] == 'prod' and the_key_part != '99'):
                     process_this_subject = True
                 if process_this_subject:
-                    my_report.append_to_report('listing double entries in %s' % odk_table['form_data']['FormName'])
-                    my_report.append_to_report('%s %d' % (double_entry['STUDY_SUBJECT_ID'], double_entry['count']))
+                    my_report.append_to_report('double entry for %s in %s' % (double_entry['STUDY_SUBJECT_ID'], odk_table['form_data']['FormName']))
+                    #my_report.append_to_report('%s %d' % (double_entry['STUDY_SUBJECT_ID'], double_entry['count']))
         
         # now loop again through all the odk-tables in the data-definition
         for odk_table in data_def['odk_tables']:
@@ -194,8 +194,8 @@ def cycle_through_syncs():
                                     has_data = True
                             
                             if (not util.uri.force_import(uri) and has_data):
-                                my_report.append_to_report(uri)
-                                my_report.append_to_report('didn\'t submit data of %s for %s, because data exist in oc4 ' % (study_subject_id, odk_table['form_data']['FormName']))
+                                #my_report.append_to_report(uri)
+                                my_report.append_to_report('%s: didn\'t submit data of %s for %s, because data exist in oc4 ' % (uri, study_subject_id, odk_table['form_data']['FormName']))
                             else:
                                 # no data in oc4 yet 
                                 # next step is to compose the odm-xml-file

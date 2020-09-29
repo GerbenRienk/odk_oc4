@@ -1578,6 +1578,7 @@
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY_SPE",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_PRESC_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_PRESC_D0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_TX_COMP_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_TX_COMP_D0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_D7_ANTI_BIO",	"itemOid": "I_ADHER_D7_ANTI_BIO",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_D7_ANTI_BIO_DUR",	"itemOid": "I_ADHER_D7_ANTI_BIO_DUR",	"item_type": "integer"},
