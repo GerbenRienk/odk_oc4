@@ -130,7 +130,7 @@ def cycle_through_syncs():
                                 
                         if (add_subject_to_oc):
                             # try to add a subject / participant to oc4
-                            add_result = api.participants.add_participant(data_def['studyOid'], site_oid, study_subject_id, aut_token, verbose=True)
+                            add_result = api.participants.add_participant(data_def['studyOid'], site_oid, study_subject_id, aut_token, verbose=False)
                             if (is_jsonable(add_result)):
                                 new_participant = json.loads(add_result)
                                 # if we were successful we now have a json response, which we can use to add this subject to the util-db 
