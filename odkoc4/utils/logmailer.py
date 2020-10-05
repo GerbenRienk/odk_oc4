@@ -20,14 +20,14 @@ class Mailer(object):
         else:
             self._mailit = False        
 
-    def send_file(self, LogFileName):
+    def send_file(self, LogFileName, prefix=''):
         # Open a plain text file for reading.  For this example, assume that
         # the text file contains only ASCII characters.
         with open(LogFileName) as fp:
             # Create a text/plain message
             msg = MIMEText(fp.read())
         
-        msg['Subject'] = self.config['mail_subject']
+        msg['Subject'] = self.config[prefix + 'mail_subject']
         msg['From'] = self.config['mail_from']
         msg['To'] = self.config['mail_to']
         

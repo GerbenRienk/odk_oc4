@@ -80,7 +80,7 @@ def cycle_through_syncs():
         
         # now loop again through all the odk-tables in the data-definition
         for odk_table in data_def['odk_tables']:
-            print(odk_table['table_name'])
+            #print(odk_table['table_name'])
             
             # retrieve the rows of this table
             odk_results = conn_odk.ReadDataFromOdkTable(odk_table['table_name'])
@@ -130,7 +130,7 @@ def cycle_through_syncs():
                                 
                         if (add_subject_to_oc):
                             # try to add a subject / participant to oc4
-                            add_result = api.participants.add_participant(data_def['studyOid'], site_oid, study_subject_id, aut_token, verbose=False)
+                            add_result = api.participants.add_participant(data_def['studyOid'], site_oid, study_subject_id, aut_token, verbose=True)
                             if (is_jsonable(add_result)):
                                 new_participant = json.loads(add_result)
                                 # if we were successful we now have a json response, which we can use to add this subject to the util-db 

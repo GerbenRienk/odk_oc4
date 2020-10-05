@@ -13,20 +13,36 @@ def find_and_mail_clean_log():
     # create or re-use a log file to write actions and messages
     this_date = datetime.datetime.now()
     date_stamp = this_date.strftime("%Y%m%d")
-    report_name = 'logs/odkoc4_%s.log' % date_stamp 
-    # my_report = Reporter(report_name)
+    log_name = 'logs/odkoc4_%s.log' % date_stamp 
+    clean_log_name = 'logs/odkoc4_clean_%s.log' % date_stamp
+    # my_report = Reporter(log_name)
+    messages = {'preparing connections in','try to connect to', 'cycle started at', 'finished looping ', 'submitting data of'}
+
+    with open(log_name, 'r') as f:
+        all_these_lines = f.readlines()
+        sorted_lines = sorted(all_these_lines)
     
+    with open(clean_log_name,'w') as second_file:
+        for line in sorted_lines:
+            # by default write the line, but ...
+            write_this_line = True
+            # but loop through the suppress-messages
+            for message in messages:
+                if line.__contains__(message):
+                    write_this_line = False
+            # don't write empty lines
+            if line == '\n':
+                write_this_line = False
+                
+            if write_this_line:
+                second_file.write(line)
+
     # read configuration file for usernames and passwords and other parameters
     config=readDictFile('odkoc4.config')
-    with open(report_name, 'r') as f:
-            for line in f:
-                print(line)
-    '''    
     # set up the mailer
     my_mailer = Mailer(config)
     # send the report
-    my_mailer.send_file(report_name)
-    '''
+    my_mailer.send_file(clean_log_name, prefix='clean')
     
 if __name__ == '__main__':
     find_and_mail_clean_log()
