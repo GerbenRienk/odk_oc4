@@ -339,7 +339,7 @@ class _ClinicalData(object):
 
     def get_clinical_data(self, aut_token, study_oid, study_subject_oid, verbose=False):
         """
-        Get the clinical data from the c4 api
+        Get the clinical data from the oc4 api
         
         """
         _url = self.api.url + "/pages/auth/api/clinicaldata/" + study_oid + "/" + study_subject_oid + "/*/*?includeMetadata=n"

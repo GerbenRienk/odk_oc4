@@ -677,7 +677,6 @@ class _URI(object):
         except (Exception, psycopg2.Error) as error :
             print ("has_data_in_itemgroup: not able to execute %s for %s: %s" % (sql_query, uri, error))
             
-        
         results = cursor.fetchall()
         cd_json = json.loads(results[0][0])
         se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
