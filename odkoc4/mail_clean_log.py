@@ -42,7 +42,7 @@ def find_and_mail_clean_log():
     # set up the mailer
     my_mailer = Mailer(config)
     # send the report
-    my_mailer.send_file(clean_log_name, prefix='clean')
+    my_mailer.send_file(clean_log_name, prefix='clean_')
     
 if __name__ == '__main__':
     find_and_mail_clean_log()

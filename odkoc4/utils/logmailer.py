@@ -27,7 +27,7 @@ class Mailer(object):
             # Create a text/plain message
             msg = MIMEText(fp.read())
         
-        msg['Subject'] = self.config[prefix + 'mail_subject']
+        msg['Subject'] = self.config[prefix + 'mail_subject'] + ' ' + self.config['environment']
         msg['From'] = self.config['mail_from']
         msg['To'] = self.config['mail_to']
         
