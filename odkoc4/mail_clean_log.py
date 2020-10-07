@@ -7,7 +7,7 @@ import datetime
 
 from utils.dictfile import readDictFile
 from utils.logmailer import Mailer
-#from utils.reporter import Reporter
+from utils.reporter import Reporter
 
 def find_and_mail_clean_log():
     # create or re-use a log file to write actions and messages
@@ -15,27 +15,29 @@ def find_and_mail_clean_log():
     date_stamp = this_date.strftime("%Y%m%d")
     log_name = 'logs/odkoc4_%s.log' % date_stamp 
     clean_log_name = 'logs/odkoc4_clean_%s.log' % date_stamp
+    my_clean_log = Reporter(clean_log_name)
     # my_report = Reporter(log_name)
-    messages = {'preparing connections in','try to connect to', 'cycle started at', 'finished looping ', 'submitting data of'}
+    messages = {'preparing connections in','try to connect to', 'cycle started at', 
+                'finished looping ', 'submitting data of', 'enrolment check', 'data were imported for'}
 
     with open(log_name, 'r') as f:
         all_these_lines = f.readlines()
-        sorted_lines = sorted(all_these_lines)
+        sorted_lines = sorted(all_these_lines) 
     
-    with open(clean_log_name,'w') as second_file:
-        for line in sorted_lines:
-            # by default write the line, but ...
-            write_this_line = True
-            # but loop through the suppress-messages
-            for message in messages:
-                if line.__contains__(message):
-                    write_this_line = False
-            # don't write empty lines
-            if line == '\n':
+    for line in sorted_lines:
+        # by default write the line, but ...
+        write_this_line = True
+        # but loop through the suppress-messages
+        for message in messages:
+            if line.__contains__(message):
                 write_this_line = False
+        # don't write empty lines
+        if line == '\n':
+            write_this_line = False
+            
+        if write_this_line:
+            my_clean_log.append_to_report(line)
                 
-            if write_this_line:
-                second_file.write(line)
 
     # read configuration file for usernames and passwords and other parameters
     config=readDictFile('odkoc4.config')

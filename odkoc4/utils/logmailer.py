@@ -28,8 +28,8 @@ class Mailer(object):
             msg = MIMEText(fp.read())
         
         msg['Subject'] = self.config[prefix + 'mail_subject'] + ' ' + self.config['environment']
-        msg['From'] = self.config['mail_from']
-        msg['To'] = self.config['mail_to']
+        msg['From'] = self.config[prefix + 'mail_from']
+        msg['To'] = self.config[prefix + 'mail_to']
         
         # Send the message via our own SMTP server,
         # but only if we can send mails

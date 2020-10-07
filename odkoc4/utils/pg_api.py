@@ -297,16 +297,19 @@ class _Subjects(object):
         self.util._conn.commit()
         return None
 
-    def check_enrol(self, study_subject_oid):
+    def check_enrol(self, study_subject_oid, verbose=False):
         # get all clinical data for this subject and iterate to find item 
         # with item oid I_CRF02_ENROL and then retrieve the value 
         # by default set result to false
+        if verbose:
+            print('check_enrol for %s' % study_subject_oid)
         ce_result = False 
         all_clinical_data = self.get_subject_clinical_data(study_subject_oid)
         for clinical_data in all_clinical_data:
             cd_json = json.loads(clinical_data[0])
             se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
-            
+            if verbose:
+                print('se_data: %s' % se_data)
             # create an empty list
             construct_se_data=[]
             if (type(se_data) is dict):
