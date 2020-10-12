@@ -308,23 +308,31 @@ class _Subjects(object):
         for clinical_data in all_clinical_data:
             cd_json = json.loads(clinical_data[0])
             se_data = cd_json['ClinicalData']['SubjectData']['StudyEventData']
-            if verbose:
-                print('se_data: %s' % se_data)
+            #if verbose:
+                #print('se_data: %s' % se_data)
             # create an empty list
             construct_se_data=[]
             if (type(se_data) is dict):
-                construct_se_data.append(se_data)       
+                construct_se_data.append(se_data)   
+                if verbose:
+                    print('se_data is a dict')        
             if (type(se_data) is list):
                 construct_se_data=se_data
-                
+                if verbose:
+                    print('se_data is a list')     
+                                    
             for se in construct_se_data:
-                if 'FormData' in se_data:
+                if 'FormData' in se:
                     form_data = se['FormData']
                     construct_form_data=[]
                     if (type(form_data) is dict):
                         construct_form_data.append(form_data)  
+                    if verbose:
+                        print('form_data is a dict')     
                     if (type(form_data) is list):
                         construct_form_data=form_data
+                    if verbose:
+                        print('form_data is a list')     
                         
                     for one_form in construct_form_data:
                         item_group_data = one_form['ItemGroupData']
@@ -336,7 +344,8 @@ class _Subjects(object):
                             
                         for one_group in construct_group_data:
                             item_data = one_group['ItemData']
-                
+                            if verbose:
+                                print('in one_group[item_data]')    
                             construct_item_data=[]
                             if (type(item_data) is dict):
                                 construct_item_data.append(item_data)  
