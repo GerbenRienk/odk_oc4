@@ -195,7 +195,7 @@ def cycle_through_syncs():
                             
                             if (not util.uri.force_import(uri) and has_data):
                                 #my_report.append_to_report(uri)
-                                my_report.append_to_report('%s: didn\'t submit data of %s for %s, because data exist in oc4 ' % (uri, study_subject_id, odk_table['form_data']['FormName']))
+                                my_report.append_to_report('didn\'t submit data of %s for %s, because data exist in oc4; %s ' % (study_subject_id, odk_table['form_data']['FormName'], uri))
                             else:
                                 # no data in oc4 yet 
                                 # next step is to compose the odm-xml-file
