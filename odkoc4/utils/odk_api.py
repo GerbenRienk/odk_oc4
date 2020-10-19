@@ -313,7 +313,7 @@ class _ODMParser(object):
         if(item_type == 'real'):
             # real can be a real or None
             if(not item_value is None):
-                _final_value = item_value
+                _final_value = float(item_value)
             else:
                 _final_value = ''
 
