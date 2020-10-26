@@ -75,8 +75,13 @@ def cycle_through_syncs():
                 if(config['environment'] == 'prod' and the_key_part != '99'):
                     process_this_subject = True
                 if process_this_subject:
-                    my_report.append_to_report('double entry for %s in %s' % (double_entry['STUDY_SUBJECT_ID'], odk_table['form_data']['FormName']))
-                    #my_report.append_to_report('%s %d' % (double_entry['STUDY_SUBJECT_ID'], double_entry['count']))
+                    # before we report this, we must make sure that we really have a double entry:
+                    study_subject_oid = util.subjects.get_oid(double_entry['STUDY_SUBJECT_ID'])
+                    criteria = "table_name='%s' and study_subject_oid='%s' and not is_complete" % (odk_table['table_name'], study_subject_oid)
+                    nr_not_is_complete = util.subjects.DCount('*','uri_status',criteria)
+                    if nr_not_is_complete > 0:
+                        my_report.append_to_report('double entry for %s in %s' % (double_entry['STUDY_SUBJECT_ID'], odk_table['form_data']['FormName']))
+                    
         
         # now loop again through all the odk-tables in the data-definition
         for odk_table in data_def['odk_tables']:
@@ -96,14 +101,7 @@ def cycle_through_syncs():
                     process_this_subject = True
                 if(config['environment'] == 'prod' and the_key_part != '99'):
                     process_this_subject = True
-                    
-                '''
-                if process_this_subject:
-                    print('process %s and %s' % (study_subject_id, the_key_part))
-                else:
-                    print('ignore  %s and %s' % (study_subject_id, the_key_part))
-                '''
-                    
+                                        
                 if process_this_subject:
                     #if we have no study subject id, then we'll take the uri
                     if study_subject_id is None:
@@ -247,11 +245,13 @@ def cycle_through_syncs():
                                 if not serk == 0 :
                                    study_event_info = ', event repeat key is %s' % serk 
                                 my_report.append_to_report('submitting data of %s for %s%s' % (odk_table['form_data']['FormName'], study_subject_id, study_event_info))
+                                
                                 import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
                                 
                                 # do the administration
                                 util.uri.write_odm(uri, file_name)
                                 util.uri.write_job_id(uri, import_job_id)
+                                
                 # next subject in the odk table
             # next odk table
         
