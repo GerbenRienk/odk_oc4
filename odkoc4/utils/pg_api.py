@@ -276,6 +276,10 @@ class _Subjects(object):
         try:
             cursor.execute(sql_statement, (study_subject_id,))
             results = cursor.fetchone()
+            # return empty string if we have no records
+            if results is None:
+                results = ['']
+                
         except (Exception, psycopg2.Error) as error :
             print ("not able to execute %s\n error: %s " % (sql_statement, error))
             results = ['']
