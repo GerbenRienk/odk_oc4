@@ -1,4 +1,4 @@
-first of all we have to have for development a copy of the database with odk-data
+First of all we have to have for development a copy of the database with odk-data
 we transfer it from the server to D:\OC\FindDX\PNG_HS_RDT\DatabaseDumps
 and then more or less do the following:
 cd C:\Program Files\PostgreSQL\9.4\bin 
