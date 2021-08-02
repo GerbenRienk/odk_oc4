@@ -575,6 +575,7 @@
 
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_D",	"itemOid": "I_CRF11_DIAG_SAMP_COL_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_DT",	"itemOid": "I_CRF11_DIAG_SAMP_COL_DT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_DT_2",	"itemOid": "I_CRF11_DIAG_SAMP_COL_DT_2",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_HR",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_HR",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_MIN",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_MIN",	"item_type": "string"},
 
