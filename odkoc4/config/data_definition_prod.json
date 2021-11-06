@@ -706,7 +706,7 @@
 	{"odk_column": "PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN_SPE",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN_SPE",	"item_type": "string"}
 	],
 "multi_fields": [
-	{"odk_table_name": "odk_am001.\"10114_PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN\"",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN"}
+	{"odk_table_name": "odk_am001.\"10114_PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN2\"",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN"}
 	]
 	}]
 }
