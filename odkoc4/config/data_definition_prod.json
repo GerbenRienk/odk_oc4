@@ -14,17 +14,18 @@
 	"odk_tables": [
 {
 	"table_name": "odk_am001.\"10101_CORE\"",
-	"id_field": "STUDY_SUBJECT_ID",
+	"id_field": "study_subject_id",
 	"eventOid": "SE_DAY0",
 	"form_data": {
 		"FormOID": "F_01_VISIT",
 		"FormName": "D0 01: Date of Visit",
-		"FormLayoutOID": "v.1.0",
+		"FormLayoutOID": "v.2.0",
 		"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_01_VI_VISIT_GRP",
-	"odk_fields": [
+	"odk_fields": [	
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_01_VI_ODK_ENTRY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VISIT_D_GRP_VISIT_D",	"itemOid": "I_01_VI_VISIT_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_VISIT_COMP_D",	"itemOid": "I_01_VI_VISIT_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_VISIT_INV_INIT",	"itemOid": "I_01_VI_VISIT_INV_INIT",	"item_type": "string"}
@@ -32,17 +33,18 @@
 }]
 },
 {
-"table_name": "odk_am001.\"10102_CORE2\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10102_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF03INFORME",
 	"FormName": "D0 02: Informed Consent Process",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF03_CONS_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF03_ODK_ENTRY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ICP_GRP_ASSENT_SIGN",	"itemOid": "I_CRF03_ASSENT_SIGN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ICP_GRP_ASSENT_SIGN_SPE",	"itemOid": "I_CRF03_ASSENT_SIGN_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ICP_GRP_ASSENT_VERSION",	"itemOid": "I_CRF03_ASSENT_VERSION",	"item_type": "string"},
@@ -66,18 +68,19 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10103_CORE2\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10103_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF04INCLUSI",
 	"FormName": "D0 03: Inclusion Exclusion Criteria",
-	"FormLayoutOID": "v.0.2",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF04_INC_EXC",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF04_ODK_ENTRY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_1_YR",	"itemOid": "I_CRF04_AGE_1YR",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_6_M",	"itemOid": "I_CRF04_AGE_6M",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_6_M_18",	"itemOid": "I_CRF04_AGE_6M_18",	"item_type": "string"},
@@ -99,18 +102,19 @@
 }
 ,
 {
-	"table_name": "odk_am001.\"10104_CORE2\"",
-	"id_field": "STUDY_SUBJECT_ID",
+	"table_name": "odk_am001.\"10104_CORE\"",
+	"id_field": "study_subject_id",
 	"eventOid": "SE_DAY0",
 	"form_data": {
 		"FormOID": "F_CRF02ENROLME",
 		"FormName": "D0 04: Enrolment and Randomization CRF",
-		"FormLayoutOID": "v.0.1",
+		"FormLayoutOID": "v.2.0",
 		"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF02_ENROL",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF04_ODK_ENTRY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ENROL_GRP_ENROL",	"itemOid": "I_CRF02_ENROL",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ENROL_GRP_ENROL_RSN",	"itemOid": "I_CRF02_ENROL_RSN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ENROL_GRP_ENROL_RSN_SPE",	"itemOid": "I_CRF02_ENROL_RSN_SPE",	"item_type": "string"},
@@ -124,18 +128,19 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10105_CORE2\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10105_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF05DEMOGRA",
 	"FormName": "D0 05: Demographics",
-	"FormLayoutOID": "v0.3",
+	"FormLayoutOID": "v2.0",
 	"Status": "data entry complete"},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF05_DEMOG_GRP",
 	"odk_fields": [
 
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF05_ODK_ENTRY",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_DEM_GRP_AGE",	"itemOid": "I_CRF05_AGE",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_DEM_GRP_AGEU",	"itemOid": "I_CRF05_AGEU",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DEM_GRP_CALC_AGE_MON",	"itemOid": "I_CRF05_CALC_AGE_MON",	"item_type": "string"},
@@ -152,17 +157,19 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10106_CORE3\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10106_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF06MEDICAL",
 	"FormName": "D0 06: Medical History",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF06_MEDHIST_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF06_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D0_DIA",	"itemOid": "I_CRF06_D0_DIA",	"item_type": "string"},
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D0_DIA_DUR",	"itemOid": "I_CRF06_D0_DIA_DUR",	"item_type": "integer"},
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D0_DIA_ONG",	"itemOid": "I_CRF06_D0_DIA_ONG",	"item_type": "string"},
@@ -265,18 +272,20 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10107_CORE3\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10107_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF07VITALSI",
 	"FormName": "D0 07: Vital Signs",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF07_VITAL_SIGNS_GRP",
 	"odk_fields":
 		[
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF07_ODK_ENTRY",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D0_VS_COMP_D",	"itemOid": "I_CRF07_D0_VS_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D0_VS_INV_INIT",	"itemOid": "I_CRF07_D0_VS_INV_INIT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_D0_VITAL_SIGNS_COL",	"itemOid": "I_CRF07_D0_VITAL_SIGNS_COL",	"item_type": "string"},
@@ -314,18 +323,20 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10108_CORE3\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10108_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF08PHYSICA",
 	"FormName": "D0 08: Physical Examination",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF08_PHY_EXAM_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF08_ODK_ENTRY",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D0_PHY_EXAM_D",	"itemOid": "I_CRF08_D0_PHY_EXAM_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D0_PHY_EXAM_DONE",	"itemOid": "I_CRF08_D0_PHY_EXAM_DONE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D0_PHY_EXAM_DONE_SPE",	"itemOid": "I_CRF08_D0_PHY_EXAM_DONE_SPE",	"item_type": "string"},
@@ -375,18 +386,20 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10109_CORE3\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10109_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF09DIAGNOS",
 	"FormName": "D0 09: Diagnosis Pre POC",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF09_DIAG_PRE_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF09_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG",	"itemOid": "I_CRF09_DIAG",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_ANTI_BIO",	"itemOid": "I_CRF09_DIAG_ANTI_BIO",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_CONF",	"itemOid": "I_CRF09_DIAG_CONF",	"item_type": "string"},
@@ -401,17 +414,19 @@
 ,
 {
 "table_name": "odk_am001.\"1010_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF11DAY0POC",
 	"FormName": "D0 10: Diagnostic Test Results",
-	"FormLayoutOID": "v.0.2",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF11_DIAG_TEST_RES_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF12_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT",	"item_type": "string"},
 		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_DONE",	"item_type": "string"},
 		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_ND",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_ND",	"item_type": "string"},
@@ -630,17 +645,19 @@
 ,
 {
 "table_name": "odk_am001.\"10111_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF12DIAGNOS",
 	"FormName": "D0 11: Diagnosis Post PoC",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF12_DIAG_POST_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF12_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG",	"itemOid": "I_CRF12_CONFIRMED_DIAG",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_PRESENT",	"itemOid": "I_CRF12_CONFIRMED_DIAG_PRESENT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_RESP",	"itemOid": "I_CRF12_CONFIRMED_DIAG_RESP",	"item_type": "string"},
@@ -655,17 +672,19 @@
 ,
 {
 "table_name": "odk_am001.\"10112_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF13PRESCRI",
 	"FormName": "D0 12: Prescription",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 	"itemgroups": [{
 	"itemgroupOid": "IG_CRF13_PRESC_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF13_ODK_ENTRY",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_COMP_D",	"itemOid": "I_CRF13_PRESC_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_INV_INIT",	"itemOid": "I_CRF13_PRESC_INV_INIT",	"item_type": "string"}
 		]
@@ -686,18 +705,20 @@
 }
 ,
 {
-"table_name": "odk_am001.\"10114_CORE2\"",
-"id_field": "STUDY_SUBJECT_ID",
+"table_name": "odk_am001.\"10114_CORE\"",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF14QUALITA",
 	"FormName": "D0 13: Qualitative data Confirmation",
-	"FormLayoutOID": "v.1.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF14_DATA_QUAL_GRP",
 "odk_fields": [
+	{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF14_ODK_ENTRY",	"item_type": "date"},
+
 	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_COMP_D",	"itemOid": "I_CRF14_DQ_COMP_D",	"item_type": "date"},
 	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_INV_INIT",	"itemOid": "I_CRF14_DQ_INV_INIT",	"item_type": "string"},
 	{"odk_column": "PAGE_WELCOME_QUAL_GRP_BASE_KNOW_COL",	"itemOid": "I_CRF14_BASE_KNOW_COL",	"item_type": "string"},
@@ -706,25 +727,27 @@
 	{"odk_column": "PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN_SPE",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN_SPE",	"item_type": "string"}
 	],
 "multi_fields": [
-	{"odk_table_name": "odk_am001.\"10114_PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN2\"",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN"}
+	{"odk_table_name": "odk_am001.\"10114_PAGE_WELCOME_QUAL_GRP_COMM_MSG_DEL_RSN\"",	"itemOid": "I_CRF14_COMM_MSG_DEL_RSN"}
 	]
 	}]
 }
 ,
 {
 "table_name": "odk_am001.\"10201_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_UNSVISITREPO",
 	"FormName": "UNS 01: Visit Reporting",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSVI_UNS_VISIT_GRP",
 		"odk_fields": [
+			{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSVI_ODK_ENTRY",	"item_type": "date"},
+
 			{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_COMP_D",	"itemOid": "I_UNSVI_UNS_COMP_D",	"item_type": "date"},
 			{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_INV_INIT",	"itemOid": "I_UNSVI_UNS_INV_INIT",	"item_type": "string"},
 			{"odk_column": "PAGE_WELCOME_UNS_VISIT_GRP1_UNS_VISIT_D",	"itemOid": "I_UNSVI_UNS_VISIT_D",	"item_type": "date"},
@@ -738,18 +761,20 @@
 ,
 {
 "table_name": "odk_am001.\"10202_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_UNSTESTREQUE",
 	"FormName": "UNS 02: Unscheduled Tests Request",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSTE_UNS_TEST_REQ_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSTE_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_DIAG_REQ_GRP_UNS_REQ_GRP_UNS_LAB_TEST_REQ",	"itemOid": "I_UNSTE_UNS_LAB_TEST_REQ",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_TEST_REQ_COMP_D",	"itemOid": "I_UNSTE_UNS_TEST_REQ_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_TEST_REQ_INV_INIT",	"itemOid": "I_UNSTE_UNS_TEST_REQ_INV_INIT",	"item_type": "string"}
@@ -767,18 +792,21 @@
 ,
 {
 "table_name": "odk_am001.\"10203_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_SYMPTOMSANDM_306",
 	"FormName": "UNS 03: Symptoms",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_SYMPT_MEDHIST_GRP_8171",
 	"odk_fields": [
+	
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_SYMPT_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_UNS_DIA",	"itemOid": "I_SYMPT_UNS_DIA",	"item_type": "string"},
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_UNS_DIA_DAY0",	"itemOid": "I_SYMPT_UNS_DIA_DAY0",	"item_type": "string"},
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_UNS_DIA_DUR",	"itemOid": "I_SYMPT_UNS_DIA_DUR",	"item_type": "integer"},
@@ -905,18 +933,20 @@
 ,
 {
 "table_name": "odk_am001.\"10204_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_UNSVITALSIGN",
 	"FormName": "UNS 04: Vital Signs",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSVI_VITAL_SIGNS_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSVI_ODK_ENTRY_1209",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_VS_COMP_D",	"itemOid": "I_UNSVI_UNS_VS_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_VS_INV_INIT",	"itemOid": "I_UNSVI_UNS_VS_INV_INIT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_UNS_VITAL_SIGNS_COL",	"itemOid": "I_UNSVI_UNS_VITAL_SIGNS_COL",	"item_type": "string"},
@@ -946,18 +976,20 @@
 ,
 {
 "table_name": "odk_am001.\"10205_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_UNSPHYSICALE",
 	"FormName": "UNS 05: Physical Examination",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSPH_PHY_EXAM_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSPH_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_PE_GRP_PE_GRP1_UNS_PE_GA",	"itemOid": "I_UNSPH_UNS_PE_GA",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_1_UNS_HEENT_PRESENT",	"itemOid": "I_UNSPH_UNS_HEENT_PRESENT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_1_UNS_HEENT_SPE",	"itemOid": "I_UNSPH_UNS_HEENT_SPE",	"item_type": "string"},
@@ -1008,18 +1040,20 @@
 ,
 {
 "table_name": "odk_am001.\"10206_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_UNSANTIBIOTI",
 	"FormName": "UNS 06: UNS Dispensing and Adherence CRF",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSAN_ADH_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSAN_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_BACK",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_BACK",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_D0",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_D0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_D0_PAY",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_D0_PAY",	"item_type": "string"},
@@ -1072,18 +1106,20 @@
 ,
 {
 "table_name": "odk_am001.\"10207_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_UNS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_PRESCRIPTION",
 	"FormName": "UNS 07: Prescription",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_PRESC_PRESC_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PRESC_ODK_ENTRY",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_PRESC_COMP_D",	"itemOid": "I_PRESC_UNS_PRESC_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_PRESC_INV_INIT",	"itemOid": "I_PRESC_UNS_PRESC_INV_INIT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_UNS_PRESC_DONE",	"itemOid": "I_PRESC_UNS_PRESC_DONE",	"item_type": "string"}
@@ -1107,13 +1143,13 @@
 ,
 {
 "table_name": "odk_am001.\"1201_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_SAEREPORTING",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_SERIOUSADVER",
 	"FormName": "SAE 01: Serious Adverse Events",
-	"FormLayoutOID": "v0.2",
+	"FormLayoutOID": "v2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -1139,6 +1175,8 @@
 		]},{
 	"itemgroupOid": "IG_SERIO_SAE_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_SERIO_ODK_ENTRY",	"item_type": "integer"},
+
 		{"odk_column": "PAGE_WELCOME_PART_INFO_GRP_AGE",	"itemOid": "I_SERIO_AGE",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_PART_INFO_GRP_AGEU",	"itemOid": "I_SERIO_AGEU",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PART_INFO_GRP_HEIGHT",	"itemOid": "I_SERIO_HEIGHT",	"item_type": "integer"},
@@ -1215,18 +1253,20 @@
 ,
 {
 "table_name": "odk_am001.\"10401_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_PROTOCOLDEVIATIONS",
-"serk": "SERK",
+"serk": "serk",
 "form_data": {
 	"FormOID": "F_PROTOCOLDEVI",
 	"FormName": "Protocol Deviation",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_PROTO_PRODEV_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PROTO_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_PDYN",	"itemOid": "I_PROTO_PDYN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PRO_DEV_GRP_DEV_DESC",	"itemOid": "I_PROTO_DEV_DESC",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PRO_DEV_GRP_DEV_DT_GROUP_PROD_DEV_ONG",	"itemOid": "I_PROTO_PROD_DEV_ONG",	"item_type": "string"},
@@ -1265,17 +1305,19 @@
 ,
 {
 "table_name": "odk_am001.\"10501_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_ADVERSEEVENTS",
 "form_data": {
 	"FormOID": "F_ADVERSEEVENT_1974",
 	"FormName": "AE 01: Adverse Events",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups":[{
 	"itemgroupOid": "IG_ADVER_ADV_GRP_1339",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_ADVER_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_AEYN",	"itemOid": "I_ADVER_AEYN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_COMP_D",	"itemOid": "I_ADVER_COMP_D_6112",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_INV_INIT",	"itemOid": "I_ADVER_INV_INIT_3611",	"item_type": "string"}
@@ -1301,17 +1343,19 @@
 ,
 {
 "table_name": "odk_am001.\"10601_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_ATTENDANCECR",
 	"FormName": "D7 01: Attendance",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups":[{
 	"itemgroupOid": "IG_ATTEN_ATTEND_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_ATTEN_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_ATT_GRP_ATT_DAY7",	"itemOid": "I_ATTEN_ATT_DAY7",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ATT_GRP_D7_COL",	"itemOid": "I_ATTEN_D7_COL",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ATT_GRP_D7_COL_D",	"itemOid": "I_ATTEN_D7_COL_D",	"item_type": "date"},
@@ -1323,17 +1367,19 @@
 ,
 {
 "table_name": "odk_am001.\"10602_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_CLINICALOUTC",
 	"FormName": "D7 02: Clinical Outcomes",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups":[{
 	"itemgroupOid": "IG_CLINI_CLIN_OUT_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CLINI_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_CLINOUT_GRP_CLIN_OUTCOME",	"itemOid": "I_CLINI_CLIN_OUTCOME",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_CLINOUT_GRP_FEVER_PRESENT",	"itemOid": "I_CLINI_FEVER_PRESENT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CLINOUT_COMP_D",	"itemOid": "I_CLINI_CLINOUT_COMP_D",	"item_type": "date"},
@@ -1344,17 +1390,19 @@
 ,
 {
 "table_name": "odk_am001.\"10603_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_VITALSIGNS",
 	"FormName": "D7 03: Vital Signs",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_VITAL_VITAL_SIGNS_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_VITAL_ODK_ENTRY",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_VS_COMP_D",	"itemOid": "I_VITAL_D7_VS_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_VS_INV_INIT",	"itemOid": "I_VITAL_D7_VS_INV_INIT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_D7_VITAL_SIGNS_COL",	"itemOid": "I_VITAL_D7_VITAL_SIGNS_COL",	"item_type": "string"},
@@ -1384,17 +1432,19 @@
 ,
 {
 "table_name": "odk_am001.\"10604_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_PHYSICALEXAM",
 	"FormName": "D7 04: Physical Examination",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_PHYSI_PHY_EXAM_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PHYSI_ODK_ENTRY",	"item_type": "date"},
+
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D7_PHY_EXAM_D",	"itemOid": "I_PHYSI_D7_PHY_EXAM_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D7_PHY_EXAM_DONE",	"itemOid": "I_PHYSI_D7_PHY_EXAM_DONE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D7_PHY_EXAM_DONE_SPE",	"itemOid": "I_PHYSI_D7_PHY_EXAM_DONE_SPE",	"item_type": "string"},
@@ -1445,16 +1495,18 @@
 ,
 {
 "table_name": "odk_am001.\"10605_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_SYMPTOMSANDM",
 	"FormName": "D7 05: Symptoms",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"},
 "itemgroups": [{
 	"itemgroupOid": "IG_SYMPT_MEDHIST_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_SYMPT_ODK_ENTRY_5774",	"item_type": "string"},
+
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D7_DIA",	"itemOid": "I_SYMPT_D7_DIA",	"item_type": "string"},
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D7_DIA_DAY0",	"itemOid": "I_SYMPT_D7_DIA_DAY0",	"item_type": "string"},
 		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP11_D7_DIA_DUR",	"itemOid": "I_SYMPT_D7_DIA_DUR",	"item_type": "integer"},
@@ -1556,17 +1608,19 @@
 ,
 {
 "table_name": "odk_am001.\"10606_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_ADHERENCEAND",
 	"FormName": "D7 06: Dispensing and Adherence",
-	"FormLayoutOID": "v.0.1",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_ADHER_ADH_GRP",
 	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_ADHER_ODK_ENTRY",	"item_type": "string"},
+
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_BACK",	"itemOid": "I_ADHER_D7_ANTI_BIO_BACK",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY",	"item_type": "string"},
@@ -1621,17 +1675,19 @@
 ,
 {
 "table_name": "odk_am001.\"10607_CORE\"",
-"id_field": "STUDY_SUBJECT_ID",
+"id_field": "study_subject_id",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_STUDYEND",
 	"FormName": "D7 07: End of Study",
-	"FormLayoutOID": "v.0.2",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
 	"itemgroupOid": "IG_STUDY_STUDY_END_GRP",
 "odk_fields": [
+	{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_STUDY_ODK_ENTRY",	"item_type": "string"},
+
 	{"odk_column": "PAGE_WELCOME_END_GRP_DISC_COM",	"itemOid": "I_STUDY_DISC_COM",	"item_type": "string"},
 	{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP",	"itemOid": "I_STUDY_STUDY_COMP",	"item_type": "string"},
 	{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_D",	"itemOid": "I_STUDY_STUDY_COMP_D",	"item_type": "date"},
