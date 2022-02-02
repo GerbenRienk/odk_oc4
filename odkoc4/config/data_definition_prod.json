@@ -14,7 +14,7 @@
 	"odk_tables": [
 {
 	"table_name": "odk_am001.\"10101_CORE\"",
-	"id_field": "study_subject_id",
+	"id_field": "STUDY_SUBJECT_ID",
 	"eventOid": "SE_DAY0",
 	"form_data": {
 		"FormOID": "F_01_VISIT",
@@ -34,7 +34,7 @@
 },
 {
 "table_name": "odk_am001.\"10102_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF03INFORME",
@@ -69,7 +69,7 @@
 ,
 {
 "table_name": "odk_am001.\"10103_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF04INCLUSI",
@@ -103,7 +103,7 @@
 ,
 {
 	"table_name": "odk_am001.\"10104_CORE\"",
-	"id_field": "study_subject_id",
+	"id_field": "STUDY_SUBJECT_ID",
 	"eventOid": "SE_DAY0",
 	"form_data": {
 		"FormOID": "F_CRF02ENROLME",
@@ -129,7 +129,7 @@
 ,
 {
 "table_name": "odk_am001.\"10105_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF05DEMOGRA",
@@ -158,7 +158,7 @@
 ,
 {
 "table_name": "odk_am001.\"10106_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF06MEDICAL",
@@ -273,7 +273,7 @@
 ,
 {
 "table_name": "odk_am001.\"10107_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF07VITALSI",
@@ -324,7 +324,7 @@
 ,
 {
 "table_name": "odk_am001.\"10108_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF08PHYSICA",
@@ -387,7 +387,7 @@
 ,
 {
 "table_name": "odk_am001.\"10109_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF09DIAGNOS",
@@ -414,7 +414,7 @@
 ,
 {
 "table_name": "odk_am001.\"1010_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF11DAY0POC",
@@ -645,7 +645,7 @@
 ,
 {
 "table_name": "odk_am001.\"10111_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF12DIAGNOS",
@@ -672,7 +672,7 @@
 ,
 {
 "table_name": "odk_am001.\"10112_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF13PRESCRI",
@@ -706,7 +706,7 @@
 ,
 {
 "table_name": "odk_am001.\"10114_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY0",
 "form_data": {
 	"FormOID": "F_CRF14QUALITA",
@@ -734,9 +734,9 @@
 ,
 {
 "table_name": "odk_am001.\"10201_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_UNSVISITREPO",
 	"FormName": "UNS 01: Visit Reporting",
@@ -761,9 +761,9 @@
 ,
 {
 "table_name": "odk_am001.\"10202_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_UNSTESTREQUE",
 	"FormName": "UNS 02: Unscheduled Tests Request",
@@ -792,9 +792,9 @@
 ,
 {
 "table_name": "odk_am001.\"10203_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_SYMPTOMSANDM_306",
 	"FormName": "UNS 03: Symptoms",
@@ -933,9 +933,9 @@
 ,
 {
 "table_name": "odk_am001.\"10204_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_UNSVITALSIGN",
 	"FormName": "UNS 04: Vital Signs",
@@ -976,9 +976,9 @@
 ,
 {
 "table_name": "odk_am001.\"10205_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_UNSPHYSICALE",
 	"FormName": "UNS 05: Physical Examination",
@@ -1040,9 +1040,9 @@
 ,
 {
 "table_name": "odk_am001.\"10206_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_UNSANTIBIOTI",
 	"FormName": "UNS 06: UNS Dispensing and Adherence CRF",
@@ -1106,9 +1106,9 @@
 ,
 {
 "table_name": "odk_am001.\"10207_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_PRESCRIPTION",
 	"FormName": "UNS 07: Prescription",
@@ -1143,9 +1143,9 @@
 ,
 {
 "table_name": "odk_am001.\"1201_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_SAEREPORTING",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_SERIOUSADVER",
 	"FormName": "SAE 01: Serious Adverse Events",
@@ -1253,9 +1253,9 @@
 ,
 {
 "table_name": "odk_am001.\"10401_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_PROTOCOLDEVIATIONS",
-"serk": "serk",
+"SERK": "SERK",
 "form_data": {
 	"FormOID": "F_PROTOCOLDEVI",
 	"FormName": "Protocol Deviation",
@@ -1305,7 +1305,7 @@
 ,
 {
 "table_name": "odk_am001.\"10501_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_ADVERSEEVENTS",
 "form_data": {
 	"FormOID": "F_ADVERSEEVENT_1974",
@@ -1343,7 +1343,7 @@
 ,
 {
 "table_name": "odk_am001.\"10601_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_ATTENDANCECR",
@@ -1367,7 +1367,7 @@
 ,
 {
 "table_name": "odk_am001.\"10602_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_CLINICALOUTC",
@@ -1390,7 +1390,7 @@
 ,
 {
 "table_name": "odk_am001.\"10603_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_VITALSIGNS",
@@ -1432,7 +1432,7 @@
 ,
 {
 "table_name": "odk_am001.\"10604_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_PHYSICALEXAM",
@@ -1495,7 +1495,7 @@
 ,
 {
 "table_name": "odk_am001.\"10605_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_SYMPTOMSANDM",
@@ -1608,7 +1608,7 @@
 ,
 {
 "table_name": "odk_am001.\"10606_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_ADHERENCEAND",
@@ -1675,7 +1675,7 @@
 ,
 {
 "table_name": "odk_am001.\"10607_CORE\"",
-"id_field": "study_subject_id",
+"id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_DAY7",
 "form_data": {
 	"FormOID": "F_STUDYEND",
