@@ -57,12 +57,14 @@ def cycle_through_syncs():
     my_report.append_to_report('cycle started at %s' % str(start_time))
     while True:
         # retrieve all study-subjects / participants from oc4, using the api
+        # print('retrieving participants from oc4')
         all_participants = api.participants.list_participants(data_def['studyOid'], aut_token, verbose=False)
         # now loop through the subjects / participants to check if the id - oid is still correct,
         # because this may have been changed in oc4 between cycles
         for one_participant in all_participants:
             util.subjects.check_and_update(one_participant['subjectKey'], one_participant['subjectOid'])
-
+            
+        print('finished checking participants')
         for odk_table in data_def['odk_tables']:
             # list the double entries
             double_entries = conn_odk.list_double_entries(odk_table['table_name'])
@@ -93,7 +95,7 @@ def cycle_through_syncs():
                 # check if StudySubjectID from odk is already in oc
                 add_subject_to_oc = True
                 study_subject_id = odk_result[odk_table['id_field']]
-                
+                #print(study_subject_id)
                 # when in test, check that the position 8 and 9 of the subject id are 99
                 process_this_subject = False
                 the_key_part = study_subject_id[7:9]
@@ -303,7 +305,7 @@ def cycle_through_syncs():
         if util.subjects.check_enrol(study_subject_oid) == True:
             util.subjects.set_enrol_ok(study_subject_oid)
         else:
-            my_report.append_to_report('data were imported for %s, but the subject is not enrolled' % study_subject_id)
+            # my_report.append_to_report('data were imported for %s, but the subject is not enrolled' % study_subject_id)
             util.subjects.set_report_date(study_subject_oid)
     
     my_report.append_to_report('finished looping from %s to %s.' % (start_time, current_time))
