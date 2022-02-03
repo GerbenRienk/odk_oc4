@@ -19,7 +19,7 @@
 	"form_data": {
 		"FormOID": "F_01_VISIT",
 		"FormName": "D0 01: Date of Visit",
-		"FormLayoutOID": "v.2.0",
+		"FormLayoutOID": "v.2.1",
 		"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -1684,17 +1684,20 @@
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
+	"itemgroupOid": "IG_STUDY_TEST_GRP",
+	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_STUDY_ODK_ENTRY",	"item_type": "string"}]
+	},{
+	
 	"itemgroupOid": "IG_STUDY_STUDY_END_GRP",
-"odk_fields": [
-	{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_STUDY_ODK_ENTRY",	"item_type": "string"},
-
-	{"odk_column": "PAGE_WELCOME_END_GRP_DISC_COM",	"itemOid": "I_STUDY_DISC_COM",	"item_type": "string"},
-	{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP",	"itemOid": "I_STUDY_STUDY_COMP",	"item_type": "string"},
-	{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_D",	"itemOid": "I_STUDY_STUDY_COMP_D",	"item_type": "date"},
-	{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_RSN",	"itemOid": "I_STUDY_STUDY_COMP_RSN",	"item_type": "string"},
-	{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_RSN_OTH",	"itemOid": "I_STUDY_STUDY_COMP_RSN_OTH",	"item_type": "string"},
-	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CLINOUT_COMP_D",	"itemOid": "I_STUDY_CLINOUT_COMP_D",	"item_type": "date"},
-	{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CLINOUT_INV_INIT",	"itemOid": "I_STUDY_CLINOUT_INV_INIT",	"item_type": "string"}
+		"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_END_GRP_DISC_COM",	"itemOid": "I_STUDY_DISC_COM",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP",	"itemOid": "I_STUDY_STUDY_COMP",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_D",	"itemOid": "I_STUDY_STUDY_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_RSN",	"itemOid": "I_STUDY_STUDY_COMP_RSN",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_END_GRP_STUDY_COMP_RSN_OTH",	"itemOid": "I_STUDY_STUDY_COMP_RSN_OTH",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CLINOUT_COMP_D",	"itemOid": "I_STUDY_CLINOUT_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CLINOUT_INV_INIT",	"itemOid": "I_STUDY_CLINOUT_INV_INIT",	"item_type": "string"}
 	]
 }]
 }
