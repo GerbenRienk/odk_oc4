@@ -91,20 +91,16 @@
 	"itemgroupOid": "IG_CRF04_INC_EXC",
 	"odk_fields": [
 		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF04_ODK_ENTRY",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_1_YR",	"itemOid": "I_CRF04_AGE_1YR",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_6_M",	"itemOid": "I_CRF04_AGE_6M",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_6_M_18",	"itemOid": "I_CRF04_AGE_6M_18",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_IC",	"itemOid": "I_CRF04_AGE_IC",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_IC1",	"itemOid": "I_CRF04_AGE_IC1",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_AGE_IC2",	"itemOid": "I_CRF04_AGE_IC2",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_ELIG",	"itemOid": "I_CRF04_ELIG",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_FEVER_RESP",	"itemOid": "I_CRF04_FEVER_RESP",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_FU_POSSIBLE",	"itemOid": "I_CRF04_FU_POSSIBLE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_INC_TEMP",	"itemOid": "I_CRF04_INC_TEMP",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_NO_SEV_ILLNESS",	"itemOid": "I_CRF04_NO_SEV_ILLNESS",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_PROVIDE_INFORM_CONSENT",	"itemOid": "I_CRF04_PROVIDE_INFORM_CONSENT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_SAMPLE_COL_POSSIBLE",	"itemOid": "I_CRF04_SAMPLE_COL_POSSIBLE",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_ELIG_TOTAL_INC",	"itemOid": "I_CRF04_TOTAL_INC",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_COMP_D",	"itemOid": "I_CRF04_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_INV_INIT",	"itemOid": "I_CRF04_INV_INIT",	"item_type": "string"}
 		]}
@@ -124,7 +120,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF02_ENROL",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF04_ODK_ENTRY",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF02_ODK_ENTRY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ENROL_GRP_ENROL",	"itemOid": "I_CRF02_ENROL",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ENROL_GRP_ENROL_RSN",	"itemOid": "I_CRF02_ENROL_RSN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ENROL_GRP_ENROL_RSN_SPE",	"itemOid": "I_CRF02_ENROL_RSN_SPE",	"item_type": "string"},
@@ -144,7 +140,7 @@
 "form_data": {
 	"FormOID": "F_CRF05DEMOGRA",
 	"FormName": "D0 05: Demographics",
-	"FormLayoutOID": "v2.0",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"},
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF05_DEMOG_GRP",
@@ -294,7 +290,7 @@
 	"itemgroupOid": "IG_CRF07_VITAL_SIGNS_GRP",
 	"odk_fields":
 		[
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF07_ODK_ENTRY",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF07_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D0_VS_COMP_D",	"itemOid": "I_CRF07_D0_VS_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D0_VS_INV_INIT",	"itemOid": "I_CRF07_D0_VS_INV_INIT",	"item_type": "string"},
@@ -345,7 +341,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF08_PHY_EXAM_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF08_ODK_ENTRY",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF08_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D0_PHY_EXAM_D",	"itemOid": "I_CRF08_D0_PHY_EXAM_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D0_PHY_EXAM_DONE",	"itemOid": "I_CRF08_D0_PHY_EXAM_DONE",	"item_type": "string"},
@@ -375,13 +371,13 @@
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D0_PE_INV_INIT",	"itemOid": "I_CRF08_D0_PE_INV_INIT",	"item_type": "string"}
 		],
 	"multi_fields": [
-		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP2_D0_PERI_SIGNS2\"",	"itemOid": "I_CRF08_D0_PERI_SIGNS"},
-		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_1_D0_HEENT3\"",	"itemOid": "I_CRF08_D0_HEENT"},
-		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_2_D0_LUNGS2\"",	"itemOid": "I_CRF08_D0_LUNGS"},
-		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_3_D0_HEART2\"",	"itemOid": "I_CRF08_D0_HEART"},
+		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP2_D0_PERI_SIGNS\"",	"itemOid": "I_CRF08_D0_PERI_SIGNS"},
+		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_1_D0_HEENT\"",	"itemOid": "I_CRF08_D0_HEENT"},
+		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_2_D0_LUNGS\"",	"itemOid": "I_CRF08_D0_LUNGS"},
+		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_3_D0_HEART\"",	"itemOid": "I_CRF08_D0_HEART"},
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_4_D0_ABD\"",	"itemOid": "I_CRF08_D0_ABD"},
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_5_D0_GENITO\"",	"itemOid": "I_CRF08_D0_GENITO"},
-		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_6_D0_NERVE2\"",	"itemOid": "I_CRF08_D0_NERVE"},
+		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_6_D0_NERVE\"",	"itemOid": "I_CRF08_D0_NERVE"},
 		{"odk_table_name": "odk_am001.\"10108_PAGE_WELCOME_PE_GRP_PE_GRP3_PE_GRP3_7_D0_SKIN\"",	"itemOid": "I_CRF08_D0_SKIN"}
 		]
 	}],
@@ -410,12 +406,12 @@
 	"odk_fields": [
 		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF09_ODK_ENTRY",	"item_type": "string"},
 
-		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG",	"itemOid": "I_CRF09_DIAG",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG2",	"itemOid": "I_CRF09_DIAG2",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_ANTI_BIO",	"itemOid": "I_CRF09_DIAG_ANTI_BIO",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_CONF",	"itemOid": "I_CRF09_DIAG_CONF",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_FEBR",	"itemOid": "I_CRF09_DIAG_FEBR",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_RESP",	"itemOid": "I_CRF09_DIAG_RESP",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_SPE",	"itemOid": "I_CRF09_DIAG_SPE",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_PRE_COMP_D",	"itemOid": "I_CRF09_DIAG_PRE_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_PRE_INV_INIT",	"itemOid": "I_CRF09_DIAG_PRE_INV_INIT",	"item_type": "string"}
 		]
@@ -668,7 +664,6 @@
 	"odk_fields": [
 		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF12_ODK_ENTRY",	"item_type": "string"},
 
-		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG",	"itemOid": "I_CRF12_CONFIRMED_DIAG",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_PRESENT",	"itemOid": "I_CRF12_CONFIRMED_DIAG_PRESENT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_RESP",	"itemOid": "I_CRF12_CONFIRMED_DIAG_RESP",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_SPE",	"itemOid": "I_CRF12_CONFIRMED_DIAG_SPE",	"item_type": "string"},
@@ -693,7 +688,7 @@
 	"itemgroups": [{
 	"itemgroupOid": "IG_CRF13_PRESC_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF13_ODK_ENTRY",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF13_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_COMP_D",	"itemOid": "I_CRF13_PRESC_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_PRESC_INV_INIT",	"itemOid": "I_CRF13_PRESC_INV_INIT",	"item_type": "string"}
@@ -709,7 +704,7 @@
 			{"odk_column": "DRUG_NAME",	"itemOid": "I_CRF13_DRUG_NAME",	"item_type": "string"},
 			{"odk_column": "DUR",	"itemOid": "I_CRF13_DUR",	"item_type": "integer"},
 			{"odk_column": "DUR_UNIT",	"itemOid": "I_CRF13_DUR_UNIT",	"item_type": "string"},
-			{"odk_column": "MG_PER_DOSE",	"itemOid": "I_CRF13_MG_PER_DOSE",	"item_type": "string"}
+			{"odk_column": "DOSE",	"itemOid": "I_CRF13_DOSE",	"item_type": "float"}
 			]}
 	]
 }
@@ -727,7 +722,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF14_DATA_QUAL_GRP",
 "odk_fields": [
-	{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF14_ODK_ENTRY",	"item_type": "date"},
+	{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF14_ODK_ENTRY",	"item_type": "string"},
 
 	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_COMP_D",	"itemOid": "I_CRF14_DQ_COMP_D",	"item_type": "date"},
 	{"odk_column": "PAGE_WELCOME_DQ_SIGN_OUT_GRP_DQ_INV_INIT",	"itemOid": "I_CRF14_DQ_INV_INIT",	"item_type": "string"},
@@ -746,7 +741,7 @@
 "table_name": "odk_am001.\"10201_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_UNSVISITREPO",
 	"FormName": "UNS 01: Visit Reporting",
@@ -756,7 +751,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSVI_UNS_VISIT_GRP",
 		"odk_fields": [
-			{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSVI_ODK_ENTRY",	"item_type": "date"},
+			{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSVI_ODK_ENTRY",	"item_type": "string"},
 
 			{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_COMP_D",	"itemOid": "I_UNSVI_UNS_COMP_D",	"item_type": "date"},
 			{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_INV_INIT",	"itemOid": "I_UNSVI_UNS_INV_INIT",	"item_type": "string"},
@@ -773,7 +768,7 @@
 "table_name": "odk_am001.\"10202_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_UNSTESTREQUE",
 	"FormName": "UNS 02: Unscheduled Tests Request",
@@ -804,7 +799,7 @@
 "table_name": "odk_am001.\"10203_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_SYMPTOMSANDM_306",
 	"FormName": "UNS 03: Symptoms",
@@ -945,7 +940,7 @@
 "table_name": "odk_am001.\"10204_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_UNSVITALSIGN",
 	"FormName": "UNS 04: Vital Signs",
@@ -955,7 +950,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_UNSVI_VITAL_SIGNS_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSVI_ODK_ENTRY_1209",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSVI_ODK_ENTRY_1209",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_VS_COMP_D",	"itemOid": "I_UNSVI_UNS_VS_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_VS_INV_INIT",	"itemOid": "I_UNSVI_UNS_VS_INV_INIT",	"item_type": "string"},
@@ -988,7 +983,7 @@
 "table_name": "odk_am001.\"10205_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_UNSPHYSICALE",
 	"FormName": "UNS 05: Physical Examination",
@@ -1052,7 +1047,7 @@
 "table_name": "odk_am001.\"10206_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_UNSANTIBIOTI",
 	"FormName": "UNS 06: UNS Dispensing and Adherence CRF",
@@ -1065,11 +1060,11 @@
 		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_UNSAN_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_BACK",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_BACK",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_D0",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_D0",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_D0_PAY",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_D0_PAY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_D0_PAY_SPE",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_D0_PAY_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_PRESC_D0",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_PRESC_D0",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_TX_COMP_D0",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_TX_COMP_D0",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_PYRE_GRP_UNS_ANTI_PYRE",	"itemOid": "I_UNSAN_UNS_ANTI_PYRE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_PYRE_GRP_UNS_ANTI_PYRE_DUR",	"itemOid": "I_UNSAN_UNS_ANTI_PYRE_DUR",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_PYRE_GRP_UNS_ANTI_PYRE_ONG",	"itemOid": "I_UNSAN_UNS_ANTI_PYRE_ONG",	"item_type": "string"},
@@ -1118,7 +1113,7 @@
 "table_name": "odk_am001.\"10207_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_UNS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_PRESCRIPTION",
 	"FormName": "UNS 07: Prescription",
@@ -1128,7 +1123,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_PRESC_PRESC_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PRESC_ODK_ENTRY",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PRESC_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_PRESC_COMP_D",	"itemOid": "I_PRESC_UNS_PRESC_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_UNS_PRESC_INV_INIT",	"itemOid": "I_PRESC_UNS_PRESC_INV_INIT",	"item_type": "string"},
@@ -1145,7 +1140,7 @@
 			{"odk_column": "UNS_DRUG_NAME",	"itemOid": "I_PRESC_UNS_DRUG_NAME",	"item_type": "string"},
 			{"odk_column": "UNS_DUR",	"itemOid": "I_PRESC_UNS_DUR",	"item_type": "integer"},
 			{"odk_column": "UNS_DUR_UNIT",	"itemOid": "I_PRESC_UNS_DUR_UNIT",	"item_type": "string"},
-			{"odk_column": "UNS_MG_PER_DOSE",	"itemOid": "I_PRESC_UNS_MG_PER_DOSE",	"item_type": "string"}
+			{"odk_column": "UNS_DOSE",	"itemOid": "I_PRESC_UNS_DOSE",	"item_type": "float"}
 			]
 		}
 	]
@@ -1155,11 +1150,11 @@
 "table_name": "odk_am001.\"1201_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_SAEREPORTING",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_SERIOUSADVER",
 	"FormName": "SAE 01: Serious Adverse Events",
-	"FormLayoutOID": "v2.0",
+	"FormLayoutOID": "v.2.0",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -1265,7 +1260,7 @@
 "table_name": "odk_am001.\"10401_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
 "eventOid": "SE_PROTOCOLDEVIATIONS",
-"SERK": "SERK",
+"serk": "SERK",
 "form_data": {
 	"FormOID": "F_PROTOCOLDEVI",
 	"FormName": "Protocol Deviation",
@@ -1337,7 +1332,7 @@
 	{"rig_odk_table_name":"odk_am001.\"10501_PAGE_WELCOME_AE_GRP_GRP1\"",
 	"rig_oid": "IG_ADVER_ADV_GRP_RPT_2185",
 	"rig_odk_fields": [
-		{"odk_column": "AE_ARM",	"itemOid": "I_ADVER_AE_ARM_3561",	"item_type": "string"},
+		
 		{"odk_column": "AE_END_D",	"itemOid": "I_ADVER_AE_END_D_2296",	"item_type": "date"},
 		{"odk_column": "AE_ID",	"itemOid": "I_ADVER_AE_ID_7805",	"item_type": "integer"},
 		{"odk_column": "AE_OUTCOME",	"itemOid": "I_ADVER_AE_OUTCOME_3511",	"item_type": "string"},
@@ -1411,7 +1406,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_VITAL_VITAL_SIGNS_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_VITAL_ODK_ENTRY",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_VITAL_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_VS_COMP_D",	"itemOid": "I_VITAL_D7_VS_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_VS_INV_INIT",	"itemOid": "I_VITAL_D7_VS_INV_INIT",	"item_type": "string"},
@@ -1453,7 +1448,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_PHYSI_PHY_EXAM_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PHYSI_ODK_ENTRY",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_PHYSI_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D7_PHY_EXAM_D",	"itemOid": "I_PHYSI_D7_PHY_EXAM_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_PE_GRP_D7_PHY_EXAM_DONE",	"itemOid": "I_PHYSI_D7_PHY_EXAM_DONE",	"item_type": "string"},
@@ -1632,11 +1627,11 @@
 		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_ADHER_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_BACK",	"itemOid": "I_ADHER_D7_ANTI_BIO_BACK",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY_SPE",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_PRESC_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_PRESC_D0",	"item_type": "string"},	
-		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_TX_COMP_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_TX_COMP_D0",	"item_type": "string"},
+		
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_D7_ANTI_BIO",	"itemOid": "I_ADHER_D7_ANTI_BIO",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_D7_ANTI_BIO_DUR",	"itemOid": "I_ADHER_D7_ANTI_BIO_DUR",	"item_type": "integer"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_D7_ANTI_BIO_ONG",	"itemOid": "I_ADHER_D7_ANTI_BIO_ONG",	"item_type": "string"},

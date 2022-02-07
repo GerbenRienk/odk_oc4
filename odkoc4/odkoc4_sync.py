@@ -64,7 +64,7 @@ def cycle_through_syncs():
         for one_participant in all_participants:
             util.subjects.check_and_update(one_participant['subjectKey'], one_participant['subjectOid'])
             
-        print('finished checking participants')
+        #print('finished checking participants')
         for odk_table in data_def['odk_tables']:
             # list the double entries
             double_entries = conn_odk.list_double_entries(odk_table['table_name'])
