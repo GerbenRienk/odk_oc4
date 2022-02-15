@@ -742,7 +742,7 @@
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_INV_INIT",	"itemOid": "I_CRF12_DIAG_POST_INV_INIT",	"item_type": "string"}
 		],
 	"multi_fields": [
-		{"odk_table_name": "10111_PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_MULT\"",	"itemOid": "I_CRF12_CONFIRMED_DIAG_MULT"}]
+		{"odk_table_name": "odk_am001.\"10111_PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_MULT\"",	"itemOid": "I_CRF12_CONFIRMED_DIAG_MULT"}]
 	}]
 }
 ,
@@ -991,7 +991,22 @@
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_UNS_COUGH",	"itemOid": "I_SYMPT_UNS_COUGH",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_UNS_COUGH_DAY0",	"itemOid": "I_SYMPT_UNS_COUGH_DAY0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_UNS_COUGH_DUR",	"itemOid": "I_SYMPT_UNS_COUGH_DUR",	"item_type": "integer"},
-		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_UNS_COUGH_STAT",	"itemOid": "I_SYMPT_UNS_COUGH_STAT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_UNS_COUGH_STAT",	"itemOid": "I_SYMPT_UNS_COUGH_STAT",	"item_type": "string"},
+		
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_UNS_LOSS_SMELL",	"itemOid": "I_SYMPT_UNS_LOSS_SMELL",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_UNS_LOSS_SMELL_DAY0",	"itemOid": "I_SYMPT_UNS_LOSS_SMELL_DAY0",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_UNS_LOSS_SMELL_DUR",	"itemOid": "I_SYMPT_UNS_LOSS_SMELL_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_UNS_LOSS_SMELL_STAT",	"itemOid": "I_SYMPT_UNS_LOSS_SMELL_STAT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_UNS_LOSS_TASTE",	"itemOid": "I_SYMPT_UNS_LOSS_TASTE",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_UNS_LOSS_TASTE_DAY0",	"itemOid": "I_SYMPT_UNS_LOSS_TASTE_DAY0",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_UNS_LOSS_TASTE_DUR",	"itemOid": "I_SYMPT_UNS_LOSS_TASTE_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_UNS_LOSS_TASTE_STAT",	"itemOid": "I_SYMPT_UNS_LOSS_TASTE_STAT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_UNS_SHORT_BREATH",	"itemOid": "I_SYMPT_UNS_SHORT_BREATH",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_UNS_SHORT_BREATH_DAY0",	"itemOid": "I_SYMPT_UNS_SHORT_BREATH_DAY0",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_UNS_SHORT_BREATH_DUR",	"itemOid": "I_SYMPT_UNS_SHORT_BREATH_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_UNS_SHORT_BREATH_STAT",	"itemOid": "I_SYMPT_UNS_SHORT_BREATH_STAT",	"item_type": "string"}
 
 		]
 	}],
@@ -1045,7 +1060,11 @@
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_UNS_TEMP_METHOD",	"itemOid": "I_UNSVI_UNS_TEMP_METHOD",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_UNS_TEMP_NOT_DONE",	"itemOid": "I_UNSVI_UNS_TEMP_NOT_DONE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_UNS_TEMP_NOT_DONE_SPE",	"itemOid": "I_UNSVI_UNS_TEMP_NOT_DONE_SPE",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_UNS_TEMP_UNIT",	"itemOid": "I_UNSVI_UNS_TEMP_UNIT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_UNS_TEMP_UNIT",	"itemOid": "I_UNSVI_UNS_TEMP_UNIT",	"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_UNS_OXIG",	"itemOid": "I_UNSVI_UNS_OXIG",	"item_type": "integer"},
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_UNS_OXIG_NOT_DONE",	"itemOid": "I_UNSVI_UNS_OXIG_NOT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_UNS_OXIG_NOT_DONE_SPE",	"itemOid": "I_UNSVI_UNS_OXIG_NOT_DONE_SPE",	"item_type": "string"}
 		]
 	}]
 }
@@ -1148,7 +1167,14 @@
 		{"odk_column": "PAG_WELCOME_MH3_GRP_ANTI_BO_GRP2_UNS_ANTI_BIO_DUR",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_DUR",	"item_type": "integer"},
 		{"odk_column": "PAG_WELCOME_MH3_GRP_ANTI_BO_GRP2_UNS_ANTI_BIO_ONG",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_ONG",	"item_type": "string"},
 		{"odk_column": "PAG_WELCOME_MH3_GRP_ANTI_BO_GRP2_UNS_ANTI_BIO_TX_SOURCE",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_TX_SOURCE",	"item_type": "integer"},
-		{"odk_column": "PAG_WELCOME_MH3_GRP_ANTI_BO_GRP2_UNS_ANTI_BIO_TX_SOURCE_SPE",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_TX_SOURCE_SPE",	"item_type": "string"}
+		{"odk_column": "PAG_WELCOME_MH3_GRP_ANTI_BO_GRP2_UNS_ANTI_BIO_TX_SOURCE_SPE",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_TX_SOURCE_SPE",	"item_type": "string"},
+		
+		
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_REPORT",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_REPORT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_QUAL",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_QUAL",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_COMP_REPORT",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_COMP_REPORT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_UNS_ANTI_BIO_COMP_QUAL",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_COMP_QUAL",	"item_type": "string"}
+		
 		],
 	"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10206_PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_UNS_ANTI_BIO_TX\"",	"itemOid": "I_UNSAN_UNS_ANTI_BIO_TX"},
@@ -1165,7 +1191,8 @@
 		{"odk_column": "UNS_EXP_USED",	"itemOid": "I_UNSAN_UNS_EXP_USED",	"item_type": "integer"},
 		{"odk_column": "UNS_QTY_DISP",	"itemOid": "I_UNSAN_UNS_QTY_DISP",	"item_type": "integer"},
 		{"odk_column": "UNS_QTY_RETURNED",	"itemOid": "I_UNSAN_UNS_QTY_RETURNED",	"item_type": "integer"},
-		{"odk_column": "UNS_QTY_USED",	"itemOid": "I_UNSAN_UNS_QTY_USED",	"item_type": "integer"}
+		{"odk_column": "UNS_QTY_USED",	"itemOid": "I_UNSAN_UNS_QTY_USED",	"item_type": "integer"}		
+
 		]},
 	{"rig_odk_table_name":"odk_am001.\"10206_PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_TX_OTH\"",
 	"rig_oid": "IG_UNSAN_ADH_GRP_RPT1",
@@ -1211,7 +1238,10 @@
 			{"odk_column": "UNS_DRUG_NAME",	"itemOid": "I_PRESC_UNS_DRUG_NAME",	"item_type": "string"},
 			{"odk_column": "UNS_DUR",	"itemOid": "I_PRESC_UNS_DUR",	"item_type": "integer"},
 			{"odk_column": "UNS_DUR_UNIT",	"itemOid": "I_PRESC_UNS_DUR_UNIT",	"item_type": "string"},
-			{"odk_column": "UNS_DOSE",	"itemOid": "I_PRESC_UNS_DOSE",	"item_type": "float"}
+			{"odk_column": "UNS_DOSE",	"itemOid": "I_PRESC_UNS_DOSE",	"item_type": "float"},
+			
+			{"odk_column": "UNS_DOSE_UNIT",	"itemOid": "I_PRESC_UNS_DOSE_UNIT",	"item_type": "string"},
+			{"odk_column": "UNS_DOSE_UNIT_SPE",	"itemOid": "I_PRESC_UNS_DOSE_UNIT_SPE",	"item_type": "string"}
 			]
 		}
 	]
@@ -1365,7 +1395,10 @@
 		{"odk_column": "PAGE_WELCOME_PRO_DEV_GRP_PROD_DEV_AWARE_D",	"itemOid": "I_PROTO_PROD_DEV_AWARE_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_PRO_DEV_GRP_PRO_DEV_VISIT",	"itemOid": "I_PROTO_PRO_DEV_VISIT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_COMP_D",	"itemOid": "I_PROTO_COMP_D",	"item_type": "date"},
-		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_INV_INIT",	"itemOid": "I_PROTO_INV_INIT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_INV_INIT",	"itemOid": "I_PROTO_INV_INIT",	"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_PRO_DEV_GRP_PRO_DEV_REPDAT",	"itemOid": "I_PROTO_PRO_DEV_REPDAT",	"item_type": "date"}
+		
 		],
 	"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10401_PAGE_WELCOME_PRO_DEV_GRP_DEV_GROUP1_CAT_A\"",	"itemOid": "I_PROTO_CAT_A"},
@@ -1412,7 +1445,9 @@
 		{"odk_column": "AE_START_D",	"itemOid": "I_ADVER_AE_START_D_1521",	"item_type": "date"},
 		{"odk_column": "AE_TERM",	"itemOid": "I_ADVER_AE_TERM_4051",	"item_type": "string"},
 		{"odk_column": "AE_TRT_REQ",	"itemOid": "I_ADVER_AE_TRT_REQ_2707",	"item_type": "string"},
-		{"odk_column": "SAE_CHECK",	"itemOid": "I_ADVER_SAE_CHECK_3196",	"item_type": "string"}
+		{"odk_column": "SAE_CHECK",	"itemOid": "I_ADVER_SAE_CHECK_3196",	"item_type": "string"},
+
+		{"odk_column": "AE_RELAT",	"itemOid": "I_ADVER_AE_RELAT",	"item_type": "string"}
 		]
 	}]
 }
@@ -1501,7 +1536,12 @@
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D7_TEMP_METHOD",	"itemOid": "I_VITAL_D7_TEMP_METHOD",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D7_TEMP_NOT_DONE",	"itemOid": "I_VITAL_D7_TEMP_NOT_DONE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D7_TEMP_NOT_DONE_SPE",	"itemOid": "I_VITAL_D7_TEMP_NOT_DONE_SPE",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D7_TEMP_UNIT",	"itemOid": "I_VITAL_D7_TEMP_UNIT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D7_TEMP_UNIT",	"itemOid": "I_VITAL_D7_TEMP_UNIT",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_D7_OXIG",	"itemOid": "I_VITAL_D7_OXIG",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_D7_OXIG_NOT_DONE",	"itemOid": "I_VITAL_D7_OXIG_NOT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_D7_OXIG_NOT_DONE_SPE",	"itemOid": "I_VITAL_D7_OXIG_NOT_DONE_SPE",	"item_type": "string"}
+
 		]
 	}]
 }
@@ -1669,7 +1709,23 @@
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D7_COUGH",	"itemOid": "I_SYMPT_D7_COUGH",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D7_COUGH_DAY0",	"itemOid": "I_SYMPT_D7_COUGH_DAY0",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D7_COUGH_DUR",	"itemOid": "I_SYMPT_D7_COUGH_DUR",	"item_type": "integer"},
-		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D7_COUGH_STAT",	"itemOid": "I_SYMPT_D7_COUGH_STAT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D7_COUGH_STAT",	"itemOid": "I_SYMPT_D7_COUGH_STAT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D7_LOSS_SMELL",	"itemOid": "I_SYMPT_D7_LOSS_SMELL",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D7_LOSS_SMELL_DAY0",	"itemOid": "I_SYMPT_D7_LOSS_SMELL_DAY0",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D7_LOSS_SMELL_DUR",	"itemOid": "I_SYMPT_D7_LOSS_SMELL_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D7_LOSS_SMELL_STAT",	"itemOid": "I_SYMPT_D7_LOSS_SMELL_STAT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D7_LOSS_TASTE",	"itemOid": "I_SYMPT_D7_LOSS_TASTE",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D7_LOSS_TASTE_DAY0",	"itemOid": "I_SYMPT_D7_LOSS_TASTE_DAY0",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D7_LOSS_TASTE_DUR",	"itemOid": "I_SYMPT_D7_LOSS_TASTE_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D7_LOSS_TASTE_STAT",	"itemOid": "I_SYMPT_D7_LOSS_TASTE_STAT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D7_SHORT_BREATH",	"itemOid": "I_SYMPT_D7_SHORT_BREATH",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D7_SHORT_BREATH_DAY0",	"itemOid": "I_SYMPT_D7_SHORT_BREATH_DAY0",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D7_SHORT_BREATH_DUR",	"itemOid": "I_SYMPT_D7_SHORT_BREATH_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D7_SHORT_BREATH_STAT",	"itemOid": "I_SYMPT_D7_SHORT_BREATH_STAT",	"item_type": "string"}
+
 		]}],
 "repeating_item_groups": [
 	{"rig_odk_table_name":"odk_am001.\"10605_PAGE2_MH2_GRP_SYMP_GRP22_OTHER_REPEAT\"",
@@ -1715,7 +1771,13 @@
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_OTHER_GRP_D7_OTHER_TX_SOURCE_SPE",	"itemOid": "I_ADHER_D7_OTHER_TX_SOURCE_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH3_GRP_OTHER_GRP_D7_OTHER_TX_TAKEN",	"itemOid": "I_ADHER_D7_OTHER_TX_TAKEN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_ADH_COMP_D",	"itemOid": "I_ADHER_D7_ADH_COMP_D",	"item_type": "date"},
-		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_ADH_INV_INIT",	"itemOid": "I_ADHER_D7_ADH_INV_INIT",	"item_type": "string"}		],
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_D7_ADH_INV_INIT",	"itemOid": "I_ADHER_D7_ADH_INV_INIT",	"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_REPORT",	"itemOid": "I_ADHER_D7_ANTI_BIO_REPORT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_QUAL",	"itemOid": "I_ADHER_D7_ANTI_BIO_QUAL",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_COMP_REPORT",	"itemOid": "I_ADHER_D7_ANTI_BIO_COMP_REPORT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_COMP_QUAL",	"itemOid": "I_ADHER_D7_ANTI_BIO_COMP_QUAL",	"item_type": "string"}
+		],
 	"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10606_PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_D7_ANTI_BIO_TX\"",	"itemOid": "I_ADHER_D7_ANTI_BIO_TX"},
 		{"odk_table_name": "odk_am001.\"10606_PAGE_WELCOME_MH3_GRP_OTHER_GRP_D7_OTHER_TX\"",	"itemOid": "I_ADHER_D7_OTHER_TX"}
