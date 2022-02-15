@@ -69,7 +69,13 @@
 		{"odk_column": "PAGE_WELCOME_ICP_GRP_WITNESS_SIGN",	"itemOid": "I_CRF03_WITNESS_SIGN",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ICP_GRP_WITNESS_SIGN_SPE",	"itemOid": "I_CRF03_WITNESS_SIGN_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CONS_COMP_D",	"itemOid": "I_CRF03_CONS_COMP_D",	"item_type": "date"},
-		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CONS_INV_INIT",	"itemOid": "I_CRF03_CONS_INV_INIT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_CONS_INV_INIT",	"itemOid": "I_CRF03_CONS_INV_INIT",	"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_ICP_GRP_CONS_VERSION_TXT",	"itemOid": "I_CRF03_CONS_VERSION_TXT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ICP_GRP_ASSENT_VERSION_TXT",	"itemOid": "I_CRF03_ASSENT_VERSION_TXT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ICP_GRP_CONS_COPY_SPE",	"itemOid": "I_CRF03_CONS_COPY_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ICP_GRP_CONS_JOB",	"itemOid": "I_CRF03_CONS_JOB",	"item_type": "string"}
+		
 		],
 	"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10102_PAGE_WELCOME_ICP_GRP_ICF_TYPE\"",	"itemOid": "I_CRF03_ICF_TYPE"}
@@ -102,7 +108,13 @@
 		{"odk_column": "PAGE_WELCOME_GRP_ELIG_SAMPLE_COL_POSSIBLE",	"itemOid": "I_CRF04_SAMPLE_COL_POSSIBLE",	"item_type": "string"},
 		
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_COMP_D",	"itemOid": "I_CRF04_COMP_D",	"item_type": "date"},
-		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_INV_INIT",	"itemOid": "I_CRF04_INV_INIT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_INV_INIT",	"itemOid": "I_CRF04_INV_INIT",	"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL1",	"itemOid": "I_CRF04_EXCL1",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL2",	"itemOid": "I_CRF04_EXCL2",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL3",	"itemOid": "I_CRF04_EXCL3",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL4",	"itemOid": "I_CRF04_EXCL4",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL5",	"itemOid": "I_CRF04_EXCL5",	"item_type": "string"}
 		]}
 	]
 }
@@ -249,7 +261,21 @@
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP8_D0_POST_NASAL_ONG",	"itemOid": "I_CRF06_D0_POST_NASAL_ONG",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D0_COUGH",	"itemOid": "I_CRF06_D0_COUGH",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D0_COUGH_DUR",	"itemOid": "I_CRF06_D0_COUGH_DUR",	"item_type": "integer"},
-		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D0_COUGH_ONG",	"itemOid": "I_CRF06_D0_COUGH_ONG",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_MH_GRP_SYMP_GRP9_D0_COUGH_ONG",	"itemOid": "I_CRF06_D0_COUGH_ONG",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D0_LOSS_SMELL",	"itemOid": "I_CRF06_D0_LOSS_SMELL",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D0_LOSS_SMELL_DUR",	"itemOid": "I_CRF06_D0_LOSS_SMELL_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP23_D0_LOSS_SMELL_ONG",	"itemOid": "I_CRF06_D0_LOSS_SMELL_ONG",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D0_LOSS_TASTE",	"itemOid": "I_CRF06_D0_LOSS_TASTE",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D0_LOSS_TASTE_DUR",	"itemOid": "I_CRF06_D0_LOSS_TASTE_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP24_D0_LOSS_TASTE_ONG",	"itemOid": "I_CRF06_D0_LOSS_TASTE_ONG",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D0_SHORT_BREATH",	"itemOid": "I_CRF06_D0_SHORT_BREATH",	"item_type": "string"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D0_SHORT_BREATH_DUR",	"itemOid": "I_CRF06_D0_SHORT_BREATH_DUR",	"item_type": "integer"},
+		{"odk_column": "PAGE2_MH2_GRP_SYMP_GRP25_D0_SHORT_BREATH_ONG",	"itemOid": "I_CRF06_D0_SHORT_BREATH_ONG",	"item_type": "string"},
+
+		{"odk_column": "PAGE3_MH3_GRP_VAC_GRP_D0_VAC_COVID",	"itemOid": "I_CRF06_D0_VAC_COVID",	"item_type": "string"}
 		],
 	"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10106_PAGE3_MH3_GRP_ANTI_BIO_GRP_D0_ANTI_BIO_TX\"",	"itemOid": "I_CRF06_D0_ANTI_BIO_TX"},
@@ -323,7 +349,11 @@
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D0_TEMP_METHOD",	"itemOid": "I_CRF07_D0_TEMP_METHOD",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D0_TEMP_NOT_DONE",	"itemOid": "I_CRF07_D0_TEMP_NOT_DONE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D0_TEMP_NOT_DONE_SPE",	"itemOid": "I_CRF07_D0_TEMP_NOT_DONE_SPE",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D0_TEMP_UNIT",	"itemOid": "I_CRF07_D0_TEMP_UNIT",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP8_D0_TEMP_UNIT",	"itemOid": "I_CRF07_D0_TEMP_UNIT",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_D0_OXIG",	"itemOid": "I_CRF07_D0_OXIG",	"item_type": "integer"},
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_D0_OXIG_NOT_DONE",	"itemOid": "I_CRF07_D0_OXIG_NOT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_VS_GRP_VS_GRP9_D0_OXIG_NOT_DONE_SPE",	"itemOid": "I_CRF07_D0_OXIG_NOT_DONE_SPE",	"item_type": "string"}
 		]
 	}]
 }
@@ -633,7 +663,45 @@
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SW_SAMP_COL",	"itemOid": "I_CRF11_DIAG_SW_SAMP_COL",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SW_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_SW_SAMP_COL_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_U_SAMP_COL",	"itemOid": "I_CRF11_DIAG_U_SAMP_COL",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_U_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_U_SAMP_COL_SPE",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_U_SAMP_COL_SPE",	"itemOid": "I_CRF11_DIAG_U_SAMP_COL_SPE",	"item_type": "string"},
+
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_HR",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_HR",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_HR_NEW",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_HR_NEW",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_MIN",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_MIN",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_TEST_RES_GRP_DIAG_SAMP_COL_T_MIN_NEW",	"itemOid": "I_CRF11_DIAG_SAMP_COL_T_MIN_NEW",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DENGUE_IGG",	"itemOid": "I_CRF11_DENGUE_IGG",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_DONE",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_ND",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_ND_SPE",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP7_3_DEBGUE_IGG_RDT_RESULT",	"itemOid": "I_CRF11_DEBGUE_IGG_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_CHIK_RDT",	"itemOid": "I_CRF11_CHIK_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_CHIK_RDT_DONE",	"itemOid": "I_CRF11_CHIK_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_CHIK_RDT_ND",	"itemOid": "I_CRF11_CHIK_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_CHIK_RDT_ND_SPE",	"itemOid": "I_CRF11_CHIK_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP11_CHIK_RDT_RESULT",	"itemOid": "I_CRF11_CHIK_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP12_LEP_RDT",	"itemOid": "I_CRF11_LEP_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP12_LEP_RDT_DONE",	"itemOid": "I_CRF11_LEP_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP12_LEP_RDT_ND",	"itemOid": "I_CRF11_LEP_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP12_LEP_RDT_ND_SPE",	"itemOid": "I_CRF11_LEP_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP12_LEP_RDT_RESULT",	"itemOid": "I_CRF11_LEP_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP13_COV_RDT",	"itemOid": "I_CRF11_COV_RDT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP13_COV_RDT_DONE",	"itemOid": "I_CRF11_COV_RDT_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP13_COV_RDT_ND",	"itemOid": "I_CRF11_COV_RDT_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP13_COV_RDT_ND_SPE",	"itemOid": "I_CRF11_COV_RDT_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_RES_GRP13_COV_RDT_RESULT",	"itemOid": "I_CRF11_COV_RDT_RESULT",	"item_type": "string"},
+
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_NONRDT_RES_GRP_COV_PCR",	"itemOid": "I_CRF11_COV_PCR",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_NONRDT_RES_GRP_COV_PCR_DONE",	"itemOid": "I_CRF11_COV_PCR_DONE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_NONRDT_RES_GRP_COV_PCR_ND",	"itemOid": "I_CRF11_COV_PCR_ND",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_NONRDT_RES_GRP_COV_PCR_ND_SPE",	"itemOid": "I_CRF11_COV_PCR_ND_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_NONRDT_RES_GRP_COV_PCR_RESULT",	"itemOid": "I_CRF11_COV_PCR_RESULT",	"item_type": "string"},
+		{"odk_column": "PAGE2_WELCOME_TEST_RES_TEST_NONRDT_RES_GRP_COV_PCR_RESULT_SPE",	"itemOid": "I_CRF11_COV_PCR_RESULT_SPE",	"item_type": "string"}
+
+
 		]
 	}],
 "repeating_item_groups": [
@@ -656,7 +724,7 @@
 "form_data": {
 	"FormOID": "F_CRF12DIAGNOS",
 	"FormName": "D0 11: Diagnosis Post PoC",
-	"FormLayoutOID": "v.2.0",
+	"FormLayoutOID": "v.2.1",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -667,11 +735,14 @@
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_PRESENT",	"itemOid": "I_CRF12_CONFIRMED_DIAG_PRESENT",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_RESP",	"itemOid": "I_CRF12_CONFIRMED_DIAG_RESP",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_SPE",	"itemOid": "I_CRF12_CONFIRMED_DIAG_SPE",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_SPE_SEV",	"itemOid": "I_CRF12_CONFIRMED_DIAG_SPE_SEV",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_POST_ANTI_BIO",	"itemOid": "I_CRF12_DIAG_POST_ANTI_BIO",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_RES_REVIEWED",	"itemOid": "I_CRF12_DIAG_RES_REVIEWED",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_COMP_D",	"itemOid": "I_CRF12_DIAG_POST_COMP_D",	"item_type": "date"},
 		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_INV_INIT",	"itemOid": "I_CRF12_DIAG_POST_INV_INIT",	"item_type": "string"}
-		]
+		],
+	"multi_fields": [
+		{"odk_table_name": "10111_PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_MULT\"",	"itemOid": "I_CRF12_CONFIRMED_DIAG_MULT"}]
 	}]
 }
 ,
