@@ -114,7 +114,12 @@
 		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL2",	"itemOid": "I_CRF04_EXCL2",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL3",	"itemOid": "I_CRF04_EXCL3",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL4",	"itemOid": "I_CRF04_EXCL4",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL5",	"itemOid": "I_CRF04_EXCL5",	"item_type": "string"}
+		{"odk_column": "PAGE_WELCOME_GRP_EXCL_EXCL5",	"itemOid": "I_CRF04_EXCL5",	"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_ELIG",	"itemOid": "I_CRF04_ELIG",	"item_type": "string"}
+		
+		
+		
 		]}
 	]
 }
@@ -461,7 +466,7 @@
 "itemgroups": [{
 	"itemgroupOid": "IG_CRF11_DIAG_TEST_RES_GRP",
 	"odk_fields": [
-		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF12_ODK_ENTRY",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF11_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT",	"item_type": "string"},
 		{"odk_column": "PAG2_WLCME_TST_RS_TST_CTRL_RES_GRP11_CTRL_WIDAL_RDT_DONE",	"itemOid": "I_CRF11_CTRL_WIDAL_RDT_DONE",	"item_type": "string"},
@@ -775,7 +780,11 @@
 			{"odk_column": "DRUG_NAME",	"itemOid": "I_CRF13_DRUG_NAME",	"item_type": "string"},
 			{"odk_column": "DUR",	"itemOid": "I_CRF13_DUR",	"item_type": "integer"},
 			{"odk_column": "DUR_UNIT",	"itemOid": "I_CRF13_DUR_UNIT",	"item_type": "string"},
-			{"odk_column": "DOSE",	"itemOid": "I_CRF13_DOSE",	"item_type": "float"}
+			{"odk_column": "DOSE",	"itemOid": "I_CRF13_DOSE",	"item_type": "float"},
+			
+			{"odk_column": "DOSE_UNIT",	"itemOid": "I_CRF13_DOSE_UNIT",	"item_type": "string"}
+			
+
 			]}
 	]
 }
