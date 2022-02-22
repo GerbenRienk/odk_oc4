@@ -782,7 +782,8 @@
 			{"odk_column": "DUR_UNIT",	"itemOid": "I_CRF13_DUR_UNIT",	"item_type": "string"},
 			{"odk_column": "DOSE",	"itemOid": "I_CRF13_DOSE",	"item_type": "float"},
 			
-			{"odk_column": "DOSE_UNIT",	"itemOid": "I_CRF13_DOSE_UNIT",	"item_type": "string"}
+			{"odk_column": "DOSE_UNIT",	"itemOid": "I_CRF13_DOSE_UNIT",	"item_type": "string"},
+			{"odk_column": "DOSE_UNIT_SPE",	"itemOid": "I_CRF13_DOSE_UNIT_SPE",	"item_type": "string"}
 			
 
 			]}
