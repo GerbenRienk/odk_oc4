@@ -417,33 +417,43 @@
 	}]
 }
 ,
+{
+"table_name": "odk_am001.\"10109_CORE2\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF09DIAGNOS",
+	"FormName": "D0 09: Diagnosis Pre POC",
+	"FormLayoutOID": "v.2.2",
+	"Status": "data entry complete"
+	},
+"itemgroups": [{
+	"itemgroupOid": "IG_CRF09_DIAG_PRE_GRP",
+	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF09_ODK_ENTRY",	"item_type": "string"},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_PRE_DIAG",		"itemOid": "I_CRF09_PRE_DIAG",		"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_PRE_DIAG_OTH",	"itemOid": "I_CRF09_PRE_DIAG_OTH",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_PRE_MULTI_DIAG",	"itemOid": "I_CRF09_PRE_MULTI_DIAG","item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_ANTI_BIO",	"itemOid": "I_CRF09_DIAG_ANTI_BIO",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_CONF",		"itemOid": "I_CRF09_DIAG_CONF",		"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_FEBR",		"itemOid": "I_CRF09_DIAG_FEBR",		"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_RESP",		"itemOid": "I_CRF09_DIAG_RESP",		"item_type": "string"},
+		
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_PRE_COMP_D",	"itemOid": "I_CRF09_DIAG_PRE_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_PRE_INV_INIT",	"itemOid": "I_CRF09_DIAG_PRE_INV_INIT",	"item_type": "string"}
+		]
+	}],
+"repeating_item_groups": [
+	{"rig_odk_table_name":"odk_am001.\"10109_PAGE_WELCOME_DIAG_PRE_POC_GRP_S_DIAG\"",
+	"rig_oid": "IG_CRF09_DIAG_PRE_GRP_RPT",
+	"rig_odk_fields": [
+		{"odk_column": "SEC_DIAG",	"itemOid": "I_CRF09_SEC_DIAG",	"item_type": "string"},
+		{"odk_column": "SEC_DIAG_OTH",	"itemOid": "I_CRF09_SEC_DIAG_OTH",	"item_type": "string"}
+		]
+	}]
+}
+,
 {
 "table_name": "odk_am001.\"1010_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
@@ -713,35 +723,49 @@
 	}]
 }
 ,
+{
+"table_name": "odk_am001.\"10111_CORE\"",
+"id_field": "STUDY_SUBJECT_ID",
+"eventOid": "SE_DAY0",
+"form_data": {
+	"FormOID": "F_CRF12DIAGNOS",
+	"FormName": "D0 11: Diagnosis Post PoC",
+	"FormLayoutOID": "v.2.3",
+	"Status": "data entry complete"
+	},
+"itemgroups": [{
+	"itemgroupOid": "IG_CRF12_DIAG_POST_GRP",
+	"odk_fields": [
+		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_CRF12_ODK_ENTRY",	"item_type": "string"},
 
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_PRESENT",	"itemOid": "I_CRF12_CONFIRMED_DIAG_PRESENT",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_CONFIRMED_DIAG_RESP",	"itemOid": "I_CRF12_CONFIRMED_DIAG_RESP",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_POST_ANTI_BIO",	"itemOid": "I_CRF12_DIAG_POST_ANTI_BIO",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_DIAG_RES_REVIEWED",	"itemOid": "I_CRF12_DIAG_RES_REVIEWED",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_COMP_D",	"itemOid": "I_CRF12_DIAG_POST_COMP_D",	"item_type": "date"},
+		{"odk_column": "PAGE_WELCOME_SIGN_OUT_GRP_DIAG_POST_INV_INIT",	"itemOid": "I_CRF12_DIAG_POST_INV_INIT",	"item_type": "string"},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_PRI_DIAG",	"itemOid": "I_CRF12_PRI_DIAG",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_PRI_DIAG_OTH",	"itemOid": "I_CRF12_PRI_DIAG_OTH",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_MULT_DIAG",	"itemOid": "I_CRF12_PRI_MULT_DIAG",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_ANTIBIO_DEC_TEST_SPE",	"itemOid": "I_CRF12_ANTIBIO_DEC_SPE",	"item_type": "string"}
+		],
+		"multi_fields": [
+		{"odk_table_name": "odk_am001.\"10111_PAGE_WELCOME_DIAG_POST_POC_GRP_ANTIBIO_DEC\"",	"itemOid": "I_CRF12_ANTIBIO_DEC"},
+		{"odk_table_name": "odk_am001.\"10111_PAGE_WELCOME_DIAG_POST_POC_GRP_ANTIBIO_DEC_TEST\"",	"itemOid": "I_CRF12_ANTIBIO_DEC_TEST"}
+		]
+	
+	}],
+"repeating_item_groups": [
+	{"rig_odk_table_name":"odk_am001.\"10111_PAGE_WELCOME_DIAG_POST_POC_GRP_S_DIAG\"",
+	"rig_oid": "IG_CRF12_DIAG_POST_GRP_RPT",
+	"rig_odk_fields": [
+		{"odk_column": "OTHER_TEST_DONE",	"itemOid": "I_CRF12_SEC_DIAG",	"item_type": "string"},
+		{"odk_column": "OTHER_TEST_SPE",	"itemOid": "I_CRF12_SEC_DIAG_OTH",	"item_type": "string"}
+		]
+	}]
+}
+,
 {
 "table_name": "odk_am001.\"10112_CORE\"",
 "id_field": "STUDY_SUBJECT_ID",
@@ -749,7 +773,7 @@
 "form_data": {
 	"FormOID": "F_CRF13PRESCRI",
 	"FormName": "D0 12: Prescription",
-	"FormLayoutOID": "v.2.0",
+	"FormLayoutOID": "v.2.1",
 	"Status": "data entry complete"
 	},
 	"itemgroups": [{
@@ -1142,7 +1166,7 @@
 "form_data": {
 	"FormOID": "F_UNSANTIBIOTI",
 	"FormName": "UNS 06: UNS Dispensing and Adherence CRF",
-	"FormLayoutOID": "v.2.0",
+	"FormLayoutOID": "v.2.1",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -1183,12 +1207,13 @@
 		]
 	}],
 "repeating_item_groups": [
-	{"rig_odk_table_name":"odk_am001.\"10206_PAGE_WELCOME_ADH_GRP1_GRP1\"",
+	{"rig_odk_table_name":"odk_am001.\"10206_PAGE_WELCOME_ADH_GRP1_GRP12\"",
 	"rig_oid": "IG_UNSAN_ADH_GRP_RPT",
 	"rig_odk_fields": [
 		{"odk_column": "UNS_CALC_ADH",	"itemOid": "I_UNSAN_UNS_CALC_ADH",	"item_type": "real"},
 		{"odk_column": "UNS_DRUG_DOSE",	"itemOid": "I_UNSAN_UNS_DRUG_DOSE",	"item_type": "integer"},
-		{"odk_column": "UNS_DRUG_NAME",	"itemOid": "I_UNSAN_UNS_DRUG_NAME",	"item_type": "string"},
+		{"odk_column": "UNS_GEN_DRUG_NAME",	"itemOid": "I_UNSAN_UNS_GEN_DRUG_NAME",	"item_type": "string"},
+		{"odk_column": "UNS_GEN_DRUG_NAME_SPE",	"itemOid": "I_UNSAN_UNS_GEN_DRUG_NAME_SPE",	"item_type": "string"},
 		{"odk_column": "UNS_EXP_USED",	"itemOid": "I_UNSAN_UNS_EXP_USED",	"item_type": "integer"},
 		{"odk_column": "UNS_QTY_DISP",	"itemOid": "I_UNSAN_UNS_QTY_DISP",	"item_type": "integer"},
 		{"odk_column": "UNS_QTY_RETURNED",	"itemOid": "I_UNSAN_UNS_QTY_RETURNED",	"item_type": "integer"},
@@ -1216,7 +1241,7 @@
 "form_data": {
 	"FormOID": "F_PRESCRIPTION",
 	"FormName": "UNS 07: Prescription",
-	"FormLayoutOID": "v.2.0",
+	"FormLayoutOID": "v.2.1",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -1242,7 +1267,11 @@
 			{"odk_column": "UNS_DOSE",	"itemOid": "I_PRESC_UNS_DOSE",	"item_type": "float"},
 			
 			{"odk_column": "UNS_DOSE_UNIT",	"itemOid": "I_PRESC_UNS_DOSE_UNIT",	"item_type": "string"},
-			{"odk_column": "UNS_DOSE_UNIT_SPE",	"itemOid": "I_PRESC_UNS_DOSE_UNIT_SPE",	"item_type": "string"}
+			{"odk_column": "UNS_DOSE_UNIT_SPE",	"itemOid": "I_PRESC_UNS_DOSE_UNIT_SPE",	"item_type": "string"},
+			
+			{"odk_column": "UNS_GEN_DRUG_NAME",	"itemOid": "I_PRESC_UNS_GEN_DRUG_NAME",	"item_type": "string"},
+			{"odk_column": "UNS_GEN_DRUG_NAME_SPE",	"itemOid": "I_PRESC_UNS_GEN_DRUG_NAME_SPE",	"item_type": "string"}
+			
 			]
 		}
 	]
@@ -1420,7 +1449,7 @@
 "form_data": {
 	"FormOID": "F_ADVERSEEVENT_1974",
 	"FormName": "AE 01: Adverse Events",
-	"FormLayoutOID": "v.2.0",
+	"FormLayoutOID": "v.2.1",
 	"Status": "data entry complete"
 	},
 "itemgroups":[{
@@ -1448,7 +1477,11 @@
 		{"odk_column": "AE_TRT_REQ",	"itemOid": "I_ADVER_AE_TRT_REQ_2707",	"item_type": "string"},
 		{"odk_column": "SAE_CHECK",	"itemOid": "I_ADVER_SAE_CHECK_3196",	"item_type": "string"},
 
-		{"odk_column": "AE_RELAT",	"itemOid": "I_ADVER_AE_RELAT",	"item_type": "string"}
+		{"odk_column": "AE_RELAT",	"itemOid": "I_ADVER_AE_RELAT",	"item_type": "string"},
+		
+		{"odk_column": "AE_DIAG_TERM",	"itemOid": "I_ADVER_AE_DIAG_TERM",	"item_type": "string"},
+		{"odk_column": "AE_DIAG_TERM_SPE",	"itemOid": "I_ADVER_AE_DIAG_TERM_SPE",	"item_type": "string"}
+		
 		]
 	}]
 }
@@ -1746,7 +1779,7 @@
 "form_data": {
 	"FormOID": "F_ADHERENCEAND",
 	"FormName": "D7 06: Dispensing and Adherence",
-	"FormLayoutOID": "v.2.0",
+	"FormLayoutOID": "v.2.1",
 	"Status": "data entry complete"
 	},
 "itemgroups": [{
@@ -1755,7 +1788,6 @@
 		{"odk_column": "PAGE_WELCOME_ODK_GRP_ODK_ENTRY",	"itemOid": "I_ADHER_ODK_ENTRY",	"item_type": "string"},
 
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_BACK",	"itemOid": "I_ADHER_D7_ANTI_BIO_BACK",	"item_type": "string"},
-		
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_D0_PAY_SPE",	"itemOid": "I_ADHER_D7_ANTI_BIO_D0_PAY_SPE",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_ANTI_BIO_GRP1_D7_ANTI_BIO_PRESC_D0",	"itemOid": "I_ADHER_D7_ANTI_BIO_PRESC_D0",	"item_type": "string"},	
@@ -1794,7 +1826,10 @@
 		{"odk_column": "D7_EXP_USED",	"itemOid": "I_ADHER_D7_EXP_USED",	"item_type": "integer"},
 		{"odk_column": "D7_QTY_DISP",	"itemOid": "I_ADHER_D7_QTY_DISP",	"item_type": "integer"},
 		{"odk_column": "D7_QTY_RETURNED",	"itemOid": "I_ADHER_D7_QTY_RETURNED",	"item_type": "integer"},
-		{"odk_column": "D7_QTY_USED",	"itemOid": "I_ADHER_D7_QTY_USED",	"item_type": "integer"}
+		{"odk_column": "D7_QTY_USED",	"itemOid": "I_ADHER_D7_QTY_USED",	"item_type": "integer"},
+		
+		{"odk_column": "D7_GEN_DRUG_NAME",	"itemOid": "I_ADHER_D7_GEN_DRUG_NAME",	"item_type": "string"},
+		{"odk_column": "D7_GEN_DRUG_NAME_SPE",	"itemOid": "I_ADHER_D7_GEN_DRUG_NAME_SPE",	"item_type": "string"}
 		]
 	},
 	{"rig_odk_table_name":"odk_am001.\"10606_PAGE_WELCOME_MH3_GRP_ANTI_BIO_GRP2_OTH_RPT\"",
