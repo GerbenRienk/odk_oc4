@@ -248,11 +248,13 @@ def cycle_through_syncs():
                                    study_event_info = ', event repeat key is %s' % serk 
                                 my_report.append_to_report('submitting data of %s for %s%s' % (odk_table['form_data']['FormName'], study_subject_id, study_event_info))
                                 
+                                
                                 import_job_id = api.clinical_data.import_odm(aut_token, file_name, verbose=False)
                                 
                                 # do the administration
                                 util.uri.write_odm(uri, file_name)
                                 util.uri.write_job_id(uri, import_job_id)
+                                
                                 
                 # next subject in the odk table
             # next odk table
