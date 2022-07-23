@@ -161,8 +161,9 @@ class ConnToOdkDB(object):
         # sql_statement = "SELECT * from " + table_name + " where " + where_clause
         sql_statement = "SELECT * from %s where %s" % (table_name, where_clause)
         if not order_clause == '':
-            sql_statement = sql_statement + 'order by ' + order_clause
-            
+            sql_statement = sql_statement + ' order by ' + order_clause
+        # for debugging
+        #print(sql_statement)    
         try:
             cursor.execute(sql_statement)
         except:
