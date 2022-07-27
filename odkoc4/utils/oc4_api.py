@@ -460,6 +460,9 @@ class _ODMParser(object):
                 _final_value = float(item_value)
             else:
                 _final_value = ''
+            # on rare occasions we get a final value like 0E-31
+            if item_value.__contains__('E'):
+                _final_value = ''
 
         if(item_type == 'string'):
             # string can be a string or None
@@ -467,6 +470,7 @@ class _ODMParser(object):
                 _final_value = item_value
             else:
                 _final_value = ''
+            
             
         odm_line = '\t\t\t\t\t\t'
         odm_line = odm_line + '<ItemData ItemOID="%s" Value="%s" />' % (item_oid, _final_value)
