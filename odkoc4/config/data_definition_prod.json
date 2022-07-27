@@ -747,8 +747,9 @@
 
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_PRI_DIAG",	"itemOid": "I_CRF12_PRI_DIAG",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_PRI_DIAG_OTH",	"itemOid": "I_CRF12_PRI_DIAG_OTH",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_MULT_DIAG",	"itemOid": "I_CRF12_PRI_MULT_DIAG",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_ANTIBIO_DEC_TEST_SPE",	"itemOid": "I_CRF12_ANTIBIO_DEC_SPE",	"item_type": "string"}
+		
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_MULT_DIAG",	"itemOid": "I_CRF12_MULT_DIAG",	"item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_POST_POC_GRP_ANTIBIO_DEC_TEST_SPE",	"itemOid": "I_CRF12_ANTIBIO_DEC_TEST_SPE",	"item_type": "string"}
 		],
 		"multi_fields": [
 		{"odk_table_name": "odk_am001.\"10111_PAGE_WELCOME_DIAG_POST_POC_GRP_ANTIBIO_DEC\"",	"itemOid": "I_CRF12_ANTIBIO_DEC"},
@@ -1258,7 +1259,7 @@
 		]
 		}],
 	"repeating_item_groups": [
-		{"rig_odk_table_name":"odk_am001.\"10207_PAGE_WELCOME_PRESC_GRP1_GRP1\"",
+		{"rig_odk_table_name":"odk_am001.\"10207_PAGE_WELCOME_PRESC_GRP1_GRP12\"",
 		"rig_oid": "IG_PRESC_PRESC_GRP_RPT",
 		"rig_odk_fields": [
 			{"odk_column": "UNS_ANTI_BIO",	"itemOid": "I_PRESC_UNS_ANTI_BIO",	"item_type": "string"},
