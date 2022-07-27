@@ -443,7 +443,7 @@
 
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_PRE_DIAG",		"itemOid": "I_CRF09_PRE_DIAG",		"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_PRE_DIAG_OTH",	"itemOid": "I_CRF09_PRE_DIAG_OTH",	"item_type": "string"},
-		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_MULTI_DIAG",	    "itemOid": "I_CRF09_PRE_MULTI_DIAG","item_type": "string"},
+		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_MULTI_DIAG",	    "itemOid": "I_CRF09_MULTI_DIAG","item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_ANTI_BIO",	"itemOid": "I_CRF09_DIAG_ANTI_BIO",	"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_CONF",		"itemOid": "I_CRF09_DIAG_CONF",		"item_type": "string"},
 		{"odk_column": "PAGE_WELCOME_DIAG_PRE_POC_GRP_DIAG_FEBR",		"itemOid": "I_CRF09_DIAG_FEBR",		"item_type": "string"},
@@ -811,7 +811,7 @@
 			{"odk_column": "DOSE_UNIT_SPE",	"itemOid": "I_CRF13_DOSE_UNIT_SPE",	"item_type": "string"},
 			
 			{"odk_column": "GEN_DRUG_NAME",	"itemOid": "I_CRF13_GEN_DRUG_NAME",	"item_type": "string"},
-			{"odk_column": "GEN_DRUG_NAME_SPE",	"itemOid": "GEN_DRUG_NAME_SPE",	"item_type": "string"}
+			{"odk_column": "GEN_DRUG_NAME_SPE",	"itemOid": "I_CRF13_GEN_DRUG_NAME_SPE",	"item_type": "string"}
 			
 
 			]}
