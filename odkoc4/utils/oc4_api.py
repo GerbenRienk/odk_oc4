@@ -461,7 +461,7 @@ class _ODMParser(object):
             else:
                 _final_value = ''
             # on rare occasions we get a final value like 0E-31
-            if item_value.__contains__('E'):
+            if str(item_value).__contains__('E'):
                 _final_value = ''
 
         if(item_type == 'string'):
