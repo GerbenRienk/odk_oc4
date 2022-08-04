@@ -11,8 +11,6 @@
 	"AM00108": "S_AM001_08_9162(PROD)",
 	"AM00199": "S_99_9071(PROD)"
 },
-
-
 	"odk_tables": [
 {
 	"table_name": "odk_am001.\"10101_CORE\"",
